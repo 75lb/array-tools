@@ -39,7 +39,7 @@ Plucks the value of the specified property from each object in the input array
 
 
 - arrayOfObjects `Object[]` the input array of objects  
-- ...property `string` the property to pluck  
+- ...property `string` the property(s) to pluck  
 
 
 **Returns**: `Array`
@@ -52,11 +52,11 @@ Plucks the value of the specified property from each object in the input array
 ...     {one: "one", two: "zwei"},
 ... ];
 undefined
-> w.pluck(data, "one");
+> a.pluck(data, "one");
 [ 1, 'one' ]
-> w.pluck(data, "two");
+> a.pluck(data, "two");
 [ 2, 'two', 'zwei' ]
-> w.pluck(data, "one", "two");
+> a.pluck(data, "one", "two");
 [ 1, 'two', 'one' ]
 ```
 
@@ -78,13 +78,13 @@ Takes input and guarantees an array back. Result can be one of three things:
 
 ####Example
 ```js
-> w.arrayify(null)
+> a.arrayify(null)
 []
-> w.arrayify(0)
+> a.arrayify(0)
 [ 0 ]
-> w.arrayify([ 1, 2 ])
+> a.arrayify([ 1, 2 ])
 [ 1, 2 ]
-> function f(){ return w.arrayify(arguments); }
+> function f(){ return a.arrayify(arguments); }
 undefined
 > f(1,2,3)
 [ 1, 2, 3 ]
@@ -105,13 +105,13 @@ returns true if a value, or nested object value exists in an array
 
 ####Example
 ```js
-> w.exists([ 1, 2, 3 ], 2)
+> a.exists([ 1, 2, 3 ], 2)
 true
-> w.exists([ { result: false }, { result: false } ], { result: true })
+> a.exists([ { result: false }, { result: false } ], { result: true })
 false
-> w.exists([ { result: true }, { result: false } ], { result: true })
+> a.exists([ { result: true }, { result: false } ], { result: true })
 true
-> w.exists([ { result: true }, { result: true } ], { result: true })
+> a.exists([ { result: true }, { result: true } ], { result: true })
 true
 ```
 
@@ -155,9 +155,9 @@ If the input is an object, it returns a clone of the object minus the specified 
 
 ####Example
 ```js
-> w.without([ 1, 2, 3 ], 2)
+> a.without([ 1, 2, 3 ], 2)
 [ 1, 3 ]
-> w.without([ 1, 2, 3 ], [ 2, 3 ])
+> a.without([ 1, 2, 3 ], [ 2, 3 ])
 [ 1 ]
 ```
 
@@ -177,9 +177,9 @@ Returns the first object in the input array with `property` set to `value`.
 
 ####Example
 ```js
-> w.first([{ product: "egg", stock: true }, { product: "chicken", stock: true }], "stock", true)
+> a.first([{ product: "egg", stock: true }, { product: "chicken", stock: true }], "stock", true)
 { product: 'egg', stock: true }
-> w.first([{ product: "egg", stock: true }, { product: "chicken", stock: true }], "stock", false)
+> a.first([{ product: "egg", stock: true }, { product: "chicken", stock: true }], "stock", false)
 undefined
 ```
 
@@ -197,20 +197,20 @@ merge two arrays into a single array of unique values
 ```js
 > var array1 = [ 1, 2 ], array2 = [ 2, 3 ];
 undefined
-> w.union(array1, array2)
+> a.union(array1, array2)
 [ 1, 2, 3 ]
 > var array1 = [ { id: 1 }, { id: 2 } ], array2 = [ { id: 2 }, { id: 3 } ];
 undefined
-> w.union(array1, array2)
+> a.union(array1, array2)
 [ { id: 1 }, { id: 2 }, { id: 3 } ]
 > var array2 = [ { id: 2, blah: true }, { id: 3 } ]
 undefined
-> w.union(array1, array2)
+> a.union(array1, array2)
 [ { id: 1 },
   { id: 2 },
   { id: 2, blah: true },
   { id: 3 } ]
-> w.union(array1, array2, "id")
+> a.union(array1, array2, "id")
 [ { id: 1 }, { id: 2 }, { id: 3 } ]
 ```
 
@@ -229,7 +229,7 @@ Returns the initial elements which both input arrays have in common
 
 ####Example
 ```js
-> w.commonSequence([1,2,3], [1,2,4])
+> a.commonSequence([1,2,3], [1,2,4])
 [ 1, 2 ]
 ```
 
