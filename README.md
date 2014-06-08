@@ -9,7 +9,9 @@
 Useful functions for working with arrays
 
 ####Example
+```js
 var a = require("array-ting");
+```
 
 
 
