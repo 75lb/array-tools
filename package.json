@@ -2,23 +2,30 @@
   "name": "array-ting",
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "0.0.0",
-  "description": "",
+  "description": "Useful functions for working with arrays",
   "repository": "https://github.com/75lb/array-ting.git",
   "main": "./lib/array-ting.js",
   "bin": {
     "array-ting": "bin/cli.js"
   },
-  "keywords": [],
-  "engines": {
-    "node": ">=0.10.0"
-  },
+  "keywords": [
+    "array",
+    "where",
+    "unique",
+    "exists",
+    "without",
+    "first",
+    "union",
+    "pluck",
+    "arrayify"
+  ],
   "scripts": {
     "test": "tape test/*.js",
-    "lint": "jshint lib/*.js bin/*.js test/*.js; echo",
-    "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo",
-    "watch": "baldrick --do 'npm run docs' --when lib/*.js jsdoc2md/*.hbs --change"
+    "lint": "jshint lib/*.js test/*.js; echo",
+    "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo"
   },
   "devDependencies": {
+    "jsdoc-to-markdown": "^0.1.1",
     "tape": "^2.13.2"
   },
   "dependencies": {
