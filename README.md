@@ -2,7 +2,6 @@
 [![npm module downloads per month](http://img.shields.io/npm/dm/array-ting.svg)](https://www.npmjs.org/package/array-ting)
 [![Build Status](https://travis-ci.org/75lb/array-ting.svg?branch=master)](https://travis-ci.org/75lb/array-ting)
 [![Dependency Status](https://david-dm.org/75lb/array-ting.svg)](https://david-dm.org/75lb/array-ting)
-![Analytics](https://ga-beacon.appspot.com/UA-27725889-6/array-ting/README.md?pixel)
 
 
 #array-ting
@@ -220,6 +219,28 @@ Returns the initial elements which both input arrays have in common
 > w.commonSequence([1,2,3], [1,2,4])
 [ 1, 2 ]
 ```
+
+
+
+<a name="module_array-ting.unique"></a>
+###a.unique()
+docs TODO
+
+
+
+
+
+
+
+
+<a name="module_array-ting.spliceWhile"></a>
+###a.spliceWhile()
+docs TODO
+
+
+
+
+
 
 
 
