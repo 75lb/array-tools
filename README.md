@@ -15,7 +15,7 @@ var a = require("array-ting");
 
 
 **Contents**
-* [pluck(arrayOfObjects, property)](#module_array-ting.pluck)
+* [pluck(arrayOfObjects, ...property)](#module_array-ting.pluck)
 * [arrayify(input)](#module_array-ting.arrayify)
 * [exists(array, value)](#module_array-ting.exists)
 * [where()](#module_array-ting.where)
@@ -34,12 +34,12 @@ var a = require("array-ting");
 
 
 <a name="module_array-ting.pluck"></a>
-###a.pluck(arrayOfObjects, property)
+###a.pluck(arrayOfObjects, ...property)
 Plucks the value of the specified property from each object in the input array
 
 
 - arrayOfObjects `Object[]` the input array of objects  
-- property `string` the property to pluck  
+- ...property `string` the property to pluck  
 
 
 **Returns**: `Array`
@@ -63,7 +63,7 @@ undefined
 
 
 <a name="module_array-ting.arrayify"></a>
-###a.arrayify(input)
+###arrayify(input)
 Takes input and guarantees an array back. Result can be one of three things:
 
 - puts a single scalar in an array
@@ -93,7 +93,7 @@ undefined
 
 
 <a name="module_array-ting.exists"></a>
-###a.exists(array, value)
+###exists(array, value)
 returns true if a value, or nested object value exists in an array
 
 
@@ -118,7 +118,7 @@ true
 
 
 <a name="module_array-ting.where"></a>
-###a.where()
+###where()
 returns an array containing items from arrayOfObjects where key/value pairs 
 from `query` are matched identically
 
@@ -130,7 +130,7 @@ from `query` are matched identically
 
 
 <a name="module_array-ting.findWhere"></a>
-###a.findWhere()
+###findWhere()
 returns the first item the where key/value pairs from `query` are matched identically
 in the input
 
@@ -142,7 +142,7 @@ in the input
 
 
 <a name="module_array-ting.without"></a>
-###a.without(input, toRemove)
+###without(input, toRemove)
 If the input is an array, returns the input minus the specified values.
 If the input is an object, it returns a clone of the object minus the specified properties.
 
@@ -164,7 +164,7 @@ If the input is an object, it returns a clone of the object minus the specified 
 
 
 <a name="module_array-ting.first"></a>
-###a.first(objectArray, prop, val)
+###first(objectArray, prop, val)
 Returns the first object in the input array with `property` set to `value`.
 
 
@@ -186,7 +186,7 @@ undefined
 
 
 <a name="module_array-ting.union"></a>
-###a.union()
+###union()
 merge two arrays into a single array of unique values
 
 
@@ -217,7 +217,7 @@ undefined
 
 
 <a name="module_array-ting.commonSequence"></a>
-###a.commonSequence(a, b)
+###commonSequence(a, b)
 Returns the initial elements which both input arrays have in common
 
 
@@ -236,7 +236,7 @@ Returns the initial elements which both input arrays have in common
 
 
 <a name="module_array-ting.unique"></a>
-###a.unique()
+###unique()
 docs TODO
 
 
@@ -247,7 +247,7 @@ docs TODO
 
 
 <a name="module_array-ting.spliceWhile"></a>
-###a.spliceWhile()
+###spliceWhile()
 docs TODO
 
 
