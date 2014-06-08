@@ -1,0 +1,27 @@
+{
+  "name": "array-ting",
+  "author": "Lloyd Brookes <75pound@gmail.com>",
+  "version": "0.0.0",
+  "description": "",
+  "repository": "https://github.com/75lb/array-ting.git",
+  "main": "./lib/array-ting.js",
+  "bin": {
+    "array-ting": "bin/cli.js"
+  },
+  "keywords": [],
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "tape test/*.js",
+    "lint": "jshint lib/*.js bin/*.js test/*.js; echo",
+    "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo",
+    "watch": "baldrick --do 'npm run docs' --when lib/*.js jsdoc2md/*.hbs --change"
+  },
+  "devDependencies": {
+    "tape": "^2.13.2"
+  },
+  "dependencies": {
+    "typical": "^0.1.0"
+  }
+}
