@@ -14,6 +14,19 @@ var a = require("array-ting");
 
 
 
+**Contents**
+* [pluck(arrayOfObjects, property)](#module_array-ting.pluck)
+* [arrayify(input)](#module_array-ting.arrayify)
+* [exists(array, value)](#module_array-ting.exists)
+* [where()](#module_array-ting.where)
+* [findWhere()](#module_array-ting.findWhere)
+* [without(input, toRemove)](#module_array-ting.without)
+* [first(objectArray, prop, val)](#module_array-ting.first)
+* [union()](#module_array-ting.union)
+* [commonSequence(a, b)](#module_array-ting.commonSequence)
+* [unique()](#module_array-ting.unique)
+* [spliceWhile()](#module_array-ting.spliceWhile)
+
 
 
 
@@ -21,12 +34,12 @@ var a = require("array-ting");
 
 
 <a name="module_array-ting.pluck"></a>
-###a.pluck(arrayOfObjects, the)
+###a.pluck(arrayOfObjects, property)
 Plucks the value of the specified property from each object in the input array
 
 
 - arrayOfObjects `Object[]` the input array of objects  
-- the `string` property to pluck  
+- property `string` the property to pluck  
 
 
 **Returns**: `Array`
