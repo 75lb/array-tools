@@ -19,7 +19,7 @@ var a = require("array-ting");
 * [arrayify(input)](#module_array-ting.arrayify)
 * [exists(array, value)](#module_array-ting.exists)
 * [where(arrayOfObjects, query)](#module_array-ting.where)
-* [findWhere()](#module_array-ting.findWhere)
+* [findWhere(arrayOfObjects, query)](#module_array-ting.findWhere)
 * [without(input, toRemove)](#module_array-ting.without)
 * [first(objectArray, prop, val)](#module_array-ting.first)
 * [union()](#module_array-ting.union)
@@ -143,28 +143,39 @@ from `query` are matched identically
 
 
 <a name="module_array-ting.findWhere"></a>
-###findWhere()
-returns the first item the where key/value pairs from `query` are matched identically
-in the input
+###findWhere(arrayOfObjects, query)
+returns the first item from `arrayOfObjects` where key/value pairs 
+from `query` are matched identically
 
 
+- arrayOfObjects `Array` the array to search  
+- query `query` an object containing the key/value pairs you want to match  
 
 
+**Returns**: `Object`
 
+####Example
+```js
+> dudes = [{ name: "Jim", age: 8}, { name: "Clive", age: 8}, { name: "Hater", age: 9}]
+[ { name: 'Jim', age: 8 },
+  { name: 'Clive', age: 8 },
+  { name: 'Hater', age: 9 } ]
+> a.findWhere(dudes, { age: 8})
+{ name: 'Jim', age: 8 }
+```
 
 
 
 <a name="module_array-ting.without"></a>
 ###without(input, toRemove)
-If the input is an array, returns the input minus the specified values.
-If the input is an object, it returns a clone of the object minus the specified properties.
+Returns the input minus the specified values.
 
 
-- input `Array | Object` the input array or object  
+- input `Array` the input array  
 - toRemove `*` a single, or array of values to omit  
 
 
-**Returns**: `Array | Object`
+**Returns**: `Array`
 
 ####Example
 ```js
