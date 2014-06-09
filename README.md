@@ -273,6 +273,15 @@ splice from `index` until `test` fails
 
 **Returns**: `Array`
 
+####Example
+```js
+> letters = ["a", "a", "b"]
+[ 'a', 'a', 'b' ]
+> a.spliceWhile(letters, 0, /a/, "x")
+[ 'a', 'a' ]
+> letters
+[ 'x', 'b' ]
+```
 
 
 
