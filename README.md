@@ -23,7 +23,7 @@ var a = require("array-ting");
 * [without(input, toRemove)](#module_array-ting.without)
 * [union(array1, array2, idKey)](#module_array-ting.union)
 * [commonSequence(a, b)](#module_array-ting.commonSequence)
-* [unique()](#module_array-ting.unique)
+* [unique(array)](#module_array-ting.unique)
 * [spliceWhile()](#module_array-ting.spliceWhile)
 
 
@@ -241,13 +241,22 @@ Returns the initial elements which both input arrays have in common
 
 
 <a name="module_array-ting.unique"></a>
-###unique()
-docs TODO
+###unique(array)
+reduces an array to unique values
 
 
+- array `Array` input array  
 
 
+**Returns**: `Array`
 
+####Example
+```js
+> n = [1,6,6,7,1]
+[ 1, 6, 6, 7, 1 ]
+> a.unique(n)
+[ 1, 6, 7 ]
+```
 
 
 
