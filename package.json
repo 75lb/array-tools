@@ -9,15 +9,16 @@
     "array-ting": "bin/cli.js"
   },
   "keywords": [
-    "array",
-    "where",
-    "unique",
-    "exists",
-    "without",
-    "first",
-    "union",
     "pluck",
-    "arrayify"
+    "arrayify",
+    "exists",
+    "where",
+    "findWhere",
+    "without",
+    "union",
+    "commonSequence",
+    "unique",
+    "spliceWhile"
   ],
   "scripts": {
     "test": "tape test/*.js",
