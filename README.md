@@ -18,7 +18,7 @@ var a = require("array-ting");
 * [pluck(arrayOfObjects, ...property)](#module_array-ting.pluck)
 * [arrayify(input)](#module_array-ting.arrayify)
 * [exists(array, value)](#module_array-ting.exists)
-* [where()](#module_array-ting.where)
+* [where(arrayOfObjects, query)](#module_array-ting.where)
 * [findWhere()](#module_array-ting.findWhere)
 * [without(input, toRemove)](#module_array-ting.without)
 * [first(objectArray, prop, val)](#module_array-ting.first)
@@ -68,7 +68,7 @@ Takes input and guarantees an array back. Result can be one of three things:
 
 - puts a single scalar in an array
 - converts array-like object (e.g. `arguments`) to a real array
-- converts null or undefined to an empty array
+- converts `null` or `undefined` to an empty array
 
 
 - input `*` the input value to convert to an array  
@@ -118,14 +118,27 @@ true
 
 
 <a name="module_array-ting.where"></a>
-###where()
-returns an array containing items from arrayOfObjects where key/value pairs 
+###where(arrayOfObjects, query)
+returns an array containing items from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
 
+- arrayOfObjects `Array` the array to search  
+- query `query` an object containing the key/value pairs you want to match  
 
 
+**Returns**: `Array`
 
+####Example
+```js
+> dudes = [{ name: "Jim", age: 8}, { name: "Clive", age: 8}, { name: "Hater", age: 9}]
+[ { name: 'Jim', age: 8 },
+  { name: 'Clive', age: 8 },
+  { name: 'Hater', age: 9 } ]
+> a.where(dudes, { age: 8})
+[ { name: 'Jim', age: 8 },
+  { name: 'Clive', age: 8 } ]
+```
 
 
 
