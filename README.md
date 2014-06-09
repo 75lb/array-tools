@@ -21,8 +21,7 @@ var a = require("array-ting");
 * [where(arrayOfObjects, query)](#module_array-ting.where)
 * [findWhere(arrayOfObjects, query)](#module_array-ting.findWhere)
 * [without(input, toRemove)](#module_array-ting.without)
-* [first(objectArray, prop, val)](#module_array-ting.first)
-* [union()](#module_array-ting.union)
+* [union(array1, array2, idKey)](#module_array-ting.union)
 * [commonSequence(a, b)](#module_array-ting.commonSequence)
 * [unique()](#module_array-ting.unique)
 * [spliceWhile()](#module_array-ting.spliceWhile)
@@ -34,7 +33,7 @@ var a = require("array-ting");
 
 
 <a name="module_array-ting.pluck"></a>
-###a.pluck(arrayOfObjects, ...property)
+###pluck(arrayOfObjects, ...property)
 Plucks the value of the specified property from each object in the input array
 
 
@@ -187,35 +186,17 @@ Returns the input minus the specified values.
 
 
 
-<a name="module_array-ting.first"></a>
-###first(objectArray, prop, val)
-Returns the first object in the input array with `property` set to `value`.
-
-
-- objectArray `Object[]` input array of objects  
-- prop `string` property to inspect  
-- val `*` desired value  
-
-
-**Returns**: `Object | undefined`
-
-####Example
-```js
-> a.first([{ product: "egg", stock: true }, { product: "chicken", stock: true }], "stock", true)
-{ product: 'egg', stock: true }
-> a.first([{ product: "egg", stock: true }, { product: "chicken", stock: true }], "stock", false)
-undefined
-```
-
-
-
 <a name="module_array-ting.union"></a>
-###union()
+###union(array1, array2, idKey)
 merge two arrays into a single array of unique values
 
 
+- array1 `Array` First array  
+- array2 `Array` Second array  
+- idKey `string` the unique ID property name  
 
 
+**Returns**: `Array`
 
 ####Example
 ```js
