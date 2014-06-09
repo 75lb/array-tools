@@ -24,7 +24,7 @@ var a = require("array-ting");
 * [union(array1, array2, idKey)](#module_array-ting.union)
 * [commonSequence(a, b)](#module_array-ting.commonSequence)
 * [unique(array)](#module_array-ting.unique)
-* [spliceWhile()](#module_array-ting.spliceWhile)
+* [spliceWhile(array, index, test, ...elementN)](#module_array-ting.spliceWhile)
 
 
 
@@ -261,12 +261,17 @@ reduces an array to unique values
 
 
 <a name="module_array-ting.spliceWhile"></a>
-###spliceWhile()
-docs TODO
+###spliceWhile(array, index, test, ...elementN)
+splice from `index` until `test` fails
 
 
+- array `Array` the input array  
+- index `number` the position to begin splicing from  
+- test `RegExp` the test to continue splicing while true  
+- ...elementN `*` the elements to add to the array  
 
 
+**Returns**: `Array`
 
 
 
