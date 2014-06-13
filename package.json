@@ -3,7 +3,7 @@
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "1.0.5",
   "description": "Useful functions for working with arrays",
-  "repository": "https://github.com/75lb/array-ting.git",
+  "repository": "https://github.com/75lb/array-tools.git",
   "main": "./lib/array-tools.js",
   "keywords": [
     "pluck",
@@ -28,7 +28,7 @@
     "tape": "^2.13.2"
   },
   "dependencies": {
-    "object-ting": "^1.0.0",
+    "object-tools": "^1.0.0",
     "typical": "^1.0.0"
   }
 }
