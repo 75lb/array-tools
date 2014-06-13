@@ -1,30 +1,30 @@
-[![view on npm](http://img.shields.io/npm/v/array-ting.svg)](https://www.npmjs.org/package/array-ting)
-[![npm module downloads per month](http://img.shields.io/npm/dm/array-ting.svg)](https://www.npmjs.org/package/array-ting)
-[![Build Status](https://travis-ci.org/75lb/array-ting.svg?branch=master)](https://travis-ci.org/75lb/array-ting)
-[![Dependency Status](https://david-dm.org/75lb/array-ting.svg)](https://david-dm.org/75lb/array-ting)
+[![view on npm](http://img.shields.io/npm/v/array-tools.svg)](https://www.npmjs.org/package/array-tools)
+[![npm module downloads per month](http://img.shields.io/npm/dm/array-tools.svg)](https://www.npmjs.org/package/array-tools)
+[![Build Status](https://travis-ci.org/75lb/array-tools.svg?branch=master)](https://travis-ci.org/75lb/array-tools)
+[![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 
 
-#array-ting
+#array-tools
 Useful functions for working with arrays
 
 ####Example
 ```js
-var a = require("array-ting");
+var a = require("array-tools");
 ```
 
 
 
 **Contents**
-* [pluck(arrayOfObjects, ...property)](#module_array-ting.pluck)
-* [arrayify(input)](#module_array-ting.arrayify)
-* [exists(array, value)](#module_array-ting.exists)
-* [where(arrayOfObjects, query)](#module_array-ting.where)
-* [findWhere(arrayOfObjects, query)](#module_array-ting.findWhere)
-* [without(input, toRemove)](#module_array-ting.without)
-* [union(array1, array2, idKey)](#module_array-ting.union)
-* [commonSequence(a, b)](#module_array-ting.commonSequence)
-* [unique(array)](#module_array-ting.unique)
-* [spliceWhile(array, index, test, ...elementN)](#module_array-ting.spliceWhile)
+* [pluck(arrayOfObjects, ...property)](#module_array-tools.pluck)
+* [arrayify(input)](#module_array-tools.arrayify)
+* [exists(array, value)](#module_array-tools.exists)
+* [where(arrayOfObjects, query)](#module_array-tools.where)
+* [findWhere(arrayOfObjects, query)](#module_array-tools.findWhere)
+* [without(input, toRemove)](#module_array-tools.without)
+* [union(array1, array2, idKey)](#module_array-tools.union)
+* [commonSequence(a, b)](#module_array-tools.commonSequence)
+* [unique(array)](#module_array-tools.unique)
+* [spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile)
 
 
 
@@ -32,12 +32,12 @@ var a = require("array-ting");
 
 
 
-<a name="module_array-ting.pluck"></a>
+<a name="module_array-tools.pluck"></a>
 ###pluck(arrayOfObjects, ...property)
 Plucks the value of the specified property from each object in the input array
 
 
-- arrayOfObjects `Object[]` the input array of objects  
+- arrayOfObjects `Array.<Object>` the input array of objects  
 - ...property `string` the property(s) to pluck  
 
 
@@ -61,7 +61,7 @@ undefined
 
 
 
-<a name="module_array-ting.arrayify"></a>
+<a name="module_array-tools.arrayify"></a>
 ###arrayify(input)
 Takes input and guarantees an array back. Result can be one of three things:
 
@@ -91,7 +91,7 @@ undefined
 
 
 
-<a name="module_array-ting.exists"></a>
+<a name="module_array-tools.exists"></a>
 ###exists(array, value)
 returns true if a value, or nested object value exists in an array
 
@@ -116,7 +116,7 @@ true
 
 
 
-<a name="module_array-ting.where"></a>
+<a name="module_array-tools.where"></a>
 ###where(arrayOfObjects, query)
 returns an array containing items from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
@@ -141,7 +141,7 @@ from `query` are matched identically
 
 
 
-<a name="module_array-ting.findWhere"></a>
+<a name="module_array-tools.findWhere"></a>
 ###findWhere(arrayOfObjects, query)
 returns the first item from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
@@ -165,7 +165,7 @@ from `query` are matched identically
 
 
 
-<a name="module_array-ting.without"></a>
+<a name="module_array-tools.without"></a>
 ###without(input, toRemove)
 Returns the input minus the specified values.
 
@@ -186,7 +186,7 @@ Returns the input minus the specified values.
 
 
 
-<a name="module_array-ting.union"></a>
+<a name="module_array-tools.union"></a>
 ###union(array1, array2, idKey)
 merge two arrays into a single array of unique values
 
@@ -221,7 +221,7 @@ undefined
 
 
 
-<a name="module_array-ting.commonSequence"></a>
+<a name="module_array-tools.commonSequence"></a>
 ###commonSequence(a, b)
 Returns the initial elements which both input arrays have in common
 
@@ -240,7 +240,7 @@ Returns the initial elements which both input arrays have in common
 
 
 
-<a name="module_array-ting.unique"></a>
+<a name="module_array-tools.unique"></a>
 ###unique(array)
 reduces an array to unique values
 
@@ -260,7 +260,7 @@ reduces an array to unique values
 
 
 
-<a name="module_array-ting.spliceWhile"></a>
+<a name="module_array-tools.spliceWhile"></a>
 ###spliceWhile(array, index, test, ...elementN)
 splice from `index` until `test` fails
 

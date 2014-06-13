@@ -1,10 +1,10 @@
 {
-  "name": "array-ting",
+  "name": "array-tools",
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "1.0.4",
   "description": "Useful functions for working with arrays",
   "repository": "https://github.com/75lb/array-ting.git",
-  "main": "./lib/array-ting.js",
+  "main": "./lib/array-tools.js",
   "keywords": [
     "pluck",
     "arrayify",
