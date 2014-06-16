@@ -293,14 +293,14 @@ splice from `index` until `test` fails
 
 <a name="module_array-tools.extract"></a>
 ###extract(array, callback)
-Returns the items spliced from `array` which return the boolean `true` when tested with `callback`.
+Removes items from `array` which pass the `callback` test. Modifies the input array, returns the extracted.
 
 
-- array `Array` the input array, to be modified directly  
-- callback `function` the test callback  
+- array `Array` the input array, modified directly  
+- callback `function` called on each item in `array`. Those which return a truthy value are extracted.  
 
 
-**Returns**: `Array` - - the extracted items.
+**Returns**: `Array` - the extracted items.
 
 
 
