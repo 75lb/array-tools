@@ -7,6 +7,11 @@
 #array-tools
 Useful functions for working with arrays
 
+
+
+
+
+
 ####Example
 ```js
 var a = require("array-tools");
@@ -25,6 +30,7 @@ var a = require("array-tools");
 * [commonSequence(a, b)](#module_array-tools.commonSequence)
 * [unique(array)](#module_array-tools.unique)
 * [spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile)
+* [extract(array, callback)](#module_array-tools.extract)
 
 
 
@@ -282,6 +288,20 @@ splice from `index` until `test` fails
 > letters
 [ 'x', 'b' ]
 ```
+
+
+
+<a name="module_array-tools.extract"></a>
+###extract(array, callback)
+Returns the items spliced from `array` which return the boolean `true` when tested with `callback`.
+
+
+- array `Array` the input array, to be modified directly  
+- callback `function` the test callback  
+
+
+**Returns**: `Array` - - the extracted items.
+
 
 
 
