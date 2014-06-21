@@ -3,22 +3,15 @@
 [![Build Status](https://travis-ci.org/75lb/array-tools.svg?branch=master)](https://travis-ci.org/75lb/array-tools)
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 
-
+<a name="module_array-tools"></a>
 #array-tools
 Useful functions for working with arrays
 
-
-
-
-
-
+  
 ####Example
 ```js
 var a = require("array-tools");
 ```
-
-
-
 **Contents**
 * [pluck(arrayOfObjects, ...property)](#module_array-tools.pluck)
 * [arrayify(input)](#module_array-tools.arrayify)
@@ -32,23 +25,15 @@ var a = require("array-tools");
 * [spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile)
 * [extract(array, callback)](#module_array-tools.extract)
 
-
-
-
-
-
-
 <a name="module_array-tools.pluck"></a>
-###pluck(arrayOfObjects, ...property)
+###a.pluck(arrayOfObjects, ...property)
 Plucks the value of the specified property from each object in the input array
 
 
-- arrayOfObjects `Array.<Object>` the input array of objects  
-- ...property `string` the property(s) to pluck  
+- arrayOfObjects `Array.<Object>` - the input array of objects
+- ...property `string` - the property(s) to pluck
 
-
-**Returns**: `Array`
-
+**Returns**: `Array`  
 ####Example
 ```js
 > var data = [
@@ -64,11 +49,8 @@ undefined
 > a.pluck(data, "one", "two");
 [ 1, 'two', 'one' ]
 ```
-
-
-
 <a name="module_array-tools.arrayify"></a>
-###arrayify(input)
+###a.arrayify(input)
 Takes input and guarantees an array back. Result can be one of three things:
 
 - puts a single scalar in an array
@@ -76,11 +58,9 @@ Takes input and guarantees an array back. Result can be one of three things:
 - converts `null` or `undefined` to an empty array
 
 
-- input `*` the input value to convert to an array  
+- input `*` - the input value to convert to an array
 
-
-**Returns**: `Array`
-
+**Returns**: `Array`  
 ####Example
 ```js
 > a.arrayify(null)
@@ -94,20 +74,15 @@ undefined
 > f(1,2,3)
 [ 1, 2, 3 ]
 ```
-
-
-
 <a name="module_array-tools.exists"></a>
-###exists(array, value)
+###a.exists(array, value)
 returns true if a value, or nested object value exists in an array
 
 
-- array `Array` the array to search  
-- value `*` the value to search for  
+- array `Array` - the array to search
+- value `*` - the value to search for
 
-
-**Returns**: `boolean`
-
+**Returns**: `boolean`  
 ####Example
 ```js
 > a.exists([ 1, 2, 3 ], 2)
@@ -119,21 +94,16 @@ true
 > a.exists([ { result: true }, { result: true } ], { result: true })
 true
 ```
-
-
-
 <a name="module_array-tools.where"></a>
-###where(arrayOfObjects, query)
+###a.where(arrayOfObjects, query)
 returns an array containing items from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
 
-- arrayOfObjects `Array` the array to search  
-- query `query` an object containing the key/value pairs you want to match  
+- arrayOfObjects `Array` - the array to search
+- query `query` - an object containing the key/value pairs you want to match
 
-
-**Returns**: `Array`
-
+**Returns**: `Array`  
 ####Example
 ```js
 > dudes = [{ name: "Jim", age: 8}, { name: "Clive", age: 8}, { name: "Hater", age: 9}]
@@ -144,21 +114,16 @@ from `query` are matched identically
 [ { name: 'Jim', age: 8 },
   { name: 'Clive', age: 8 } ]
 ```
-
-
-
 <a name="module_array-tools.findWhere"></a>
-###findWhere(arrayOfObjects, query)
+###a.findWhere(arrayOfObjects, query)
 returns the first item from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
 
-- arrayOfObjects `Array` the array to search  
-- query `query` an object containing the key/value pairs you want to match  
+- arrayOfObjects `Array` - the array to search
+- query `query` - an object containing the key/value pairs you want to match
 
-
-**Returns**: `Object`
-
+**Returns**: `Object`  
 ####Example
 ```js
 > dudes = [{ name: "Jim", age: 8}, { name: "Clive", age: 8}, { name: "Hater", age: 9}]
@@ -168,20 +133,15 @@ from `query` are matched identically
 > a.findWhere(dudes, { age: 8})
 { name: 'Jim', age: 8 }
 ```
-
-
-
 <a name="module_array-tools.without"></a>
-###without(input, toRemove)
+###a.without(input, toRemove)
 Returns the input minus the specified values.
 
 
-- input `Array` the input array  
-- toRemove `*` a single, or array of values to omit  
+- input `Array` - the input array
+- toRemove `*` - a single, or array of values to omit
 
-
-**Returns**: `Array`
-
+**Returns**: `Array`  
 ####Example
 ```js
 > a.without([ 1, 2, 3 ], 2)
@@ -189,21 +149,16 @@ Returns the input minus the specified values.
 > a.without([ 1, 2, 3 ], [ 2, 3 ])
 [ 1 ]
 ```
-
-
-
 <a name="module_array-tools.union"></a>
-###union(array1, array2, idKey)
+###a.union(array1, array2, idKey)
 merge two arrays into a single array of unique values
 
 
-- array1 `Array` First array  
-- array2 `Array` Second array  
-- idKey `string` the unique ID property name  
+- array1 `Array` - First array
+- array2 `Array` - Second array
+- idKey `string` - the unique ID property name
 
-
-**Returns**: `Array`
-
+**Returns**: `Array`  
 ####Example
 ```js
 > var array1 = [ 1, 2 ], array2 = [ 2, 3 ];
@@ -224,38 +179,28 @@ undefined
 > a.union(array1, array2, "id")
 [ { id: 1 }, { id: 2 }, { id: 3 } ]
 ```
-
-
-
 <a name="module_array-tools.commonSequence"></a>
-###commonSequence(a, b)
+###a.commonSequence(a, b)
 Returns the initial elements which both input arrays have in common
 
 
-- a `Array` first array to compare  
-- b `Array` second array to compare  
+- a `Array` - first array to compare
+- b `Array` - second array to compare
 
-
-**Returns**: `Array`
-
+**Returns**: `Array`  
 ####Example
 ```js
 > a.commonSequence([1,2,3], [1,2,4])
 [ 1, 2 ]
 ```
-
-
-
 <a name="module_array-tools.unique"></a>
-###unique(array)
+###a.unique(array)
 reduces an array to unique values
 
 
-- array `Array` input array  
+- array `Array` - input array
 
-
-**Returns**: `Array`
-
+**Returns**: `Array`  
 ####Example
 ```js
 > n = [1,6,6,7,1]
@@ -263,22 +208,17 @@ reduces an array to unique values
 > a.unique(n)
 [ 1, 6, 7 ]
 ```
-
-
-
 <a name="module_array-tools.spliceWhile"></a>
-###spliceWhile(array, index, test, ...elementN)
+###a.spliceWhile(array, index, test, ...elementN)
 splice from `index` until `test` fails
 
 
-- array `Array` the input array  
-- index `number` the position to begin splicing from  
-- test `RegExp` the test to continue splicing while true  
-- ...elementN `*` the elements to add to the array  
+- array `Array` - the input array
+- index `number` - the position to begin splicing from
+- test `RegExp` - the test to continue splicing while true
+- ...elementN `*` - the elements to add to the array
 
-
-**Returns**: `Array`
-
+**Returns**: `Array`  
 ####Example
 ```js
 > letters = ["a", "a", "b"]
@@ -288,27 +228,12 @@ splice from `index` until `test` fails
 > letters
 [ 'x', 'b' ]
 ```
-
-
-
 <a name="module_array-tools.extract"></a>
-###extract(array, callback)
+###a.extract(array, callback)
 Removes items from `array` which pass the `callback` test. Modifies the input array, returns the extracted.
 
 
-- array `Array` the input array, modified directly  
-- callback `function` called on each item in `array`. Those which return a truthy value are extracted.  
+- array `Array` - the input array, modified directly
+- callback `function` - called on each item in `array`. Those which return a truthy value are extracted.
 
-
-**Returns**: `Array` - the extracted items.
-
-
-
-
-
-
-
-
-
-
-
+**Returns**: `Array` - the extracted items.  
