@@ -8,7 +8,7 @@
 Useful functions for working with arrays
 
   
-####Example
+**Example**  
 ```js
 var a = require("array-tools");
 ```
@@ -29,12 +29,12 @@ var a = require("array-tools");
 ###a.pluck(arrayOfObjects, ...property)
 Plucks the value of the specified property from each object in the input array
 
-
+**Params**
 - arrayOfObjects `Array.<Object>` - the input array of objects
 - ...property `string` - the property(s) to pluck
 
 **Returns**: `Array`  
-####Example
+**Example**  
 ```js
 > var data = [
 ...     {one: 1, two: 2},
@@ -57,11 +57,11 @@ Takes input and guarantees an array back. Result can be one of three things:
 - converts array-like object (e.g. `arguments`) to a real array
 - converts `null` or `undefined` to an empty array
 
-
+**Params**
 - input `*` - the input value to convert to an array
 
 **Returns**: `Array`  
-####Example
+**Example**  
 ```js
 > a.arrayify(null)
 []
@@ -78,12 +78,12 @@ undefined
 ###a.exists(array, value)
 returns true if a value, or nested object value exists in an array
 
-
+**Params**
 - array `Array` - the array to search
 - value `*` - the value to search for
 
 **Returns**: `boolean`  
-####Example
+**Example**  
 ```js
 > a.exists([ 1, 2, 3 ], 2)
 true
@@ -99,12 +99,12 @@ true
 returns an array containing items from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
-
+**Params**
 - arrayOfObjects `Array` - the array to search
 - query `query` - an object containing the key/value pairs you want to match
 
 **Returns**: `Array`  
-####Example
+**Example**  
 ```js
 > dudes = [{ name: "Jim", age: 8}, { name: "Clive", age: 8}, { name: "Hater", age: 9}]
 [ { name: 'Jim', age: 8 },
@@ -119,12 +119,12 @@ from `query` are matched identically
 returns the first item from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
-
+**Params**
 - arrayOfObjects `Array` - the array to search
 - query `query` - an object containing the key/value pairs you want to match
 
 **Returns**: `Object`  
-####Example
+**Example**  
 ```js
 > dudes = [{ name: "Jim", age: 8}, { name: "Clive", age: 8}, { name: "Hater", age: 9}]
 [ { name: 'Jim', age: 8 },
@@ -137,12 +137,12 @@ from `query` are matched identically
 ###a.without(input, toRemove)
 Returns the input minus the specified values.
 
-
+**Params**
 - input `Array` - the input array
 - toRemove `*` - a single, or array of values to omit
 
 **Returns**: `Array`  
-####Example
+**Example**  
 ```js
 > a.without([ 1, 2, 3 ], 2)
 [ 1, 3 ]
@@ -153,13 +153,13 @@ Returns the input minus the specified values.
 ###a.union(array1, array2, idKey)
 merge two arrays into a single array of unique values
 
-
+**Params**
 - array1 `Array` - First array
 - array2 `Array` - Second array
 - idKey `string` - the unique ID property name
 
 **Returns**: `Array`  
-####Example
+**Example**  
 ```js
 > var array1 = [ 1, 2 ], array2 = [ 2, 3 ];
 undefined
@@ -183,12 +183,12 @@ undefined
 ###a.commonSequence(a, b)
 Returns the initial elements which both input arrays have in common
 
-
+**Params**
 - a `Array` - first array to compare
 - b `Array` - second array to compare
 
 **Returns**: `Array`  
-####Example
+**Example**  
 ```js
 > a.commonSequence([1,2,3], [1,2,4])
 [ 1, 2 ]
@@ -197,11 +197,11 @@ Returns the initial elements which both input arrays have in common
 ###a.unique(array)
 reduces an array to unique values
 
-
+**Params**
 - array `Array` - input array
 
 **Returns**: `Array`  
-####Example
+**Example**  
 ```js
 > n = [1,6,6,7,1]
 [ 1, 6, 6, 7, 1 ]
@@ -212,14 +212,14 @@ reduces an array to unique values
 ###a.spliceWhile(array, index, test, ...elementN)
 splice from `index` until `test` fails
 
-
+**Params**
 - array `Array` - the input array
 - index `number` - the position to begin splicing from
 - test `RegExp` - the test to continue splicing while true
 - ...elementN `*` - the elements to add to the array
 
 **Returns**: `Array`  
-####Example
+**Example**  
 ```js
 > letters = ["a", "a", "b"]
 [ 'a', 'a', 'b' ]
@@ -232,7 +232,7 @@ splice from `index` until `test` fails
 ###a.extract(array, callback)
 Removes items from `array` which pass the `callback` test. Modifies the input array, returns the extracted.
 
-
+**Params**
 - array `Array` - the input array, modified directly
 - callback `function` - called on each item in `array`. Those which return a truthy value are extracted.
 
