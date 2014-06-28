@@ -5,6 +5,7 @@
 
 <a name="module_array-tools"></a>
 #array-tools
+
 Useful functions for working with arrays
 
   
@@ -12,7 +13,8 @@ Useful functions for working with arrays
 ```js
 var a = require("array-tools");
 ```
-**Contents**
+**Contents**  
+
 * [pluck(arrayOfObjects, ...property)](#module_array-tools.pluck)
 * [arrayify(input)](#module_array-tools.arrayify)
 * [exists(array, value)](#module_array-tools.exists)
@@ -26,10 +28,11 @@ var a = require("array-tools");
 * [extract(array, callback)](#module_array-tools.extract)
 
 <a name="module_array-tools.pluck"></a>
-###a.pluck(arrayOfObjects, ...property)
+###a.pluck(arrayOfObjects, ...property) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
 Plucks the value of the specified property from each object in the input array
 
 **Params**
+
 - arrayOfObjects `Array.<Object>` - the input array of objects
 - ...property `string` - the property(s) to pluck
 
@@ -50,7 +53,7 @@ undefined
 [ 1, 'two', 'one' ]
 ```
 <a name="module_array-tools.arrayify"></a>
-###a.arrayify(input)
+###a.arrayify(input) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
 Takes input and guarantees an array back. Result can be one of three things:
 
 - puts a single scalar in an array
@@ -58,6 +61,7 @@ Takes input and guarantees an array back. Result can be one of three things:
 - converts `null` or `undefined` to an empty array
 
 **Params**
+
 - input `*` - the input value to convert to an array
 
 **Returns**: `Array`  
@@ -75,10 +79,11 @@ undefined
 [ 1, 2, 3 ]
 ```
 <a name="module_array-tools.exists"></a>
-###a.exists(array, value)
+###a.exists(array, value) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
 returns true if a value, or nested object value exists in an array
 
 **Params**
+
 - array `Array` - the array to search
 - value `*` - the value to search for
 
@@ -95,11 +100,12 @@ true
 true
 ```
 <a name="module_array-tools.where"></a>
-###a.where(arrayOfObjects, query)
+###a.where(arrayOfObjects, query) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
 returns an array containing items from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
 **Params**
+
 - arrayOfObjects `Array` - the array to search
 - query `query` - an object containing the key/value pairs you want to match
 
@@ -115,11 +121,12 @@ from `query` are matched identically
   { name: 'Clive', age: 8 } ]
 ```
 <a name="module_array-tools.findWhere"></a>
-###a.findWhere(arrayOfObjects, query)
+###a.findWhere(arrayOfObjects, query) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
 returns the first item from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
 **Params**
+
 - arrayOfObjects `Array` - the array to search
 - query `query` - an object containing the key/value pairs you want to match
 
@@ -134,10 +141,11 @@ from `query` are matched identically
 { name: 'Jim', age: 8 }
 ```
 <a name="module_array-tools.without"></a>
-###a.without(input, toRemove)
+###a.without(input, toRemove) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
 Returns the input minus the specified values.
 
 **Params**
+
 - input `Array` - the input array
 - toRemove `*` - a single, or array of values to omit
 
@@ -150,10 +158,11 @@ Returns the input minus the specified values.
 [ 1 ]
 ```
 <a name="module_array-tools.union"></a>
-###a.union(array1, array2, idKey)
+###a.union(array1, array2, idKey) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
 merge two arrays into a single array of unique values
 
 **Params**
+
 - array1 `Array` - First array
 - array2 `Array` - Second array
 - idKey `string` - the unique ID property name
@@ -180,10 +189,11 @@ undefined
 [ { id: 1 }, { id: 2 }, { id: 3 } ]
 ```
 <a name="module_array-tools.commonSequence"></a>
-###a.commonSequence(a, b)
+###a.commonSequence(a, b) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
 Returns the initial elements which both input arrays have in common
 
 **Params**
+
 - a `Array` - first array to compare
 - b `Array` - second array to compare
 
@@ -194,10 +204,11 @@ Returns the initial elements which both input arrays have in common
 [ 1, 2 ]
 ```
 <a name="module_array-tools.unique"></a>
-###a.unique(array)
+###a.unique(array) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
 reduces an array to unique values
 
 **Params**
+
 - array `Array` - input array
 
 **Returns**: `Array`  
@@ -209,10 +220,11 @@ reduces an array to unique values
 [ 1, 6, 7 ]
 ```
 <a name="module_array-tools.spliceWhile"></a>
-###a.spliceWhile(array, index, test, ...elementN)
+###a.spliceWhile(array, index, test, ...elementN) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
 splice from `index` until `test` fails
 
 **Params**
+
 - array `Array` - the input array
 - index `number` - the position to begin splicing from
 - test `RegExp` - the test to continue splicing while true
@@ -229,10 +241,11 @@ splice from `index` until `test` fails
 [ 'x', 'b' ]
 ```
 <a name="module_array-tools.extract"></a>
-###a.extract(array, callback)
+###a.extract(array, callback) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
 Removes items from `array` which pass the `callback` test. Modifies the input array, returns the extracted.
 
 **Params**
+
 - array `Array` - the input array, modified directly
 - callback `function` - called on each item in `array`. Those which return a truthy value are extracted.
 
