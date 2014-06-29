@@ -13,7 +13,7 @@ Useful functions for working with arrays
 ```js
 var a = require("array-tools");
 ```
-**Contents**  
+**Symbols**  
 
 * [pluck(arrayOfObjects, ...property)](#module_array-tools.pluck)
 * [arrayify(input)](#module_array-tools.arrayify)
@@ -28,7 +28,7 @@ var a = require("array-tools");
 * [extract(array, callback)](#module_array-tools.extract)
 
 <a name="module_array-tools.pluck"></a>
-###a.pluck(arrayOfObjects, ...property) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
+###a.pluck(arrayOfObjects, ...property)
 Plucks the value of the specified property from each object in the input array
 
 **Params**
@@ -53,7 +53,7 @@ undefined
 [ 1, 'two', 'one' ]
 ```
 <a name="module_array-tools.arrayify"></a>
-###a.arrayify(input) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
+###a.arrayify(input)
 Takes input and guarantees an array back. Result can be one of three things:
 
 - puts a single scalar in an array
@@ -79,7 +79,7 @@ undefined
 [ 1, 2, 3 ]
 ```
 <a name="module_array-tools.exists"></a>
-###a.exists(array, value) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
+###a.exists(array, value)
 returns true if a value, or nested object value exists in an array
 
 **Params**
@@ -100,7 +100,7 @@ true
 true
 ```
 <a name="module_array-tools.where"></a>
-###a.where(arrayOfObjects, query) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
+###a.where(arrayOfObjects, query)
 returns an array containing items from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
@@ -121,7 +121,7 @@ from `query` are matched identically
   { name: 'Clive', age: 8 } ]
 ```
 <a name="module_array-tools.findWhere"></a>
-###a.findWhere(arrayOfObjects, query) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
+###a.findWhere(arrayOfObjects, query)
 returns the first item from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
@@ -141,7 +141,7 @@ from `query` are matched identically
 { name: 'Jim', age: 8 }
 ```
 <a name="module_array-tools.without"></a>
-###a.without(input, toRemove) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
+###a.without(input, toRemove)
 Returns the input minus the specified values.
 
 **Params**
@@ -158,7 +158,7 @@ Returns the input minus the specified values.
 [ 1 ]
 ```
 <a name="module_array-tools.union"></a>
-###a.union(array1, array2, idKey) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
+###a.union(array1, array2, idKey)
 merge two arrays into a single array of unique values
 
 **Params**
@@ -189,7 +189,7 @@ undefined
 [ { id: 1 }, { id: 2 }, { id: 3 } ]
 ```
 <a name="module_array-tools.commonSequence"></a>
-###a.commonSequence(a, b) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
+###a.commonSequence(a, b)
 Returns the initial elements which both input arrays have in common
 
 **Params**
@@ -204,7 +204,7 @@ Returns the initial elements which both input arrays have in common
 [ 1, 2 ]
 ```
 <a name="module_array-tools.unique"></a>
-###a.unique(array) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
+###a.unique(array)
 reduces an array to unique values
 
 **Params**
@@ -220,7 +220,7 @@ reduces an array to unique values
 [ 1, 6, 7 ]
 ```
 <a name="module_array-tools.spliceWhile"></a>
-###a.spliceWhile(array, index, test, ...elementN) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
+###a.spliceWhile(array, index, test, ...elementN)
 splice from `index` until `test` fails
 
 **Params**
@@ -241,7 +241,7 @@ splice from `index` until `test` fails
 [ 'x', 'b' ]
 ```
 <a name="module_array-tools.extract"></a>
-###a.extract(array, callback) ![static](http://img.shields.io/badge/function-static-green.svg?style=flat)
+###a.extract(array, callback)
 Removes items from `array` which pass the `callback` test. Modifies the input array, returns the extracted.
 
 **Params**
