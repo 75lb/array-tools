@@ -28,7 +28,7 @@
     "tape": "^2.13.2"
   },
   "dependencies": {
-    "object-tools": "^1.0.0",
+    "object-tools": "^1.1.0",
     "typical": "^1.0.0"
   }
 }

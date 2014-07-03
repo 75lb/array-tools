@@ -4,28 +4,27 @@
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 
 <a name="module_array-tools"></a>
-#array-tools
-
+##array-tools
 Useful functions for working with arrays
 
-  
 **Example**  
 ```js
 var a = require("array-tools");
 ```
-**Symbols**  
 
-* [pluck(arrayOfObjects, ...property)](#module_array-tools.pluck)
-* [arrayify(input)](#module_array-tools.arrayify)
-* [exists(array, value)](#module_array-tools.exists)
-* [where(arrayOfObjects, query)](#module_array-tools.where)
-* [findWhere(arrayOfObjects, query)](#module_array-tools.findWhere)
-* [without(input, toRemove)](#module_array-tools.without)
-* [union(array1, array2, idKey)](#module_array-tools.union)
-* [commonSequence(a, b)](#module_array-tools.commonSequence)
-* [unique(array)](#module_array-tools.unique)
-* [spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile)
-* [extract(array, callback)](#module_array-tools.extract)
+**Symbols**
+
+* [a.pluck(arrayOfObjects, ...property)](#module_array-tools.pluck)
+* [a.arrayify(input)](#module_array-tools.arrayify)
+* [a.exists(array, value)](#module_array-tools.exists)
+* [a.where(arrayOfObjects, query)](#module_array-tools.where)
+* [a.findWhere(arrayOfObjects, query)](#module_array-tools.findWhere)
+* [a.without(input, toRemove)](#module_array-tools.without)
+* [a.union(array1, array2, idKey)](#module_array-tools.union)
+* [a.commonSequence(a, b)](#module_array-tools.commonSequence)
+* [a.unique(array)](#module_array-tools.unique)
+* [a.spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile)
+* [a.extract(array, callback)](#module_array-tools.extract)
 
 <a name="module_array-tools.pluck"></a>
 ###a.pluck(arrayOfObjects, ...property)
@@ -52,6 +51,7 @@ undefined
 > a.pluck(data, "one", "two");
 [ 1, 'two', 'one' ]
 ```
+
 <a name="module_array-tools.arrayify"></a>
 ###a.arrayify(input)
 Takes input and guarantees an array back. Result can be one of three things:
@@ -78,6 +78,7 @@ undefined
 > f(1,2,3)
 [ 1, 2, 3 ]
 ```
+
 <a name="module_array-tools.exists"></a>
 ###a.exists(array, value)
 returns true if a value, or nested object value exists in an array
@@ -99,6 +100,7 @@ true
 > a.exists([ { result: true }, { result: true } ], { result: true })
 true
 ```
+
 <a name="module_array-tools.where"></a>
 ###a.where(arrayOfObjects, query)
 returns an array containing items from `arrayOfObjects` where key/value pairs 
@@ -120,6 +122,7 @@ from `query` are matched identically
 [ { name: 'Jim', age: 8 },
   { name: 'Clive', age: 8 } ]
 ```
+
 <a name="module_array-tools.findWhere"></a>
 ###a.findWhere(arrayOfObjects, query)
 returns the first item from `arrayOfObjects` where key/value pairs 
@@ -140,6 +143,7 @@ from `query` are matched identically
 > a.findWhere(dudes, { age: 8})
 { name: 'Jim', age: 8 }
 ```
+
 <a name="module_array-tools.without"></a>
 ###a.without(input, toRemove)
 Returns the input minus the specified values.
@@ -157,6 +161,7 @@ Returns the input minus the specified values.
 > a.without([ 1, 2, 3 ], [ 2, 3 ])
 [ 1 ]
 ```
+
 <a name="module_array-tools.union"></a>
 ###a.union(array1, array2, idKey)
 merge two arrays into a single array of unique values
@@ -188,6 +193,7 @@ undefined
 > a.union(array1, array2, "id")
 [ { id: 1 }, { id: 2 }, { id: 3 } ]
 ```
+
 <a name="module_array-tools.commonSequence"></a>
 ###a.commonSequence(a, b)
 Returns the initial elements which both input arrays have in common
@@ -203,6 +209,7 @@ Returns the initial elements which both input arrays have in common
 > a.commonSequence([1,2,3], [1,2,4])
 [ 1, 2 ]
 ```
+
 <a name="module_array-tools.unique"></a>
 ###a.unique(array)
 reduces an array to unique values
@@ -219,6 +226,7 @@ reduces an array to unique values
 > a.unique(n)
 [ 1, 6, 7 ]
 ```
+
 <a name="module_array-tools.spliceWhile"></a>
 ###a.spliceWhile(array, index, test, ...elementN)
 splice from `index` until `test` fails
@@ -240,6 +248,7 @@ splice from `index` until `test` fails
 > letters
 [ 'x', 'b' ]
 ```
+
 <a name="module_array-tools.extract"></a>
 ###a.extract(array, callback)
 Removes items from `array` which pass the `callback` test. Modifies the input array, returns the extracted.
