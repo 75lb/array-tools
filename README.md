@@ -4,7 +4,7 @@
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 
 <a name="module_array-tools"></a>
-##array-tools
+#array-tools
 Useful functions for working with arrays
 
 **Example**  
@@ -27,7 +27,7 @@ var a = require("array-tools");
 * [a.extract(array, callback)](#module_array-tools.extract)
 
 <a name="module_array-tools.pluck"></a>
-###a.pluck(arrayOfObjects, ...property)
+##a.pluck(arrayOfObjects, ...property)
 Plucks the value of the specified property from each object in the input array
 
 **Params**
@@ -53,7 +53,7 @@ undefined
 ```
 
 <a name="module_array-tools.arrayify"></a>
-###a.arrayify(input)
+##a.arrayify(input)
 Takes input and guarantees an array back. Result can be one of three things:
 
 - puts a single scalar in an array
@@ -80,7 +80,7 @@ undefined
 ```
 
 <a name="module_array-tools.exists"></a>
-###a.exists(array, value)
+##a.exists(array, value)
 returns true if a value, or nested object value exists in an array
 
 **Params**
@@ -102,7 +102,7 @@ true
 ```
 
 <a name="module_array-tools.where"></a>
-###a.where(arrayOfObjects, query)
+##a.where(arrayOfObjects, query)
 returns an array containing items from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
@@ -124,7 +124,7 @@ from `query` are matched identically
 ```
 
 <a name="module_array-tools.findWhere"></a>
-###a.findWhere(arrayOfObjects, query)
+##a.findWhere(arrayOfObjects, query)
 returns the first item from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
@@ -145,7 +145,7 @@ from `query` are matched identically
 ```
 
 <a name="module_array-tools.without"></a>
-###a.without(input, toRemove)
+##a.without(input, toRemove)
 Returns the input minus the specified values.
 
 **Params**
@@ -163,7 +163,7 @@ Returns the input minus the specified values.
 ```
 
 <a name="module_array-tools.union"></a>
-###a.union(array1, array2, idKey)
+##a.union(array1, array2, idKey)
 merge two arrays into a single array of unique values
 
 **Params**
@@ -195,7 +195,7 @@ undefined
 ```
 
 <a name="module_array-tools.commonSequence"></a>
-###a.commonSequence(a, b)
+##a.commonSequence(a, b)
 Returns the initial elements which both input arrays have in common
 
 **Params**
@@ -211,7 +211,7 @@ Returns the initial elements which both input arrays have in common
 ```
 
 <a name="module_array-tools.unique"></a>
-###a.unique(array)
+##a.unique(array)
 reduces an array to unique values
 
 **Params**
@@ -228,7 +228,7 @@ reduces an array to unique values
 ```
 
 <a name="module_array-tools.spliceWhile"></a>
-###a.spliceWhile(array, index, test, ...elementN)
+##a.spliceWhile(array, index, test, ...elementN)
 splice from `index` until `test` fails
 
 **Params**
@@ -250,7 +250,7 @@ splice from `index` until `test` fails
 ```
 
 <a name="module_array-tools.extract"></a>
-###a.extract(array, callback)
+##a.extract(array, callback)
 Removes items from `array` which pass the `callback` test. Modifies the input array, returns the extracted.
 
 **Params**
@@ -259,5 +259,4 @@ Removes items from `array` which pass the `callback` test. Modifies the input ar
 - callback `function` - called on each item in `array`. Those which return a truthy value are extracted.
 
 **Returns**: `Array` - the extracted items.  
-
 *documented by [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)*.
