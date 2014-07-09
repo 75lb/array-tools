@@ -12,7 +12,7 @@ Useful functions for working with arrays
 var a = require("array-tools");
 ```
 
-**Symbols**
+**Members**
 
 * [a.pluck(arrayOfObjects, ...property)](#module_array-tools.pluck)
 * [a.arrayify(input)](#module_array-tools.arrayify)
@@ -259,3 +259,5 @@ Removes items from `array` which pass the `callback` test. Modifies the input ar
 - callback `function` - called on each item in `array`. Those which return a truthy value are extracted.
 
 **Returns**: `Array` - the extracted items.  
+
+*documented by [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)*.
