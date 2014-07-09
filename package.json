@@ -24,7 +24,7 @@
     "watch": "baldrick --do 'npm run docs' --when lib/*.js --change"
   },
   "devDependencies": {
-    "jsdoc-to-markdown": "^0.2.0",
+    "jsdoc-to-markdown": "^0.3.0",
     "tape": "^2.13.2"
   },
   "dependencies": {
