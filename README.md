@@ -259,4 +259,6 @@ Removes items from `array` which pass the `callback` test. Modifies the input ar
 - callback `function` - called on each item in `array`. Those which return a truthy value are extracted.
 
 **Returns**: `Array` - the extracted items.  
+
+
 *documented by [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)*.
