@@ -5,6 +5,7 @@
   "description": "Useful functions for working with arrays",
   "repository": "https://github.com/75lb/array-tools.git",
   "main": "./lib/array-tools.js",
+  "bin": "bin/cli.js",
   "keywords": [
     "pluck",
     "arrayify",

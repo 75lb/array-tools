@@ -14,3 +14,16 @@ test(".pluck", function(t){
 
     t.end();
 });
+
+test(".pluck expression (e.g. \"item.prop\")", function(t){
+    var data = [
+        {one: { inside: "yep" }},
+        {one: { inside: "again" }},
+        {one: "not here" },
+        {one: { or: "or here" }}
+    ];
+    
+    t.deepEqual(w.pluck(data, "one.inside"), [ "yep", "again" ]);
+
+    t.end();
+});
