@@ -1,5 +1,5 @@
 var test = require("tape"),
-    w = require("../");
+    a = require("../");
 
 test(".pluck", function(t){
     var data = [
@@ -8,9 +8,9 @@ test(".pluck", function(t){
         {one: "one", two: "zwei"},
     ];
     
-    t.deepEqual(w.pluck(data, "one"), [ 1, "one" ]);
-    t.deepEqual(w.pluck(data, "two"), [ 2, "two", "zwei" ]);
-    t.deepEqual(w.pluck(data, "one", "two"), [ 1, "two", "one" ]);
+    t.deepEqual(a.pluck(data, "one"), [ 1, "one" ]);
+    t.deepEqual(a.pluck(data, "two"), [ 2, "two", "zwei" ]);
+    t.deepEqual(a.pluck(data, "one", "two"), [ 1, "two", "one" ]);
 
     t.end();
 });
@@ -23,7 +23,7 @@ test(".pluck expression (e.g. \"item.prop\")", function(t){
         {one: { or: "or here" }}
     ];
     
-    t.deepEqual(w.pluck(data, "one.inside"), [ "yep", "again" ]);
+    t.deepEqual(a.pluck(data, "one.inside"), [ "yep", "again" ]);
 
     t.end();
 });

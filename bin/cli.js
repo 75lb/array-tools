@@ -17,9 +17,6 @@ process.stdin.on("end", function(){
     var array = JSON.parse(input);
     args.unshift(array);
     if (method){
-        // console.dir(method)
-        // console.dir(args)
-        // console.dir(array)
         var result = a[method].apply(null, args);
         console.log(JSON.stringify(result, null, "  "))
     }
