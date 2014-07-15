@@ -3,19 +3,19 @@ var test = require("tape"),
 
 test(".pick", function(t){
     var data = [
-        { one: 1, two: 2, three: 3 },
+        { one: "un", two: "deux", three: "trois" },
         { two: "two", one: "one" },
         { four: "quattro" },
         { two: "zwei" }
     ];
     
     t.deepEqual(a.pick(data, "one"), [
-        { one: 1 },
+        { one: "un" },
         { one: "one" }
     ]);
 
     t.deepEqual(a.pick(data, "one", "two"), [
-        { one: 1, two: 2 },
+        { one: "un", two: "deux" },
         { two: "two", one: "one" },
         { two: "zwei" },
     ]);

@@ -25,6 +25,7 @@ var a = require("array-tools");
 * [a.unique(array)](#module_array-tools.unique)
 * [a.spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile)
 * [a.extract(array, callback)](#module_array-tools.extract)
+* [a~pick(arrayOfObjects, ...property)](#module_array-tools.pick)
 
 <a name="module_array-tools.pluck"></a>
 ##a.pluck(arrayOfObjects, ...property)
@@ -50,6 +51,31 @@ undefined
 [ 2, 'two', 'zwei' ]
 > a.pluck(data, "one", "two");
 [ 1, 'two', 'one' ]
+```
+
+<a name="module_array-tools.pick"></a>
+##a~pick(arrayOfObjects, ...property)
+return a copy of the input `arrayOfObjects` containing objects containing only the cherry-picked properties
+
+**Params**
+
+- arrayOfObjects `Array.<object>` - the input
+- ...property `string` - the properties to include in the result
+
+**Scope**: inner function of [array-tools](#module_array-tools)  
+**Returns**: `Array.<object>`  
+**Example**  
+```js
+> data = [
+    { one: "un", two: "deux", three: "trois" },
+    { two: "two", one: "one" },
+    { four: "quattro" },
+    { two: "zwei" }
+]
+> a.pick(data, "two")
+[ { two: 'deux' },
+  { two: 'two' },
+  { two: 'zwei' } ]
 ```
 
 <a name="module_array-tools.arrayify"></a>
