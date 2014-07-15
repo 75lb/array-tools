@@ -15,6 +15,7 @@ var a = require("array-tools");
 **Members**
 
 * [a.pluck(arrayOfObjects, ...property)](#module_array-tools.pluck)
+* [a.pick(arrayOfObjects, ...property)](#module_array-tools.pick)
 * [a.arrayify(input)](#module_array-tools.arrayify)
 * [a.exists(array, value)](#module_array-tools.exists)
 * [a.where(arrayOfObjects, query)](#module_array-tools.where)
@@ -25,7 +26,6 @@ var a = require("array-tools");
 * [a.unique(array)](#module_array-tools.unique)
 * [a.spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile)
 * [a.extract(array, callback)](#module_array-tools.extract)
-* [a~pick(arrayOfObjects, ...property)](#module_array-tools.pick)
 
 <a name="module_array-tools.pluck"></a>
 ##a.pluck(arrayOfObjects, ...property)
@@ -54,7 +54,7 @@ undefined
 ```
 
 <a name="module_array-tools.pick"></a>
-##a~pick(arrayOfObjects, ...property)
+##a.pick(arrayOfObjects, ...property)
 return a copy of the input `arrayOfObjects` containing objects containing only the cherry-picked properties
 
 **Params**
@@ -62,7 +62,6 @@ return a copy of the input `arrayOfObjects` containing objects containing only t
 - arrayOfObjects `Array.<object>` - the input
 - ...property `string` - the properties to include in the result
 
-**Scope**: inner function of [array-tools](#module_array-tools)  
 **Returns**: `Array.<object>`  
 **Example**  
 ```js
