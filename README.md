@@ -55,7 +55,7 @@ undefined
 
 <a name="module_array-tools.pick"></a>
 ##a.pick(arrayOfObjects, ...property)
-return a copy of the input `arrayOfObjects` containing objects containing only the cherry-picked properties
+return a copy of the input `arrayOfObjects` containing objects having only the cherry-picked properties
 
 **Params**
 
