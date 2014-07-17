@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/75lb/array-tools.svg?branch=master)](https://travis-ci.org/75lb/array-tools)
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 
+
 <a name="module_array-tools"></a>
 #array-tools
 Useful functions for working with arrays
@@ -14,18 +15,19 @@ var a = require("array-tools");
 
 **Members**
 
-* [a.pluck(arrayOfObjects, ...property)](#module_array-tools.pluck)
-* [a.pick(arrayOfObjects, ...property)](#module_array-tools.pick)
-* [a.arrayify(input)](#module_array-tools.arrayify)
-* [a.exists(array, value)](#module_array-tools.exists)
-* [a.where(arrayOfObjects, query)](#module_array-tools.where)
-* [a.findWhere(arrayOfObjects, query)](#module_array-tools.findWhere)
-* [a.without(input, toRemove)](#module_array-tools.without)
-* [a.union(array1, array2, idKey)](#module_array-tools.union)
-* [a.commonSequence(a, b)](#module_array-tools.commonSequence)
-* [a.unique(array)](#module_array-tools.unique)
-* [a.spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile)
-* [a.extract(array, callback)](#module_array-tools.extract)
+* [array-tools](#module_array-tools)
+  * [a.pluck(arrayOfObjects, ...property)](#module_array-tools.pluck)
+  * [a.pick(arrayOfObjects, ...property)](#module_array-tools.pick)
+  * [a.arrayify(input)](#module_array-tools.arrayify)
+  * [a.exists(array, value)](#module_array-tools.exists)
+  * [a.where(arrayOfObjects, query)](#module_array-tools.where)
+  * [a.findWhere(arrayOfObjects, query)](#module_array-tools.findWhere)
+  * [a.without(input, toRemove)](#module_array-tools.without)
+  * [a.union(array1, array2, idKey)](#module_array-tools.union)
+  * [a.commonSequence(a, b)](#module_array-tools.commonSequence)
+  * [a.unique(array)](#module_array-tools.unique)
+  * [a.spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile)
+  * [a.extract(array, query)](#module_array-tools.extract)
 
 <a name="module_array-tools.pluck"></a>
 ##a.pluck(arrayOfObjects, ...property)
@@ -275,15 +277,16 @@ splice from `index` until `test` fails
 ```
 
 <a name="module_array-tools.extract"></a>
-##a.extract(array, callback)
-Removes items from `array` which pass the `callback` test. Modifies the input array, returns the extracted.
+##a.extract(array, query)
+Removes items from `array` which satisfy the query. Modifies the input array, returns the extracted.
 
 **Params**
 
 - array `Array` - the input array, modified directly
-- callback `function` - called on each item in `array`. Those which return a truthy value are extracted.
+- query `function` | `object` - Per item in the array, if either the function returns truthy or the exists query is satisfied, the item is extracted
 
 **Returns**: `Array` - the extracted items.  
+
 
 
 *documented by [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)*.
