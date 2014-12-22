@@ -25,7 +25,7 @@ var a = require("array-tools");
   * [.unique(array)](#module_array-tools.unique) ⇒ <code>Array</code>
   * [.spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile) ⇒ <code>Array</code>
   * [.extract(array, query)](#module_array-tools.extract) ⇒ <code>Array</code>
-  * [.flatten()](#module_array-tools.flatten)
+  * [.flatten()](#module_array-tools.flatten) ⇒ <code>Array</code>
 
 <a name="module_array-tools.without"></a>
 ##a.without(input, toRemove) ⇒ <code>Array</code>
@@ -34,7 +34,7 @@ Returns the input minus the specified values.
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | input | <code>Array</code> | the input array |
-| toRemove | <code>*</code> | a single, or array of values to omit |
+| toRemove | <code>\*</code> | a single, or array of values to omit |
 
 **Example**  
 ```js
@@ -77,7 +77,7 @@ Takes input and guarantees an array back. Result can be one of three things:
 
 | Param | Type | Description |
 | ----- | ---- | ----------- |
-| input | <code>*</code> | the input value to convert to an array |
+| input | <code>\*</code> | the input value to convert to an array |
 
 **Example**  
 ```js
@@ -99,7 +99,7 @@ returns true if a value, or nested object value exists in an array
 | Param | Type | Description |
 | ----- | ---- | ----------- |
 | array | <code>Array</code> | the array to search |
-| value | <code>*</code> | the value to search for |
+| value | <code>\*</code> | the value to search for |
 
 **Example**  
 ```js
@@ -241,7 +241,7 @@ splice from `index` until `test` fails
 | array | <code>Array</code> | the input array |
 | index | <code>number</code> | the position to begin splicing from |
 | test | <code>RegExp</code> | the test to continue splicing while true |
-| ...elementN | <code>*</code> | the elements to add to the array |
+| ...elementN | <code>\*</code> | the elements to add to the array |
 
 **Example**  
 ```js
@@ -263,14 +263,24 @@ Removes items from `array` which satisfy the query. Modifies the input array, re
 
 **Returns**: <code>Array</code> - the extracted items.  
 <a name="module_array-tools.flatten"></a>
-##a.flatten()
-flatten
+##a.flatten() ⇒ <code>Array</code>
+flatten an array of arrays into a single array
 
 **Since**: 1.4.0  
 **Todo**
 
 - [ ] document
 
+**Example**  
+```js
+> numbers = [ 1, 2, [ 3, 4 ], 5 ]
+[ 1,
+  2,
+  [ 3, 4 ],
+  5 ]
+> a.flatten(numbers)
+[ 1, 2, 3, 4, 5 ]
+```
 
 
 *documented by [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)*.
