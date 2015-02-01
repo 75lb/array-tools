@@ -4,7 +4,7 @@
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 
 <a name="module_array-tools"></a>
-#array-tools
+# array-tools
 Useful functions for working with arrays
 
 **Example**  
@@ -28,13 +28,23 @@ var a = require("array-tools");
   * [.flatten()](#module_array-tools.flatten) ⇒ <code>Array</code>
 
 <a name="module_array-tools.pluck"></a>
-##a.pluck(arrayOfObjects, ...property) ⇒ <code>Array</code>
+## a.pluck(arrayOfObjects, ...property) ⇒ <code>Array</code>
 Plucks the value of the specified property from each object in the input array
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| arrayOfObjects | <code>Array.&lt;object&gt;</code> | the input array of objects |
-| ...property | <code>string</code> | the property(s) to pluck |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>arrayOfObjects</td><td><code>Array.&lt;object&gt;</code></td><td>the input array of objects</td>
+    </tr><tr>
+    <td>...property</td><td><code>string</code></td><td>the property(s) to pluck</td>
+    </tr>
+  </tbody>
+</table>
 
 **Example**  
 ```js
@@ -52,13 +62,23 @@ undefined
 [ 1, 'two', 'one' ]
 ```
 <a name="module_array-tools.pick"></a>
-##a.pick(arrayOfObjects, ...property) ⇒ <code>Array.&lt;object&gt;</code>
+## a.pick(arrayOfObjects, ...property) ⇒ <code>Array.&lt;object&gt;</code>
 return a copy of the input `arrayOfObjects` containing objects having only the cherry-picked properties
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| arrayOfObjects | <code>Array.&lt;object&gt;</code> | the input |
-| ...property | <code>string</code> | the properties to include in the result |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>arrayOfObjects</td><td><code>Array.&lt;object&gt;</code></td><td>the input</td>
+    </tr><tr>
+    <td>...property</td><td><code>string</code></td><td>the properties to include in the result</td>
+    </tr>
+  </tbody>
+</table>
 
 **Example**  
 ```js
@@ -74,16 +94,25 @@ return a copy of the input `arrayOfObjects` containing objects having only the c
   { two: 'zwei' } ]
 ```
 <a name="module_array-tools.arrayify"></a>
-##a.arrayify(input) ⇒ <code>Array</code>
+## a.arrayify(input) ⇒ <code>Array</code>
 Takes input and guarantees an array back. Result can be one of three things:
 
 - puts a single scalar in an array
 - converts array-like object (e.g. `arguments`) to a real array
 - converts `null` or `undefined` to an empty array
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| input | <code>\*</code> | the input value to convert to an array |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>input</td><td><code>\*</code></td><td>the input value to convert to an array</td>
+    </tr>
+  </tbody>
+</table>
 
 **Example**  
 ```js
@@ -99,13 +128,23 @@ undefined
 [ 1, 2, 3 ]
 ```
 <a name="module_array-tools.exists"></a>
-##a.exists(array, value) ⇒ <code>boolean</code>
+## a.exists(array, value) ⇒ <code>boolean</code>
 returns true if a value, or nested object value exists in an array
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| array | <code>Array</code> | the array to search |
-| value | <code>\*</code> | the value to search for |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>array</td><td><code>Array</code></td><td>the array to search</td>
+    </tr><tr>
+    <td>value</td><td><code>\*</code></td><td>the value to search for</td>
+    </tr>
+  </tbody>
+</table>
 
 **Example**  
 ```js
@@ -119,14 +158,24 @@ true
 true
 ```
 <a name="module_array-tools.where"></a>
-##a.where(arrayOfObjects, query) ⇒ <code>Array</code>
+## a.where(arrayOfObjects, query) ⇒ <code>Array</code>
 returns an array containing items from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| arrayOfObjects | <code>Array</code> | the array to search |
-| query | <code>query</code> | an object containing the key/value pairs you want to match |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>arrayOfObjects</td><td><code>Array</code></td><td>the array to search</td>
+    </tr><tr>
+    <td>query</td><td><code>query</code></td><td>an object containing the key/value pairs you want to match</td>
+    </tr>
+  </tbody>
+</table>
 
 **Example**  
 ```js
@@ -139,14 +188,24 @@ from `query` are matched identically
   { name: 'Clive', age: 8 } ]
 ```
 <a name="module_array-tools.findWhere"></a>
-##a.findWhere(arrayOfObjects, query) ⇒ <code>object</code>
+## a.findWhere(arrayOfObjects, query) ⇒ <code>object</code>
 returns the first item from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| arrayOfObjects | <code>Array</code> | the array to search |
-| query | <code>query</code> | an object containing the key/value pairs you want to match |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>arrayOfObjects</td><td><code>Array</code></td><td>the array to search</td>
+    </tr><tr>
+    <td>query</td><td><code>query</code></td><td>an object containing the key/value pairs you want to match</td>
+    </tr>
+  </tbody>
+</table>
 
 **Example**  
 ```js
@@ -158,13 +217,23 @@ from `query` are matched identically
 { name: 'Jim', age: 8 }
 ```
 <a name="module_array-tools.without"></a>
-##a.without(input, toRemove) ⇒ <code>Array</code>
+## a.without(input, toRemove) ⇒ <code>Array</code>
 Returns the input minus the specified values.
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| input | <code>Array</code> | the input array |
-| toRemove | <code>\*</code> | a single, or array of values to omit |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>input</td><td><code>Array</code></td><td>the input array</td>
+    </tr><tr>
+    <td>toRemove</td><td><code>\*</code></td><td>a single, or array of values to omit</td>
+    </tr>
+  </tbody>
+</table>
 
 **Example**  
 ```js
@@ -174,14 +243,25 @@ Returns the input minus the specified values.
 [ 1 ]
 ```
 <a name="module_array-tools.union"></a>
-##a.union(array1, array2, idKey) ⇒ <code>Array</code>
+## a.union(array1, array2, idKey) ⇒ <code>Array</code>
 merge two arrays into a single array of unique values
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| array1 | <code>Array</code> | First array |
-| array2 | <code>Array</code> | Second array |
-| idKey | <code>string</code> | the unique ID property name |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>array1</td><td><code>Array</code></td><td>First array</td>
+    </tr><tr>
+    <td>array2</td><td><code>Array</code></td><td>Second array</td>
+    </tr><tr>
+    <td>idKey</td><td><code>string</code></td><td>the unique ID property name</td>
+    </tr>
+  </tbody>
+</table>
 
 **Example**  
 ```js
@@ -204,13 +284,23 @@ undefined
 [ { id: 1 }, { id: 2 }, { id: 3 } ]
 ```
 <a name="module_array-tools.commonSequence"></a>
-##a.commonSequence(a, b) ⇒ <code>Array</code>
+## a.commonSequence(a, b) ⇒ <code>Array</code>
 Returns the initial elements which both input arrays have in common
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| a | <code>Array</code> | first array to compare |
-| b | <code>Array</code> | second array to compare |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>a</td><td><code>Array</code></td><td>first array to compare</td>
+    </tr><tr>
+    <td>b</td><td><code>Array</code></td><td>second array to compare</td>
+    </tr>
+  </tbody>
+</table>
 
 **Example**  
 ```js
@@ -218,12 +308,21 @@ Returns the initial elements which both input arrays have in common
 [ 1, 2 ]
 ```
 <a name="module_array-tools.unique"></a>
-##a.unique(array) ⇒ <code>Array</code>
+## a.unique(array) ⇒ <code>Array</code>
 reduces an array to unique values
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| array | <code>Array</code> | input array |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>array</td><td><code>Array</code></td><td>input array</td>
+    </tr>
+  </tbody>
+</table>
 
 **Example**  
 ```js
@@ -233,15 +332,27 @@ reduces an array to unique values
 [ 1, 6, 7 ]
 ```
 <a name="module_array-tools.spliceWhile"></a>
-##a.spliceWhile(array, index, test, ...elementN) ⇒ <code>Array</code>
+## a.spliceWhile(array, index, test, ...elementN) ⇒ <code>Array</code>
 splice from `index` until `test` fails
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| array | <code>Array</code> | the input array |
-| index | <code>number</code> | the position to begin splicing from |
-| test | <code>RegExp</code> | the test to continue splicing while true |
-| ...elementN | <code>\*</code> | the elements to add to the array |
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>array</td><td><code>Array</code></td><td>the input array</td>
+    </tr><tr>
+    <td>index</td><td><code>number</code></td><td>the position to begin splicing from</td>
+    </tr><tr>
+    <td>test</td><td><code>RegExp</code></td><td>the test to continue splicing while true</td>
+    </tr><tr>
+    <td>...elementN</td><td><code>\*</code></td><td>the elements to add to the array</td>
+    </tr>
+  </tbody>
+</table>
 
 **Example**  
 ```js
@@ -253,23 +364,33 @@ splice from `index` until `test` fails
 [ 'x', 'b' ]
 ```
 <a name="module_array-tools.extract"></a>
-##a.extract(array, query) ⇒ <code>Array</code>
+## a.extract(array, query) ⇒ <code>Array</code>
 Removes items from `array` which satisfy the query. Modifies the input array, returns the extracted.
 
-| Param | Type | Description |
-| ----- | ---- | ----------- |
-| array | <code>Array</code> | the input array, modified directly |
-| query | <code>function</code> \| <code>object</code> | Per item in the array, if either the function returns truthy or the exists query is satisfied, the item is extracted |
-
 **Returns**: <code>Array</code> - the extracted items.  
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>array</td><td><code>Array</code></td><td>the input array, modified directly</td>
+    </tr><tr>
+    <td>query</td><td><code>function</code> | <code>object</code></td><td>Per item in the array, if either the function returns truthy or the exists query is satisfied, the item is extracted</td>
+    </tr>
+  </tbody>
+</table>
+
 <a name="module_array-tools.flatten"></a>
-##a.flatten() ⇒ <code>Array</code>
+## a.flatten() ⇒ <code>Array</code>
 flatten an array of arrays into a single array
 
 **Since**: 1.4.0  
 **Todo**
 
-- [ ] document
+- document
 
 **Example**  
 ```js
@@ -284,3 +405,5 @@ flatten an array of arrays into a single array
 
 
 *documented by [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)*.
+
+&copy; 2015 Lloyd Brookes <75pound@gmail.com>
