@@ -109,7 +109,7 @@ Takes input and guarantees an array back. Result can be one of three things:
   </thead>
   <tbody>
     <tr>
-    <td>input</td><td><code>\*</code></td><td>the input value to convert to an array</td>
+    <td>input</td><td><code>*</code></td><td>the input value to convert to an array</td>
     </tr>
   </tbody>
 </table>
@@ -141,7 +141,7 @@ returns true if a value, or nested object value exists in an array
     <tr>
     <td>array</td><td><code>Array</code></td><td>the array to search</td>
     </tr><tr>
-    <td>value</td><td><code>\*</code></td><td>the value to search for</td>
+    <td>value</td><td><code>*</code></td><td>the value to search for</td>
     </tr>
   </tbody>
 </table>
@@ -230,7 +230,7 @@ Returns the input minus the specified values.
     <tr>
     <td>input</td><td><code>Array</code></td><td>the input array</td>
     </tr><tr>
-    <td>toRemove</td><td><code>\*</code></td><td>a single, or array of values to omit</td>
+    <td>toRemove</td><td><code>*</code></td><td>a single, or array of values to omit</td>
     </tr>
   </tbody>
 </table>
@@ -349,7 +349,7 @@ splice from `index` until `test` fails
     </tr><tr>
     <td>test</td><td><code>RegExp</code></td><td>the test to continue splicing while true</td>
     </tr><tr>
-    <td>...elementN</td><td><code>\*</code></td><td>the elements to add to the array</td>
+    <td>...elementN</td><td><code>*</code></td><td>the elements to add to the array</td>
     </tr>
   </tbody>
 </table>
