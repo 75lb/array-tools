@@ -417,6 +417,8 @@ flatten an array of arrays into a single array
 ```
 <a name="module_array-tools.sortBy"></a>
 ## a.sortBy(arrayOfObject, ...columns) ⇒ <code>array</code>
+Sort an array of objects by one or more fields
+
 
 <table>
   <thead>
@@ -433,7 +435,33 @@ flatten an array of arrays into a single array
   </tbody>
 </table>
 
+**Example**  
+```js
+>  var fixture = [
+    { a: 4, b: 1, c: 1},
+    { a: 4, b: 3, c: 1},
+    { a: 2, b: 2, c: 3},
+    { a: 2, b: 2, c: 2},
+    { a: 1, b: 3, c: 4},
+    { a: 1, b: 1, c: 4},
+    { a: 1, b: 2, c: 4},
+    { a: 3, b: 3, c: 3},
+    { a: 4, b: 3, c: 1} 
+];
+> a.sortBy(fixture, "a", "b", "c")
+[ { a: 1, b: 1, c: 4 },
+  { a: 1, b: 2, c: 4 },
+  { a: 1, b: 3, c: 4 },
+  { a: 2, b: 2, c: 2 },
+  { a: 2, b: 2, c: 3 },
+  { a: 3, b: 3, c: 3 },
+  { a: 4, b: 1, c: 1 },
+  { a: 4, b: 3, c: 1 },
+  { a: 4, b: 3, c: 1 } ]
+```
 
+
+--
 
 *documented by [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)*.
 
