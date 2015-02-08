@@ -26,10 +26,12 @@ var a = require("array-tools");
   * [.spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile) ⇒ <code>Array</code>
   * [.extract(array, query)](#module_array-tools.extract) ⇒ <code>Array</code>
   * [.flatten()](#module_array-tools.flatten) ⇒ <code>Array</code>
+  * [.sortBy(arrayOfObject, ...columns)](#module_array-tools.sortBy) ⇒ <code>array</code>
 
 <a name="module_array-tools.pluck"></a>
 ## a.pluck(arrayOfObjects, ...property) ⇒ <code>Array</code>
 Plucks the value of the specified property from each object in the input array
+
 
 <table>
   <thead>
@@ -64,6 +66,7 @@ undefined
 <a name="module_array-tools.pick"></a>
 ## a.pick(arrayOfObjects, ...property) ⇒ <code>Array.&lt;object&gt;</code>
 return a copy of the input `arrayOfObjects` containing objects having only the cherry-picked properties
+
 
 <table>
   <thead>
@@ -101,6 +104,7 @@ Takes input and guarantees an array back. Result can be one of three things:
 - converts array-like object (e.g. `arguments`) to a real array
 - converts `null` or `undefined` to an empty array
 
+
 <table>
   <thead>
     <tr>
@@ -130,6 +134,7 @@ undefined
 <a name="module_array-tools.exists"></a>
 ## a.exists(array, value) ⇒ <code>boolean</code>
 returns true if a value, or nested object value exists in an array
+
 
 <table>
   <thead>
@@ -162,6 +167,7 @@ true
 returns an array containing items from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
+
 <table>
   <thead>
     <tr>
@@ -192,6 +198,7 @@ from `query` are matched identically
 returns the first item from `arrayOfObjects` where key/value pairs 
 from `query` are matched identically
 
+
 <table>
   <thead>
     <tr>
@@ -220,6 +227,7 @@ from `query` are matched identically
 ## a.without(input, toRemove) ⇒ <code>Array</code>
 Returns the input minus the specified values.
 
+
 <table>
   <thead>
     <tr>
@@ -245,6 +253,7 @@ Returns the input minus the specified values.
 <a name="module_array-tools.union"></a>
 ## a.union(array1, array2, idKey) ⇒ <code>Array</code>
 merge two arrays into a single array of unique values
+
 
 <table>
   <thead>
@@ -287,6 +296,7 @@ undefined
 ## a.commonSequence(a, b) ⇒ <code>Array</code>
 Returns the initial elements which both input arrays have in common
 
+
 <table>
   <thead>
     <tr>
@@ -311,6 +321,7 @@ Returns the initial elements which both input arrays have in common
 ## a.unique(array) ⇒ <code>Array</code>
 reduces an array to unique values
 
+
 <table>
   <thead>
     <tr>
@@ -334,6 +345,7 @@ reduces an array to unique values
 <a name="module_array-tools.spliceWhile"></a>
 ## a.spliceWhile(array, index, test, ...elementN) ⇒ <code>Array</code>
 splice from `index` until `test` fails
+
 
 <table>
   <thead>
@@ -368,6 +380,7 @@ splice from `index` until `test` fails
 Removes items from `array` which satisfy the query. Modifies the input array, returns the extracted.
 
 **Returns**: <code>Array</code> - the extracted items.  
+
 <table>
   <thead>
     <tr>
@@ -402,6 +415,24 @@ flatten an array of arrays into a single array
 > a.flatten(numbers)
 [ 1, 2, 3, 4, 5 ]
 ```
+<a name="module_array-tools.sortBy"></a>
+## a.sortBy(arrayOfObject, ...columns) ⇒ <code>array</code>
+
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>arrayOfObject</td><td><code>array</code></td><td>input array</td>
+    </tr><tr>
+    <td>...columns</td><td><code>string</code></td><td>column names to sort by</td>
+    </tr>
+  </tbody>
+</table>
+
 
 
 *documented by [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown)*.
