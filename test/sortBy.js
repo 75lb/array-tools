@@ -41,3 +41,11 @@ test("sortBy, with undefined vals 2", function(t){
     t.deepEqual(a.sortBy(fixture, "a"), expected);
     t.end();
 });
+
+test("custom order", function(t){
+    var fixture = [{ fruit: "apple" }, { fruit: "orange" }, { fruit: "banana" }, { fruit: "pear" }];
+    var expected = [{ fruit: "banana" }, { fruit: "pear" }, { fruit: "apple" }, { fruit: "orange" }];
+    var fruitOrder = [ "banana", "pear", "apple", "orange" ];
+    t.deepEqual(a.sortBy(fixture, "fruit", { fruit: fruitOrder }), expected);
+    t.end();
+});
