@@ -51,11 +51,10 @@ Plucks the value of the specified property from each object in the input array
 **Example**  
 ```js
 > var data = [
-...     {one: 1, two: 2},
-...     {two: "two"},
-...     {one: "one", two: "zwei"},
-... ];
-undefined
+    {one: 1, two: 2},
+    {two: "two"},
+    {one: "one", two: "zwei"},
+];
 > a.pluck(data, "one");
 [ 1, 'one' ]
 > a.pluck(data, "two");
@@ -127,7 +126,6 @@ Takes input and guarantees an array back. Result can be one of three things:
 > a.arrayify([ 1, 2 ])
 [ 1, 2 ]
 > function f(){ return a.arrayify(arguments); }
-undefined
 > f(1,2,3)
 [ 1, 2, 3 ]
 ```
@@ -275,15 +273,12 @@ merge two arrays into a single array of unique values
 **Example**  
 ```js
 > var array1 = [ 1, 2 ], array2 = [ 2, 3 ];
-undefined
 > a.union(array1, array2)
 [ 1, 2, 3 ]
 > var array1 = [ { id: 1 }, { id: 2 } ], array2 = [ { id: 2 }, { id: 3 } ];
-undefined
 > a.union(array1, array2)
 [ { id: 1 }, { id: 2 }, { id: 3 } ]
 > var array2 = [ { id: 2, blah: true }, { id: 3 } ]
-undefined
 > a.union(array1, array2)
 [ { id: 1 },
   { id: 2 },
