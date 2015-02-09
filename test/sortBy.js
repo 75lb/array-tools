@@ -27,3 +27,10 @@ test("sortBy", function(t){
     t.deepEqual(a.sortBy(fixture, "a", "b", "c"), expected);
     t.end();
 });
+
+test("sortBy, with undefined vals", function(t){
+    var fixture = [ { a: 1 }, { }, { a: 0 } ];
+    var expected = [ { }, { a: 0 }, { a: 1 } ];
+    t.deepEqual(a.sortBy(fixture, "a"), expected);
+    t.end();
+});
