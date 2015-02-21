@@ -24,7 +24,7 @@ test("sortBy", function(t){
         { a: 4, b: 3, c: 1},
         { a: 4, b: 3, c: 1}
     ];
-    t.deepEqual(a.sortBy(fixture, "a", "b", "c"), expected);
+    t.deepEqual(a.sortBy(fixture, ["a", "b", "c"]), expected);
     t.end();
 });
 
