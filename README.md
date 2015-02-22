@@ -13,96 +13,32 @@ var a = require("array-tools");
 ```
 
 * [array-tools](#module_array-tools)
-  * [.pluck(arrayOfObjects, ...property)](#module_array-tools.pluck) ⇒ <code>Array</code>
-  * [.pick(arrayOfObjects, ...property)](#module_array-tools.pick) ⇒ <code>Array.&lt;object&gt;</code>
-  * [.arrayify(input)](#module_array-tools.arrayify) ⇒ <code>Array</code>
-  * [.exists(array, value)](#module_array-tools.exists) ⇒ <code>boolean</code>
-  * [.where(arrayOfObjects, query)](#module_array-tools.where) ⇒ <code>Array</code>
-  * [.findWhere(arrayOfObjects, query)](#module_array-tools.findWhere) ⇒ <code>object</code>
-  * [.without(input, toRemove)](#module_array-tools.without) ⇒ <code>Array</code>
-  * [.union(array1, array2, idKey)](#module_array-tools.union) ⇒ <code>Array</code>
-  * [.commonSequence(a, b)](#module_array-tools.commonSequence) ⇒ <code>Array</code>
-  * [.unique(array)](#module_array-tools.unique) ⇒ <code>Array</code>
-  * [.spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile) ⇒ <code>Array</code>
-  * [.extract(array, query)](#module_array-tools.extract) ⇒ <code>Array</code>
-  * [.flatten()](#module_array-tools.flatten) ⇒ <code>Array</code>
-  * [.sortBy(arrayOfObject, ...columns)](#module_array-tools.sortBy) ⇒ <code>array</code>
+  * _General_
+    * [.arrayify(any)](#module_array-tools.arrayify) ⇒ <code>Array</code>
+    * [.exists(array, value)](#module_array-tools.exists) ⇒ <code>boolean</code>
+    * [.without(array, toRemove)](#module_array-tools.without) ⇒ <code>Array</code>
+    * [.union(array1, array2, idKey)](#module_array-tools.union) ⇒ <code>Array</code>
+    * [.commonSequence(a, b)](#module_array-tools.commonSequence) ⇒ <code>Array</code>
+    * [.unique(array)](#module_array-tools.unique) ⇒ <code>Array</code>
+    * [.spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile) ⇒ <code>Array</code>
+    * [.extract(array, query)](#module_array-tools.extract) ⇒ <code>Array</code>
+    * [.flatten()](#module_array-tools.flatten) ⇒ <code>Array</code>
+  * _Record sets_
+    * [.pluck(arrayOfObjects, ...property)](#module_array-tools.pluck) ⇒ <code>Array</code>
+    * [.pick(arrayOfObjects, ...property)](#module_array-tools.pick) ⇒ <code>Array.&lt;object&gt;</code>
+    * [.where(arrayOfObjects, query)](#module_array-tools.where) ⇒ <code>Array</code>
+    * [.findWhere(arrayOfObjects, query)](#module_array-tools.findWhere) ⇒ <code>object</code>
+    * [.sortBy(arrayOfObjects, columns, customOrder)](#module_array-tools.sortBy) ⇒ <code>Array</code>
 
-<a name="module_array-tools.pluck"></a>
-## a.pluck(arrayOfObjects, ...property) ⇒ <code>Array</code>
-Plucks the value of the specified property from each object in the input array
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Param</th><th>Type</th><th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <td>arrayOfObjects</td><td><code>Array.&lt;object&gt;</code></td><td>the input array of objects</td>
-    </tr><tr>
-    <td>...property</td><td><code>string</code></td><td>the property(s) to pluck</td>
-    </tr>
-  </tbody>
-</table>
-
-**Example**  
-```js
-> var data = [
-    {one: 1, two: 2},
-    {two: "two"},
-    {one: "one", two: "zwei"},
-];
-> a.pluck(data, "one");
-[ 1, 'one' ]
-> a.pluck(data, "two");
-[ 2, 'two', 'zwei' ]
-> a.pluck(data, "one", "two");
-[ 1, 'two', 'one' ]
-```
-<a name="module_array-tools.pick"></a>
-## a.pick(arrayOfObjects, ...property) ⇒ <code>Array.&lt;object&gt;</code>
-return a copy of the input `arrayOfObjects` containing objects having only the cherry-picked properties
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Param</th><th>Type</th><th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <td>arrayOfObjects</td><td><code>Array.&lt;object&gt;</code></td><td>the input</td>
-    </tr><tr>
-    <td>...property</td><td><code>string</code></td><td>the properties to include in the result</td>
-    </tr>
-  </tbody>
-</table>
-
-**Example**  
-```js
-> data = [
-    { one: "un", two: "deux", three: "trois" },
-    { two: "two", one: "one" },
-    { four: "quattro" },
-    { two: "zwei" }
-]
-> a.pick(data, "two")
-[ { two: 'deux' },
-  { two: 'two' },
-  { two: 'zwei' } ]
-```
 <a name="module_array-tools.arrayify"></a>
-## a.arrayify(input) ⇒ <code>Array</code>
+## a.arrayify(any) ⇒ <code>Array</code>
 Takes input and guarantees an array back. Result can be one of three things:
 
 - puts a single scalar in an array
 - converts array-like object (e.g. `arguments`) to a real array
 - converts `null` or `undefined` to an empty array
 
+**Category**: General  
 
 <table>
   <thead>
@@ -112,7 +48,7 @@ Takes input and guarantees an array back. Result can be one of three things:
   </thead>
   <tbody>
     <tr>
-    <td>input</td><td><code>*</code></td><td>the input value to convert to an array</td>
+    <td>any</td><td><code>*</code></td><td>the input value to convert to an array</td>
     </tr>
   </tbody>
 </table>
@@ -133,6 +69,7 @@ Takes input and guarantees an array back. Result can be one of three things:
 ## a.exists(array, value) ⇒ <code>boolean</code>
 returns true if a value, or nested object value exists in an array
 
+**Category**: General  
 
 <table>
   <thead>
@@ -160,71 +97,11 @@ true
 > a.exists([ { result: true }, { result: true } ], { result: true })
 true
 ```
-<a name="module_array-tools.where"></a>
-## a.where(arrayOfObjects, query) ⇒ <code>Array</code>
-returns an array containing items from `arrayOfObjects` where key/value pairs 
-from `query` are matched identically
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Param</th><th>Type</th><th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <td>arrayOfObjects</td><td><code>Array</code></td><td>the array to search</td>
-    </tr><tr>
-    <td>query</td><td><code>query</code></td><td>an object containing the key/value pairs you want to match</td>
-    </tr>
-  </tbody>
-</table>
-
-**Example**  
-```js
-> dudes = [{ name: "Jim", age: 8}, { name: "Clive", age: 8}, { name: "Hater", age: 9}]
-[ { name: 'Jim', age: 8 },
-  { name: 'Clive', age: 8 },
-  { name: 'Hater', age: 9 } ]
-> a.where(dudes, { age: 8})
-[ { name: 'Jim', age: 8 },
-  { name: 'Clive', age: 8 } ]
-```
-<a name="module_array-tools.findWhere"></a>
-## a.findWhere(arrayOfObjects, query) ⇒ <code>object</code>
-returns the first item from `arrayOfObjects` where key/value pairs 
-from `query` are matched identically
-
-
-<table>
-  <thead>
-    <tr>
-      <th>Param</th><th>Type</th><th>Description</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-    <td>arrayOfObjects</td><td><code>Array</code></td><td>the array to search</td>
-    </tr><tr>
-    <td>query</td><td><code>query</code></td><td>an object containing the key/value pairs you want to match</td>
-    </tr>
-  </tbody>
-</table>
-
-**Example**  
-```js
-> dudes = [{ name: "Jim", age: 8}, { name: "Clive", age: 8}, { name: "Hater", age: 9}]
-[ { name: 'Jim', age: 8 },
-  { name: 'Clive', age: 8 },
-  { name: 'Hater', age: 9 } ]
-> a.findWhere(dudes, { age: 8})
-{ name: 'Jim', age: 8 }
-```
 <a name="module_array-tools.without"></a>
-## a.without(input, toRemove) ⇒ <code>Array</code>
+## a.without(array, toRemove) ⇒ <code>Array</code>
 Returns the input minus the specified values.
 
+**Category**: General  
 
 <table>
   <thead>
@@ -234,7 +111,7 @@ Returns the input minus the specified values.
   </thead>
   <tbody>
     <tr>
-    <td>input</td><td><code>Array</code></td><td>the input array</td>
+    <td>array</td><td><code>Array</code></td><td>the input array</td>
     </tr><tr>
     <td>toRemove</td><td><code>*</code></td><td>a single, or array of values to omit</td>
     </tr>
@@ -252,6 +129,7 @@ Returns the input minus the specified values.
 ## a.union(array1, array2, idKey) ⇒ <code>Array</code>
 merge two arrays into a single array of unique values
 
+**Category**: General  
 
 <table>
   <thead>
@@ -291,6 +169,7 @@ merge two arrays into a single array of unique values
 ## a.commonSequence(a, b) ⇒ <code>Array</code>
 Returns the initial elements which both input arrays have in common
 
+**Category**: General  
 
 <table>
   <thead>
@@ -314,8 +193,9 @@ Returns the initial elements which both input arrays have in common
 ```
 <a name="module_array-tools.unique"></a>
 ## a.unique(array) ⇒ <code>Array</code>
-reduces an array to unique values
+returns an array of unique values
 
+**Category**: General  
 
 <table>
   <thead>
@@ -341,6 +221,7 @@ reduces an array to unique values
 ## a.spliceWhile(array, index, test, ...elementN) ⇒ <code>Array</code>
 splice from `index` until `test` fails
 
+**Category**: General  
 
 <table>
   <thead>
@@ -375,6 +256,7 @@ splice from `index` until `test` fails
 Removes items from `array` which satisfy the query. Modifies the input array, returns the extracted.
 
 **Returns**: <code>Array</code> - the extracted items.  
+**Category**: General  
 
 <table>
   <thead>
@@ -395,6 +277,7 @@ Removes items from `array` which satisfy the query. Modifies the input array, re
 ## a.flatten() ⇒ <code>Array</code>
 flatten an array of arrays into a single array
 
+**Category**: General  
 **Since**: 1.4.0  
 **Todo**
 
@@ -406,10 +289,11 @@ flatten an array of arrays into a single array
 > a.flatten(numbers)
 [ 1, 2, 3, 4, 5 ]
 ```
-<a name="module_array-tools.sortBy"></a>
-## a.sortBy(arrayOfObject, ...columns) ⇒ <code>array</code>
-Sort an array of objects by one or more fields
+<a name="module_array-tools.pluck"></a>
+## a.pluck(arrayOfObjects, ...property) ⇒ <code>Array</code>
+Plucks the value of the specified property from each object in the input array
 
+**Category**: Record sets  
 
 <table>
   <thead>
@@ -419,9 +303,144 @@ Sort an array of objects by one or more fields
   </thead>
   <tbody>
     <tr>
-    <td>arrayOfObject</td><td><code>array</code></td><td>input array</td>
+    <td>arrayOfObjects</td><td><code>Array.&lt;object&gt;</code></td><td>the input array of objects</td>
     </tr><tr>
-    <td>...columns</td><td><code>string</code></td><td>column names to sort by</td>
+    <td>...property</td><td><code>string</code></td><td>the property(s) to pluck</td>
+    </tr>
+  </tbody>
+</table>
+
+**Example**  
+```js
+> var data = [
+    {one: 1, two: 2},
+    {two: "two"},
+    {one: "one", two: "zwei"},
+];
+> a.pluck(data, "one");
+[ 1, 'one' ]
+> a.pluck(data, "two");
+[ 2, 'two', 'zwei' ]
+> a.pluck(data, "one", "two");
+[ 1, 'two', 'one' ]
+```
+<a name="module_array-tools.pick"></a>
+## a.pick(arrayOfObjects, ...property) ⇒ <code>Array.&lt;object&gt;</code>
+return a copy of the input `arrayOfObjects` containing objects having only the cherry-picked properties
+
+**Category**: Record sets  
+
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>arrayOfObjects</td><td><code>Array.&lt;object&gt;</code></td><td>the input</td>
+    </tr><tr>
+    <td>...property</td><td><code>string</code></td><td>the properties to include in the result</td>
+    </tr>
+  </tbody>
+</table>
+
+**Example**  
+```js
+> data = [
+    { one: "un", two: "deux", three: "trois" },
+    { two: "two", one: "one" },
+    { four: "quattro" },
+    { two: "zwei" }
+]
+> a.pick(data, "two")
+[ { two: 'deux' },
+  { two: 'two' },
+  { two: 'zwei' } ]
+```
+<a name="module_array-tools.where"></a>
+## a.where(arrayOfObjects, query) ⇒ <code>Array</code>
+returns an array containing items from `arrayOfObjects` where key/value pairs
+from `query` are matched identically
+
+**Category**: Record sets  
+
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>arrayOfObjects</td><td><code>Array.&lt;object&gt;</code></td><td>the array to search</td>
+    </tr><tr>
+    <td>query</td><td><code>query</code></td><td>an object containing the key/value pairs you want to match</td>
+    </tr>
+  </tbody>
+</table>
+
+**Example**  
+```js
+> dudes = [{ name: "Jim", age: 8}, { name: "Clive", age: 8}, { name: "Hater", age: 9}]
+[ { name: 'Jim', age: 8 },
+  { name: 'Clive', age: 8 },
+  { name: 'Hater', age: 9 } ]
+> a.where(dudes, { age: 8})
+[ { name: 'Jim', age: 8 },
+  { name: 'Clive', age: 8 } ]
+```
+<a name="module_array-tools.findWhere"></a>
+## a.findWhere(arrayOfObjects, query) ⇒ <code>object</code>
+returns the first item from `arrayOfObjects` where key/value pairs
+from `query` are matched identically
+
+**Category**: Record sets  
+
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>arrayOfObjects</td><td><code>Array.&lt;object&gt;</code></td><td>the array to search</td>
+    </tr><tr>
+    <td>query</td><td><code>object</code></td><td>an object containing the key/value pairs you want to match</td>
+    </tr>
+  </tbody>
+</table>
+
+**Example**  
+```js
+> dudes = [{ name: "Jim", age: 8}, { name: "Clive", age: 8}, { name: "Hater", age: 9}]
+[ { name: 'Jim', age: 8 },
+  { name: 'Clive', age: 8 },
+  { name: 'Hater', age: 9 } ]
+> a.findWhere(dudes, { age: 8})
+{ name: 'Jim', age: 8 }
+```
+<a name="module_array-tools.sortBy"></a>
+## a.sortBy(arrayOfObjects, columns, customOrder) ⇒ <code>Array</code>
+Sort an array of objects by one or more fields
+
+**Category**: Record sets  
+**Since**: 1.5.0  
+
+<table>
+  <thead>
+    <tr>
+      <th>Param</th><th>Type</th><th>Description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+    <td>arrayOfObjects</td><td><code>Array.&lt;object&gt;</code></td><td>input array</td>
+    </tr><tr>
+    <td>columns</td><td><code>string</code> | <code>Array.&lt;string&gt;</code></td><td>column name(s) to sort by</td>
+    </tr><tr>
+    <td>customOrder</td><td><code>object</code></td><td>specific sort orders, per columns</td>
     </tr>
   </tbody>
 </table>
@@ -437,9 +456,9 @@ Sort an array of objects by one or more fields
     { a: 1, b: 1, c: 4},
     { a: 1, b: 2, c: 4},
     { a: 3, b: 3, c: 3},
-    { a: 4, b: 3, c: 1} 
+    { a: 4, b: 3, c: 1}
 ];
-> a.sortBy(fixture, "a", "b", "c")
+> a.sortBy(fixture, ["a", "b", "c"])
 [ { a: 1, b: 1, c: 4 },
   { a: 1, b: 2, c: 4 },
   { a: 1, b: 3, c: 4 },
