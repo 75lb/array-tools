@@ -1,7 +1,7 @@
 {
   "name": "array-tools",
   "author": "Lloyd Brookes <75pound@gmail.com>",
-  "version": "1.5.3",
+  "version": "1.6.0",
   "description": "Lightweight tool-kit for working with arrays",
   "repository": "https://github.com/75lb/array-tools.git",
   "main": "./lib/array-tools.js",
@@ -9,9 +9,9 @@
   "license": "MIT",
   "keywords": [
     "pluck",
-    "pick", 
-    "extract", 
-    "flatten", 
+    "pick",
+    "extract",
+    "flatten",
     "sort by",
     "arrayify",
     "exists",
