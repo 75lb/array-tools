@@ -17,7 +17,7 @@ You can also chain together operations. The process:
 
 1. Pass your input array to array-tools as an argument. 
 2. Chain together your operations. From array-tools, you may use [pluck](#module_array-tools.pluck), [pick](#module_array-tools.pick), [arrayify](#module_array-tools.arrayify), [where](#module_array-tools.where), [without](#module_array-tools.without), [unique](#module_array-tools.unique), [spliceWhile](#module_array-tools.spliceWhile), [extract](#module_array-tools.extract), [flatten](#module_array-tools.flatten), [exists](#module_array-tools.exists) and [sortBy](#module_array-tools.sortBy) in the chain. From core Array methods you may use `filter`, `reverse`, `sort`, `concat`, `slice`, `every`, `some` and `map`.
-3. Finally, far all above methods except exists, call .val() to extract the result. 
+3. Finally, following all above methods except [exists](#module_array-tools.exists), call `.val()` to extract the result. 
 
 ```js
 > var a = require("array-tools");
