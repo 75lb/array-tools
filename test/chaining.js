@@ -59,3 +59,20 @@ test("chaining: .pluck then a.exists", function(t){
     t.strictEqual(result2, false);
     t.end();
 });
+
+test("chaining: .map then .unique", function(t){
+    var data = [
+        {one: 1, two: 2},
+        {one: 1, two: 3},
+        {one: 2, two: 5},
+        {one: 2, two: 6},
+        {two: "two"},
+        {one: "one", two: "zwei"},
+    ];
+    var result = a(data)
+        .map(function(item){ return item.one; })
+        .unique()
+        .val();
+    t.deepEqual(result, [ 1, 2, undefined, "one" ]);
+    t.end();
+});
