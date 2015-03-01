@@ -5,7 +5,7 @@
 
 <a name="module_array-tools"></a>
 # array-tools
-Useful functions for working with arrays. 
+Lightweight tool-kit for working with arrays.
 
 ```js
 > var a = require("array-tools");
