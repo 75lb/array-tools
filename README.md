@@ -3,8 +3,10 @@
 [![Build Status](https://travis-ci.org/75lb/array-tools.svg?branch=master)](https://travis-ci.org/75lb/array-tools)
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/75lb.svg)](https://saucelabs.com/u/75lb)
+
 <a name="module_array-tools"></a>
-# array-tools
+## array-tools
 Lightweight tool-kit for working with arrays.
 
 ```js
@@ -51,7 +53,7 @@ false
     * [.flatten()](#module_array-tools.flatten) ⇒ <code>Array</code>
 
 <a name="module_array-tools.arrayify"></a>
-## a.arrayify(any) ⇒ <code>Array</code>
+### a.arrayify(any) ⇒ <code>Array</code>
 Takes input and guarantees an array back. Result can be one of three things:
 
 - puts a single scalar in an array
@@ -86,7 +88,7 @@ Takes input and guarantees an array back. Result can be one of three things:
 [ 1, 2, 3 ]
 ```
 <a name="module_array-tools.union"></a>
-## a.union(array1, array2, idKey) ⇒ <code>Array</code>
+### a.union(array1, array2, idKey) ⇒ <code>Array</code>
 merge two arrays into a single array of unique values
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -128,7 +130,7 @@ merge two arrays into a single array of unique values
 [ { id: 1 }, { id: 2 }, { id: 3 } ]
 ```
 <a name="module_array-tools.commonSequence"></a>
-## a.commonSequence(a, b) ⇒ <code>Array</code>
+### a.commonSequence(a, b) ⇒ <code>Array</code>
 Returns the initial elements which both input arrays have in common
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -155,7 +157,7 @@ Returns the initial elements which both input arrays have in common
 [ 1, 2 ]
 ```
 <a name="module_array-tools.pluck"></a>
-## a.pluck(arrayOfObjects, ...property) ⇒ <code>Array</code>
+### a.pluck(arrayOfObjects, ...property) ⇒ <code>Array</code>
 Plucks the value of the specified property from each object in the input array
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -191,7 +193,7 @@ Plucks the value of the specified property from each object in the input array
 [ 1, 'two', 'one' ]
 ```
 <a name="module_array-tools.pick"></a>
-## a.pick(arrayOfObjects, ...property) ⇒ <code>Array.&lt;object&gt;</code>
+### a.pick(arrayOfObjects, ...property) ⇒ <code>Array.&lt;object&gt;</code>
 return a copy of the input `arrayOfObjects` containing objects having only the cherry-picked properties
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -226,7 +228,7 @@ return a copy of the input `arrayOfObjects` containing objects having only the c
   { two: 'zwei' } ]
 ```
 <a name="module_array-tools.where"></a>
-## a.where(arrayOfObjects, query) ⇒ <code>Array</code>
+### a.where(arrayOfObjects, query) ⇒ <code>Array</code>
 returns an array containing items from `arrayOfObjects` where key/value pairs
 from `query` are matched identically
 
@@ -259,7 +261,7 @@ from `query` are matched identically
   { name: 'Clive', age: 8 } ]
 ```
 <a name="module_array-tools.findWhere"></a>
-## a.findWhere(arrayOfObjects, query) ⇒ <code>object</code>
+### a.findWhere(arrayOfObjects, query) ⇒ <code>object</code>
 returns the first item from `arrayOfObjects` where key/value pairs
 from `query` are matched identically
 
@@ -291,7 +293,7 @@ from `query` are matched identically
 { name: 'Jim', age: 8 }
 ```
 <a name="module_array-tools.sortBy"></a>
-## a.sortBy(arrayOfObjects, columns, customOrder) ⇒ <code>Array</code>
+### a.sortBy(arrayOfObjects, columns, customOrder) ⇒ <code>Array</code>
 Sort an array of objects by one or more fields
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -341,7 +343,7 @@ Sort an array of objects by one or more fields
   { a: 4, b: 3, c: 1 } ]
 ```
 <a name="module_array-tools.exists"></a>
-## a.exists(array, value) ⇒ <code>boolean</code>
+### a.exists(array, value) ⇒ <code>boolean</code>
 returns true if a value, or nested object value exists in an array
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -374,7 +376,7 @@ true
 true
 ```
 <a name="module_array-tools.without"></a>
-## a.without(array, toRemove) ⇒ <code>Array</code>
+### a.without(array, toRemove) ⇒ <code>Array</code>
 Returns the input minus the specified values.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -403,7 +405,7 @@ Returns the input minus the specified values.
 [ 1 ]
 ```
 <a name="module_array-tools.unique"></a>
-## a.unique(array) ⇒ <code>Array</code>
+### a.unique(array) ⇒ <code>Array</code>
 returns an array of unique values
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -429,7 +431,7 @@ returns an array of unique values
 [ 1, 6, 7 ]
 ```
 <a name="module_array-tools.spliceWhile"></a>
-## a.spliceWhile(array, index, test, ...elementN) ⇒ <code>Array</code>
+### a.spliceWhile(array, index, test, ...elementN) ⇒ <code>Array</code>
 splice from `index` until `test` fails
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -466,7 +468,7 @@ splice from `index` until `test` fails
 [ 'x', 'b' ]
 ```
 <a name="module_array-tools.extract"></a>
-## a.extract(array, query) ⇒ <code>Array</code>
+### a.extract(array, query) ⇒ <code>Array</code>
 Removes items from `array` which satisfy the query. Modifies the input array, returns the extracted.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -489,7 +491,7 @@ Removes items from `array` which satisfy the query. Modifies the input array, re
 </table>
 
 <a name="module_array-tools.flatten"></a>
-## a.flatten() ⇒ <code>Array</code>
+### a.flatten() ⇒ <code>Array</code>
 flatten an array of arrays into a single array
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
