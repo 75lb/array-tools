@@ -25,12 +25,14 @@
   ],
   "scripts": {
     "test": "tape test/*.js",
+    "test-travis": "zuul -- test/*.js",
     "lint": "jshint lib/*.js test/*.js; echo",
-    "docs": "jsdoc2md -t jsdoc2md/README.hbs -l js -d 1 --no-gfm lib/*.js > README.md; echo",
+    "docs": "jsdoc2md -t jsdoc2md/README.hbs -l js --no-gfm lib/*.js > README.md; echo",
     "watch": "baldrick --do 'npm run docs' --when lib/*.js --change"
   },
   "devDependencies": {
-    "tape": "^3"
+    "tape": "^3",
+    "zuul": "^2.0.0"
   },
   "dependencies": {
     "object-tools": "^1.1.0",
