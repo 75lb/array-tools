@@ -76,3 +76,18 @@ test("chaining: .map then .unique", function(t){
     t.deepEqual(result, [ 1, 2, undefined, "one" ]);
     t.end();
 });
+
+test("chaining: .pluck then .join", function(t){
+    var data = [
+        {one: 1, two: 2},
+        {one: 1, two: 3},
+        {one: 2, two: 5},
+        {two: "two"},
+        {one: "one", two: "zwei"},
+    ];
+    var result = a(data)
+        .pluck("one")
+        .join(",");
+    t.strictEqual(result, "1,1,2,one");
+    t.end();
+});
