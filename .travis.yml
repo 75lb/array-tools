@@ -4,8 +4,3 @@ node_js:
 - '0.11'
 - '0.10'
 - iojs
-script: npm run test-travis
-env:
-  global:
-  - secure: e69CVRxg6gLVQ+kmBpIYLv7TC986yISvvI/XKkVLyTie8V4nZrNbZiTo/HGTutQWOLEi3iD86jTQPCJy2yw+a8K2so59PdCzKCfNo6ubQwSVEjqijAlrxGj+49LW2vfKk4pEK0rb7s2gQu56KTRQ8b0qr93PCBc32FGW3PzEbpo=
-  - secure: js9wbVnn/Gr0gqiPqJALkEfNfE07IgklQh1kkdfUFuGczH+uXr1TSRvnlpE/lV23p7XReEgnHtiChj5CVwZR1h0xyMRISL07oeOEOafXqCRMUBfdlUJCk0anjN6zDtel4M7VUAK3Q1zaW/rTZIBPXTNlOEOK5bpdvZM8CsKC32Q=
