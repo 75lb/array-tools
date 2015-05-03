@@ -13,11 +13,7 @@ Lightweight tool-kit for working with arrays.
 true
 ```
 
-You can also chain together operations. The process: 
-
-1. Pass your input array to array-tools as an argument. 
-2. Chain together your operations. From array-tools, you may use [pluck](#module_array-tools.pluck), [pick](#module_array-tools.pick), [arrayify](#module_array-tools.arrayify), [where](#module_array-tools.where), [findWhere](#module_array-tools.findWhere), [without](#module_array-tools.without), [unique](#module_array-tools.unique), [spliceWhile](#module_array-tools.spliceWhile), [extract](#module_array-tools.extract), [flatten](#module_array-tools.flatten), [exists](#module_array-tools.exists) and [sortBy](#module_array-tools.sortBy) in the chain. From core Array methods you may use `filter`, `reverse`, `sort`, `concat`, `slice`, `every`, `some` and `map`.
-3. Finally, following all above methods except [exists](#module_array-tools.exists), call `.val()` to extract the result. 
+You can also chain together operations. Any method from array-tools or `Array.prototype` which returns an array can be chained. Methods which do not return an arrary (e.g. [exists](#module_array-tools.exists) or `Array.prototype.join`) can not be chained. If the final operation in your chain is one of the chainable methods then you must terminate it with `.val()` to obtain the value. For example: 
 
 ```js
 > var a = require("array-tools");
@@ -48,7 +44,8 @@ false
     * [.unique(array)](#module_array-tools.unique) ⇒ <code>Array</code>
     * [.spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile) ⇒ <code>Array</code>
     * [.extract(array, query)](#module_array-tools.extract) ⇒ <code>Array</code>
-    * [.flatten()](#module_array-tools.flatten) ⇒ <code>Array</code>
+    * [.flatten(array)](#module_array-tools.flatten) ⇒ <code>Array</code>
+    * [.last(arr)](#module_array-tools.last) ⇒ <code>\*</code>
 
 <a name="module_array-tools.arrayify"></a>
 ### a.arrayify(any) ⇒ <code>Array</code>
@@ -355,15 +352,16 @@ Removes items from `array` which satisfy the query. Modifies the input array, re
 | query | <code>function</code> &#124; <code>object</code> | Per item in the array, if either the function returns truthy or the exists query is satisfied, the item is extracted |
 
 <a name="module_array-tools.flatten"></a>
-### a.flatten() ⇒ <code>Array</code>
+### a.flatten(array) ⇒ <code>Array</code>
 flatten an array of arrays into a single array
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: single array in  
 **Since**: 1.4.0  
-**Todo**
 
-- [ ] document
+| Param | Type | Description |
+| --- | --- | --- |
+| array | <code>Array</code> | the input array |
 
 **Example**  
 ```js
@@ -371,6 +369,17 @@ flatten an array of arrays into a single array
 > a.flatten(numbers)
 [ 1, 2, 3, 4, 5 ]
 ```
+<a name="module_array-tools.last"></a>
+### a.last(arr) ⇒ <code>\*</code>
+Return the last item in an array.
+
+**Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
+**Category**: single array in  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| arr | <code>Array</code> | the input array |
+
 
 * * * 
 
