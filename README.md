@@ -375,6 +375,7 @@ Return the last item in an array.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: single array in  
+**Since**: 1.7.0  
 
 | Param | Type | Description |
 | --- | --- | --- |
