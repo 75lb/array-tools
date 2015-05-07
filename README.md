@@ -46,6 +46,8 @@ false
     * [.extract(array, query)](#module_array-tools.extract) ⇒ <code>Array</code>
     * [.flatten(array)](#module_array-tools.flatten) ⇒ <code>Array</code>
     * [.last(arr)](#module_array-tools.last) ⇒ <code>\*</code>
+    * [.remove(arr, toRemove)](#module_array-tools.remove) ⇒ <code>\*</code>
+    * [.contains(arr, value)](#module_array-tools.contains) ⇒
 
 <a name="module_array-tools.arrayify"></a>
 ### a.arrayify(any) ⇒ <code>Array</code>
@@ -380,6 +382,29 @@ Return the last item in an array.
 | Param | Type | Description |
 | --- | --- | --- |
 | arr | <code>Array</code> | the input array |
+
+<a name="module_array-tools.remove"></a>
+### a.remove(arr, toRemove) ⇒ <code>\*</code>
+**Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
+**Category**: single array in  
+**Since**: 1.8.0  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| arr | <code>Array</code> | the input array |
+| toRemove | <code>\*</code> | the item to remove |
+
+<a name="module_array-tools.contains"></a>
+### a.contains(arr, value) ⇒
+**Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
+**Returns**: boolean  
+**Category**: single array in  
+**Since**: 1.8.0  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| arr | <code>Array</code> | the input array |
+| value | <code>\*</code> | the value to look for |
 
 
 * * * 
