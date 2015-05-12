@@ -36,6 +36,6 @@
   },
   "dependencies": {
     "object-tools": "^1.1.0",
-    "typical": "^2"
+    "typical": "^2.1"
   }
 }
