@@ -24,3 +24,43 @@ test(".findWhere deep query", function(t){
     t.deepEqual(a.findWhere(arr, { one: { number: 3 } }), null);
     t.end();
 });
+
+test(".findWhere deeper query", function(t){
+    var query;
+    var arr = [
+        { 
+    		name: "one",
+    		data: { two: { three: "four" } }
+    	},
+        { 
+    		name: "two",
+    		data: { two: { three: "five" } }
+    	}
+    ];
+    query = {  name: "one", data: { two: { three: "four" } } };
+    t.deepEqual(a.findWhere(arr, query), { 
+		name: "one",
+		data: { two: { three: "four" } }
+	});
+    query = {  name: "one" };
+    t.deepEqual(a.findWhere(arr, query), { 
+		name: "one",
+		data: { two: { three: "four" } }
+	});
+    query = {  name: "two" };
+    t.deepEqual(a.findWhere(arr, query), { 
+		name: "two",
+		data: { two: { three: "five" } }
+	});
+
+    query = {  name: "two", data: { two: { three: "four" } } };
+    t.deepEqual(a.findWhere(arr, query), null);
+
+    query = {  name: "two", data: { two: { three: "five" } } };
+    t.deepEqual(a.findWhere(arr, query), { 
+		name: "two",
+		data: { two: { three: "five" } }
+	});
+
+    t.end();
+});
