@@ -4,8 +4,10 @@
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 [![Coverage Status](https://coveralls.io/repos/75lb/array-tools/badge.svg?branch=master)](https://coveralls.io/r/75lb/array-tools?branch=master)
 
+[![Sauce Test Status](https://saucelabs.com/buildstatus/75lb)](https://saucelabs.com/u/75lb)
+
 # array-tools
-Lightweight tool-kit for working with array data.
+Lightweight tool-kit for working with array data. 1.5k, compressed.
 
 ```js
 > var a = require("array-tools");
@@ -78,10 +80,10 @@ false
 
 * [array-tools](#module_array-tools)
   * _chainable_
-    * [.pluck(arrayOfObjects, ...property)](#module_array-tools.pluck) ⇒ <code>Array</code>
-    * [.pick(arrayOfObjects, ...property)](#module_array-tools.pick) ⇒ <code>Array.&lt;object&gt;</code>
     * [.arrayify(any)](#module_array-tools.arrayify) ⇒ <code>Array</code>
     * [.where(arrayOfObjects, query)](#module_array-tools.where) ⇒ <code>Array</code>
+    * [.pluck(arrayOfObjects, ...property)](#module_array-tools.pluck) ⇒ <code>Array</code>
+    * [.pick(arrayOfObjects, ...property)](#module_array-tools.pick) ⇒ <code>Array.&lt;object&gt;</code>
     * [.without(array, toRemove)](#module_array-tools.without) ⇒ <code>Array</code>
     * [.union(array1, array2, idKey)](#module_array-tools.union) ⇒ <code>Array</code>
     * [.commonSequence(a, b)](#module_array-tools.commonSequence) ⇒ <code>Array</code>
@@ -97,6 +99,77 @@ false
     * [.remove(arr, toRemove)](#module_array-tools.remove) ⇒ <code>\*</code>
     * [.contains(arr, value)](#module_array-tools.contains) ⇒
 
+<a name="module_array-tools.arrayify"></a>
+### a.arrayify(any) ⇒ <code>Array</code>
+Takes any input and guarantees an array back.
+
+- converts array-like objects (e.g. `arguments`) to a real array
+- converts `null` or `undefined` to an empty array
+- converts any another other, singular value into an array containing that value
+- ignores input which is already an array
+
+**Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
+**Category**: chainable  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| any | <code>\*</code> | the input value to convert to an array |
+
+**Example**  
+```js
+> a.arrayify(null)
+[]
+
+> a.arrayify(0)
+[ 0 ]
+
+> a.arrayify([ 1, 2 ])
+[ 1, 2 ]
+
+> function f(){ return a.arrayify(arguments); }
+> f(1,2,3)
+[ 1, 2, 3 ]
+```
+<a name="module_array-tools.where"></a>
+### a.where(arrayOfObjects, query) ⇒ <code>Array</code>
+Query a recordset..
+
+**Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
+**Category**: chainable  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| arrayOfObjects | <code>Array.&lt;object&gt;</code> | the array to search |
+| query | <code>query</code> | an object containing the key/value pairs you want to match |
+
+**Example**  
+```js
+> data = [
+    { name: "Dana", age: 30, faveColour: "red" },
+    { name: "Yana", age: 20, faveColour: "orange" },
+    { name: "Zhana", age: 10, faveColour: "yellow" }
+]
+
+> // match on an exact value
+> a.where(data, { age: 10 })
+[ { name: 'Zhana', age: 10, faveColour: 'yellow' } ]
+
+> // match if the function returns true
+> a.where(data, { age: function(val){ return val > 10; }  })
+[ { name: 'Dana', age: 30, faveColour: 'red' },
+  { name: 'Yana', age: 20, faveColour: 'orange' } ]
+
+> // match if NOT the value
+> a.where(data, { "!age": 10 })
+[ { name: 'Dana', age: 30, faveColour: 'red' },
+  { name: 'Yana', age: 20, faveColour: 'orange' } ]
+
+> // match on regular expression
+> a.where(data, { name: /ana/ })
+[ { name: 'Dana', age: 30, faveColour: 'red' },
+  { name: 'Yana', age: 20, faveColour: 'orange' },
+  { name: 'Zhana', age: 10, faveColour: 'yellow' } ]
+```
 <a name="module_array-tools.pluck"></a>
 ### a.pluck(arrayOfObjects, ...property) ⇒ <code>Array</code>
 Plucks the value of the specified property from each object in the input array
@@ -106,22 +179,22 @@ Plucks the value of the specified property from each object in the input array
 
 | Param | Type | Description |
 | --- | --- | --- |
-| arrayOfObjects | <code>Array.&lt;object&gt;</code> | the input array of objects |
-| ...property | <code>string</code> | the property(s) to pluck |
+| arrayOfObjects | <code>Array.&lt;object&gt;</code> | The input recordset |
+| ...property | <code>string</code> | Up to three property names - the first one found will be returned. |
 
 **Example**  
 ```js
 > var data = [
-    {one: 1, two: 2},
-    {two: "two"},
-    {one: "one", two: "zwei"},
-];
-> a.pluck(data, "one");
-[ 1, 'one' ]
-> a.pluck(data, "two");
-[ 2, 'two', 'zwei' ]
-> a.pluck(data, "one", "two");
-[ 1, 'two', 'one' ]
+    { a: "Lionel", b: "Roger" },
+    { a: "Luis", b: "Craig" },
+    { b: "Peter" },
+]
+
+> a.pluck(data, "a")
+[ 'Lionel', 'Luis' ]
+
+> a.pluck(data, "a", "b")
+[ 'Lionel', 'Luis', 'Peter' ]
 ```
 <a name="module_array-tools.pick"></a>
 ### a.pick(arrayOfObjects, ...property) ⇒ <code>Array.&lt;object&gt;</code>
@@ -138,65 +211,18 @@ return a copy of the input `arrayOfObjects` containing objects having only the c
 **Example**  
 ```js
 > data = [
-    { one: "un", two: "deux", three: "trois" },
-    { two: "two", one: "one" },
-    { four: "quattro" },
-    { two: "zwei" }
+    { name: "Dana", age: 30, faveColour: "red" },
+    { name: "Yana", age: 20, faveColour: "orange" },
+    { name: "Zhana", age: 10, faveColour: "yellow" }
 ]
-> a.pick(data, "two")
-[ { two: 'deux' },
-  { two: 'two' },
-  { two: 'zwei' } ]
-```
-<a name="module_array-tools.arrayify"></a>
-### a.arrayify(any) ⇒ <code>Array</code>
-Takes input and guarantees an array back. Result can be one of three things:
 
-- puts a single scalar in an array
-- converts array-like object (e.g. `arguments`) to a real array
-- converts `null` or `undefined` to an empty array
+> a.pick(data, "name")
+[ { name: 'Dana' }, { name: 'Yana' }, { name: 'Zhana' } ]
 
-**Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
-**Category**: chainable  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| any | <code>\*</code> | the input value to convert to an array |
-
-**Example**  
-```js
-> a.arrayify(null)
-[]
-> a.arrayify(0)
-[ 0 ]
-> a.arrayify([ 1, 2 ])
-[ 1, 2 ]
-> function f(){ return a.arrayify(arguments); }
-> f(1,2,3)
-[ 1, 2, 3 ]
-```
-<a name="module_array-tools.where"></a>
-### a.where(arrayOfObjects, query) ⇒ <code>Array</code>
-returns an array containing items from `arrayOfObjects` where key/value pairs
-from `query` are matched identically
-
-**Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
-**Category**: chainable  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| arrayOfObjects | <code>Array.&lt;object&gt;</code> | the array to search |
-| query | <code>query</code> | an object containing the key/value pairs you want to match |
-
-**Example**  
-```js
-> dudes = [{ name: "Jim", age: 8}, { name: "Clive", age: 8}, { name: "Hater", age: 9}]
-[ { name: 'Jim', age: 8 },
-  { name: 'Clive', age: 8 },
-  { name: 'Hater', age: 9 } ]
-> a.where(dudes, { age: 8})
-[ { name: 'Jim', age: 8 },
-  { name: 'Clive', age: 8 } ]
+> a.pick(data, "name", "age")
+[ { name: 'Dana', age: 30 },
+  { name: 'Yana', age: 20 },
+  { name: 'Zhana', age: 10 } ]
 ```
 <a name="module_array-tools.without"></a>
 ### a.without(array, toRemove) ⇒ <code>Array</code>
@@ -214,6 +240,7 @@ Returns the input minus the specified values.
 ```js
 > a.without([ 1, 2, 3 ], 2)
 [ 1, 3 ]
+
 > a.without([ 1, 2, 3 ], [ 2, 3 ])
 [ 1 ]
 ```
@@ -235,9 +262,11 @@ merge two arrays into a single array of unique values
 > var array1 = [ 1, 2 ], array2 = [ 2, 3 ];
 > a.union(array1, array2)
 [ 1, 2, 3 ]
+
 > var array1 = [ { id: 1 }, { id: 2 } ], array2 = [ { id: 2 }, { id: 3 } ];
 > a.union(array1, array2)
 [ { id: 1 }, { id: 2 }, { id: 3 } ]
+
 > var array2 = [ { id: 2, blah: true }, { id: 3 } ]
 > a.union(array1, array2)
 [ { id: 1 },
@@ -279,6 +308,7 @@ returns an array of unique values
 ```js
 > n = [1,6,6,7,1]
 [ 1, 6, 6, 7, 1 ]
+
 > a.unique(n)
 [ 1, 6, 7 ]
 ```
@@ -300,8 +330,10 @@ splice from `index` until `test` fails
 ```js
 > letters = ["a", "a", "b"]
 [ 'a', 'a', 'b' ]
+
 > a.spliceWhile(letters, 0, /a/, "x")
 [ 'a', 'a' ]
+
 > letters
 [ 'x', 'b' ]
 ```
@@ -390,10 +422,13 @@ returns true if a value, or nested object value exists in an array
 ```js
 > a.exists([ 1, 2, 3 ], 2)
 true
+
 > a.exists([ { result: false }, { result: false } ], { result: true })
 false
+
 > a.exists([ { result: true }, { result: false } ], { result: true })
 true
+
 > a.exists([ { result: true }, { result: true } ], { result: true })
 true
 ```
@@ -416,6 +451,7 @@ from `query` are matched identically
 [ { name: 'Jim', age: 8 },
   { name: 'Clive', age: 8 },
   { name: 'Hater', age: 9 } ]
+
 > a.findWhere(dudes, { age: 8})
 { name: 'Jim', age: 8 }
 ```

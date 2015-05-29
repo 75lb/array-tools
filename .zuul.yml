@@ -2,15 +2,22 @@ ui: tape
 browsers:
   - name: chrome
     version: dev
+    platform: Linux
   - name: ie
     version: latest
+    platform: Windows 2012 R2
   - name: iphone
     version: latest
+    platform: Mac 10.10
   - name: firefox
     version: dev
+    platform: Linux
   - name: ipad
     version: latest
+    platform: Mac 10.10
   - name: safari
     version: latest
+    platform: Mac 10.10
   - name: android
     version: latest
+    platform: Linux
