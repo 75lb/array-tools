@@ -27,7 +27,7 @@
     "test": "tape test/*.js",
     "test-travis": "zuul -- test/*.js",
     "lint": "jshint lib/*.js test/*.js; echo",
-    "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js > README.md; echo",
+    "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js  > README.md; echo",
     "watch": "baldrick --do 'npm run docs' --when lib/*.js --change"
   },
   "devDependencies": {

@@ -3,8 +3,7 @@
 [![Build Status](https://travis-ci.org/75lb/array-tools.svg?branch=master)](https://travis-ci.org/75lb/array-tools)
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 
-<a name="module_array-tools"></a>
-## array-tools
+# array-tools
 Lightweight tool-kit for working with arrays.
 
 ```js
@@ -13,7 +12,42 @@ Lightweight tool-kit for working with arrays.
 true
 ```
 
-You can also chain together operations. Any method from array-tools or `Array.prototype` which returns an array can be chained. Methods which do not return an arrary (e.g. [exists](#module_array-tools.exists) or `Array.prototype.join`) can not be chained. If the final operation in your chain is one of the chainable methods then you must terminate it with `.val()` to obtain the value. For example: 
+There are three ways to use it. As a standard library, passing the input array on each invocation:
+
+```js
+> var remainder = a.without([ 1, 2, 3, 4, 5 ], 1)
+> a.exists(remainder, 1)
+false
+```
+
+As a chainable method, passing the input array once then chaining from there:
+
+```js
+> a([ 1, 2, 3, 4, 5 ]).without(1).exists(1);
+false
+```
+
+As a base class.
+```js
+var util = require("util");
+var ArrayTools = require("array-tools");
+
+function CarCollection(cars){
+  ArrayTools.call(this, cars);
+}
+util.inherits(CarCollection, ArrayTools);
+
+var cars = new CarCollection([ 
+  { owner: "Me", model: "Citreon Xsara" }, 
+  { owner: "Floyd", model: "Bugatti Veron" } 
+]);
+
+cars.findWhere({ owner: "Floyd" });
+// returns { owner: "Floyd", model: "Bugatti Veron" }
+```
+
+#### More on chaining
+Each methods returning an `Array` (e.g. `where`, `without`) can be chained. Each method returning a scalar (`exists`, `contains`) cannot be chained. If the final operation is chainable, append `.val()` to terminate the chain an retrieve the output data. 
 
 ```js
 > var a = require("array-tools");
@@ -25,6 +59,7 @@ false
 [ 2, 3 ]
 ```
 
+## API Reference
 
 * [array-tools](#module_array-tools)
   * _any value in_

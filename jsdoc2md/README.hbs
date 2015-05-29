@@ -3,7 +3,67 @@
 [![Build Status](https://travis-ci.org/75lb/array-tools.svg?branch=master)](https://travis-ci.org/75lb/array-tools)
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 
-{{>main}}
+# array-tools
+Lightweight tool-kit for working with arrays.
+
+```js
+> var a = require("array-tools");
+> a.exists([ 1, 2, 3 ], 1)
+true
+```
+
+There are three ways to use it. As a standard library, passing the input array on each invocation:
+
+```js
+> var remainder = a.without([ 1, 2, 3, 4, 5 ], 1)
+> a.exists(remainder, 1)
+false
+```
+
+As a chainable method, passing the input array once then chaining from there:
+
+```js
+> a([ 1, 2, 3, 4, 5 ]).without(1).exists(1);
+false
+```
+
+As a base class.
+```js
+var util = require("util");
+var ArrayTools = require("array-tools");
+
+function CarCollection(cars){
+  ArrayTools.call(this, cars);
+}
+util.inherits(CarCollection, ArrayTools);
+
+var cars = new CarCollection([ 
+  { owner: "Me", model: "Citreon Xsara" }, 
+  { owner: "Floyd", model: "Bugatti Veron" } 
+]);
+
+cars.findWhere({ owner: "Floyd" });
+// returns { owner: "Floyd", model: "Bugatti Veron" }
+```
+
+#### More on chaining
+Each methods returning an `Array` (e.g. `where`, `without`) can be chained. Each method returning a scalar (`exists`, `contains`) cannot be chained. If the final operation is chainable, append `.val()` to terminate the chain and retrieve the output data. 
+
+```js
+> a([ 1, 2, 2, 3 ]).exists(1)
+true
+> a([ 1, 2, 2, 3 ]).without(1).exists(1)
+false
+> a([ 1, 2, 2, 3 ]).without(1).unique().val()
+[ 2, 3 ]
+```
+
+## API Reference
+{{#module name="array-tools"}}
+{{>body~}}
+{{>member-index~}}
+{{>members~}}
+{{/module}}
 
 * * * 
 
