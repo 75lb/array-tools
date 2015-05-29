@@ -4,8 +4,6 @@
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 [![Coverage Status](https://coveralls.io/repos/75lb/array-tools/badge.svg?branch=master)](https://coveralls.io/r/75lb/array-tools?branch=master)
 
-[![Sauce Test Status](https://saucelabs.com/buildstatus/75lb)](https://saucelabs.com/u/75lb)
-
 # array-tools
 Lightweight tool-kit for working with array data. 1.5k, compressed.
 
@@ -13,7 +11,9 @@ Lightweight tool-kit for working with array data. 1.5k, compressed.
 > var a = require("array-tools");
 ```
 
-There are four ways to use it. As a standard library, passing the input array on each invocation:
+There are four ways to use it.
+
+1) As a standard library, passing the input array on each invocation:
 
 ```js
 > var remainder = a.without([ 1, 2, 3, 4, 5 ], 1)
@@ -21,14 +21,14 @@ There are four ways to use it. As a standard library, passing the input array on
 false
 ```
 
-As a chainable method, passing the input array once then chaining from there:
+2) As a chainable method, passing the input array once then chaining from there:
 
 ```js
 > a([ 1, 2, 3, 4, 5 ]).without(1).exists(1);
 false
 ```
 
-As a base class.
+3) As a base class.
 ```js
 var util = require("util");
 var ArrayTools = require("array-tools");
@@ -47,7 +47,7 @@ cars.findWhere({ owner: "Floyd" });
 // returns { owner: "Floyd", model: "Bugatti Veyron" }
 ```
 
-As a command-line tool. 
+4) As a command-line tool. 
 ```sh
 $ curl -s "https://api.github.com/users/75lb/repos?page=1&per_page=100" | array-tools pick full_name description
 [
@@ -65,7 +65,7 @@ $ curl -s "https://api.github.com/users/75lb/repos?page=1&per_page=100" | array-
 ```
 
 #### More on chaining
-Each methods returning an `Array` (e.g. `where`, `without`) can be chained. Each method returning a scalar (`exists`, `contains`) cannot be chained. If the final operation is chainable, append `.val()` to terminate the chain and retrieve the output data. 
+Each methods returning an `Array` (e.g. `where`, `without`) can be chained. Methods not returning an array (`exists`, `contains`) cannot be chained. If the final operation in your chain is chainable (returns an array), append `.val()` to terminate the chain and retrieve the output.
 
 ```js
 > a([ 1, 2, 2, 3 ]).exists(1)
@@ -139,8 +139,8 @@ Query a recordset..
 
 | Param | Type | Description |
 | --- | --- | --- |
-| arrayOfObjects | <code>Array.&lt;object&gt;</code> | the array to search |
-| query | <code>query</code> | an object containing the key/value pairs you want to match |
+| arrayOfObjects | <code>Array.&lt;object&gt;</code> | the recordset to query |
+| query | <code>query</code> | the query definition |
 
 **Example**  
 ```js
