@@ -13,7 +13,7 @@ Lightweight tool-kit for working with array data. 1.5k, compressed.
 
 There are four ways to use it.
 
-1) As a standard library, passing the input array on each invocation:
+1) As a standard library, passing the input array on each method invocation:
 
 ```js
 > var remainder = a.without([ 1, 2, 3, 4, 5 ], 1)
@@ -65,7 +65,7 @@ $ curl -s "https://api.github.com/users/75lb/repos?page=1&per_page=100" | array-
 ```
 
 #### More on chaining
-Each methods returning an `Array` (e.g. `where`, `without`) can be chained. Methods not returning an array (`exists`, `contains`) cannot be chained. If the final operation in your chain is chainable (returns an array), append `.val()` to terminate the chain and retrieve the output.
+Each method returning an `Array` (e.g. `where`, `without`) can be chained. Methods not returning an array (`exists`, `contains`) cannot be chained. If the final operation in your chain is chainable (returns an array), append `.val()` to terminate the chain and retrieve the output.
 
 ```js
 > a([ 1, 2, 2, 3 ]).exists(1)
@@ -74,6 +74,23 @@ true
 false
 > a([ 1, 2, 2, 3 ]).without(1).unique().val()
 [ 2, 3 ]
+```
+
+## Compatibility
+This library is tested in node versions 0.10, 0.11, 0.12, iojs and the following browsers:
+
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/arr-tools.svg)](https://saucelabs.com/u/arr-tools)
+
+## Install
+As a library:
+
+```
+$ npm install array-tools --save
+```
+
+As a command-line tool:
+```
+$ npm install -g array-tools
 ```
 
 ## API Reference
@@ -132,7 +149,7 @@ Takes any input and guarantees an array back.
 ```
 <a name="module_array-tools.where"></a>
 ### a.where(arrayOfObjects, query) ⇒ <code>Array</code>
-Query a recordset..
+Query a recordset, at any depth..
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: chainable  
@@ -145,30 +162,47 @@ Query a recordset..
 **Example**  
 ```js
 > data = [
-    { name: "Dana", age: 30, faveColour: "red" },
-    { name: "Yana", age: 20, faveColour: "orange" },
-    { name: "Zhana", age: 10, faveColour: "yellow" }
+    { name: "Dana", age: 30 },
+    { name: "Yana", age: 20 },
+    { name: "Zhana", age: 10 }
 ]
 
 > // match on an exact value
 > a.where(data, { age: 10 })
-[ { name: 'Zhana', age: 10, faveColour: 'yellow' } ]
+[ { name: 'Zhana', age: 10 } ]
 
-> // match if the function returns true
-> a.where(data, { age: function(val){ return val > 10; }  })
-[ { name: 'Dana', age: 30, faveColour: 'red' },
-  { name: 'Yana', age: 20, faveColour: 'orange' } ]
+> // match records which satisfy the function testing the value of the `age` field
+> a.where(data, { age: function(ageValue){ return ageValue > 10; }  })
+[ { name: 'Dana', age: 30 }, { name: 'Yana', age: 20 } ]
 
 > // match if NOT the value
 > a.where(data, { "!age": 10 })
-[ { name: 'Dana', age: 30, faveColour: 'red' },
-  { name: 'Yana', age: 20, faveColour: 'orange' } ]
+[ { name: 'Dana', age: 30 }, { name: 'Yana', age: 20 } ]
 
 > // match on regular expression
 > a.where(data, { name: /ana/ })
-[ { name: 'Dana', age: 30, faveColour: 'red' },
-  { name: 'Yana', age: 20, faveColour: 'orange' },
-  { name: 'Zhana', age: 10, faveColour: 'yellow' } ]
+[ { name: 'Dana', age: 30 },
+  { name: 'Yana', age: 20 },
+  { name: 'Zhana', age: 10 } ]
+
+> // you can perform deep queries 
+> deepData = [
+    { name: "Dana", favourite: { colour: "light red" } },
+    { name: "Yana", favourite: { colour: "dark red" } },
+    { name: "Zhana", favourite: { colour: [ "white", "red" ] } }
+]
+
+> // match values of `person.favourite.colour` which match the regex `/red/`
+> a.where(deepData, { favourite: { colour: /red/ } })
+[ { name: 'Dana', favourite: { colour: 'light red' } },
+  { name: 'Yana', favourite: { colour: 'dark red' } } ]
+
+> // if there are one or more values for colour (i.e. the field may contain a singular
+> // or array of values) then search inside arrays too 
+> a.where(deepData, { favourite: { "+colour": /red/ } })
+[ { name: 'Dana', favourite: { colour: 'light red' } },
+  { name: 'Yana', favourite: { colour: 'dark red' } },
+  { name: 'Zhana', favourite: { colour: [ "white", "red" ] } } ]
 ```
 <a name="module_array-tools.pluck"></a>
 ### a.pluck(arrayOfObjects, ...property) ⇒ <code>Array</code>
@@ -211,9 +245,9 @@ return a copy of the input `arrayOfObjects` containing objects having only the c
 **Example**  
 ```js
 > data = [
-    { name: "Dana", age: 30, faveColour: "red" },
-    { name: "Yana", age: 20, faveColour: "orange" },
-    { name: "Zhana", age: 10, faveColour: "yellow" }
+    { name: "Dana", age: 30 },
+    { name: "Yana", age: 20 },
+    { name: "Zhana", age: 10 }
 ]
 
 > a.pick(data, "name")
@@ -480,6 +514,8 @@ Return the last item in an array.
 
 <a name="module_array-tools.contains"></a>
 ### a.contains(arr, value) ⇒
+Searches the array for the exact value supplied (strict equality). To query for value existance using an expression or function, use [exists](#module_array-tools.exists).
+
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Returns**: boolean  
 **Category**: not chainable  
@@ -490,18 +526,6 @@ Return the last item in an array.
 | arr | <code>Array</code> | the input array |
 | value | <code>\*</code> | the value to look for |
 
-
-## Install
-As a library:
-
-```
-$ npm install array-tools --save
-```
-
-As a command-line tool:
-```
-$ npm install -g array-tools
-```
 
 * * * 
 

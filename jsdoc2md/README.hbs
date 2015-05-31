@@ -13,7 +13,7 @@ Lightweight tool-kit for working with array data. 1.5k, compressed.
 
 There are four ways to use it.
 
-1) As a standard library, passing the input array on each invocation:
+1) As a standard library, passing the input array on each method invocation:
 
 ```js
 > var remainder = a.without([ 1, 2, 3, 4, 5 ], 1)
@@ -65,7 +65,7 @@ $ curl -s "https://api.github.com/users/75lb/repos?page=1&per_page=100" | array-
 ```
 
 #### More on chaining
-Each methods returning an `Array` (e.g. `where`, `without`) can be chained. Methods not returning an array (`exists`, `contains`) cannot be chained. If the final operation in your chain is chainable (returns an array), append `.val()` to terminate the chain and retrieve the output.
+Each method returning an `Array` (e.g. `where`, `without`) can be chained. Methods not returning an array (`exists`, `contains`) cannot be chained. If the final operation in your chain is chainable (returns an array), append `.val()` to terminate the chain and retrieve the output.
 
 ```js
 > a([ 1, 2, 2, 3 ]).exists(1)
@@ -76,12 +76,10 @@ false
 [ 2, 3 ]
 ```
 
-## API Reference
-{{#module name="array-tools"}}
-{{>body~}}
-{{>member-index~}}
-{{>members~}}
-{{/module}}
+## Compatibility
+This library is tested in node versions 0.10, 0.11, 0.12, iojs and the following browsers:
+
+[![Sauce Test Status](https://saucelabs.com/browser-matrix/arr-tools.svg)](https://saucelabs.com/u/arr-tools)
 
 ## Install
 As a library:
@@ -94,6 +92,13 @@ As a command-line tool:
 ```
 $ npm install -g array-tools
 ```
+
+## API Reference
+{{#module name="array-tools"}}
+{{>body~}}
+{{>member-index~}}
+{{>members~}}
+{{/module}}
 
 * * * 
 

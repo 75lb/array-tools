@@ -1,7 +1,7 @@
-var test = require("tape"),
-    a = require("../");
+var test = require("tape");
+var a = require("../");
 
-test("exists: search for object value", function(t){
+test("exists: query a recordset", function(t){
     var arr = [
         { result: false, number: 1 },
         { result: false, number: 2 }    
@@ -19,5 +19,14 @@ test("exists: search for scalar", function(t){
     t.equal(a.exists(arr, 1), true);
     t.equal(a.exists(arr, "1"), false);
     t.equal(a.exists(arr, "three"), true);
+    t.end();
+});
+
+test.skip("exists: search an object", function(t){
+    var obj1 = {};
+    var obj2 = {};
+    var arr = [ obj1, {} ];
+    t.equal(a.exists(arr, obj1), true);
+    t.equal(a.exists(arr, obj2), false);
     t.end();
 });
