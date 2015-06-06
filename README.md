@@ -442,7 +442,7 @@ Sort an array of objects by one or more fields
 ```
 <a name="module_array-tools.exists"></a>
 ### a.exists(array, value) ⇒ <code>boolean</code>
-returns true if a value, or nested object value exists in an array
+returns true if a value, or nested object value exists in an array.. If value is a plain object, it is considered to be a query. If `value` is a plain object and you want to search for it by reference, use `.contains`.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: not chainable  
@@ -457,13 +457,15 @@ returns true if a value, or nested object value exists in an array
 > a.exists([ 1, 2, 3 ], 2)
 true
 
+> a.exists([ 1, 2, 3 ], [ 2, 3 ])
+true
+
 > a.exists([ { result: false }, { result: false } ], { result: true })
 false
 
 > a.exists([ { result: true }, { result: false } ], { result: true })
-true
 
-> a.exists([ { result: true }, { result: true } ], { result: true })
+> a.exists([ { n: 1 }, { n: 2 }, { n: 3 } ], [ { n: 1 }, { n: 3 } ])
 true
 ```
 <a name="module_array-tools.findWhere"></a>
