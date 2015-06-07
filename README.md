@@ -127,8 +127,8 @@ $ npm install -g array-tools
 Takes any input and guarantees an array back.
 
 - converts array-like objects (e.g. `arguments`) to a real array
-- converts `null` or `undefined` to an empty array
-- converts any another other, singular value into an array containing that value
+- converts `undefined` to an empty array
+- converts any another other, singular value (including `null`) into an array containing that value
 - ignores input which is already an array
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -140,8 +140,11 @@ Takes any input and guarantees an array back.
 
 **Example**  
 ```js
-> a.arrayify(null)
+> a.arrayify(undefined)
 []
+
+> a.arrayify(null)
+[ null ]
 
 > a.arrayify(0)
 [ 0 ]
