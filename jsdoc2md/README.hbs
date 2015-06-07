@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/75lb/array-tools/badge.svg?branch=master)](https://coveralls.io/r/75lb/array-tools?branch=master)
 
 # array-tools
-Lightweight tool-kit for working with array data. 1.5k, compressed.
+Lightweight, use-anywhere toolkit for working with array data. 1.5k, compressed.
 
 ```js
 > var a = require("array-tools");
@@ -65,7 +65,10 @@ $ curl -s "https://api.github.com/users/75lb/repos?page=1&per_page=100" | array-
 ```
 
 #### More on chaining
-Each method returning an `Array` (e.g. `where`, `without`) can be chained. Methods not returning an array (`exists`, `contains`) cannot be chained. If the final operation in your chain is chainable (returns an array), append `.val()` to terminate the chain and retrieve the output.
+* Each method returning an `Array` (e.g. `where`, `without`) can be chained.
+* Methods not returning an array (`exists`, `contains`) cannot be chained.
+* All methods from `Array.prototype` (e.g. `.join`, `.forEach` etc.) are also available in the chain. The same rules, regarding what can and cannot be chained, apply as above.
+* If the final operation in your chain is "chainable" (returns an array), append `.val()` to terminate the chain and retrieve the output.
 
 ```js
 > a([ 1, 2, 2, 3 ]).exists(1)
@@ -74,6 +77,8 @@ true
 false
 > a([ 1, 2, 2, 3 ]).without(1).unique().val()
 [ 2, 3 ]
+> a([ 1, 2, 2, 3 ]).without(1).unique().join("-")
+'2-3'
 ```
 
 ## Compatibility
