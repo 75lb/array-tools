@@ -33,6 +33,7 @@ false
 var util = require("util");
 var ArrayTools = require("array-tools");
 
+// this class will inherit all array-tools methods
 function CarCollection(cars){
   ArrayTools.call(this, cars);
 }
@@ -103,9 +104,9 @@ $ npm install -g array-tools
 * [array-tools](#module_array-tools)
   * _chainable_
     * [.arrayify(any)](#module_array-tools.arrayify) ⇒ <code>Array</code>
-    * [.where(arrayOfObjects, query)](#module_array-tools.where) ⇒ <code>Array</code>
-    * [.pluck(arrayOfObjects, ...property)](#module_array-tools.pluck) ⇒ <code>Array</code>
-    * [.pick(arrayOfObjects, ...property)](#module_array-tools.pick) ⇒ <code>Array.&lt;object&gt;</code>
+    * [.where(recordset, query)](#module_array-tools.where) ⇒ <code>Array</code>
+    * [.pluck(recordset, ...property)](#module_array-tools.pluck) ⇒ <code>Array</code>
+    * [.pick(recordset, ...property)](#module_array-tools.pick) ⇒ <code>Array.&lt;object&gt;</code>
     * [.without(array, toRemove)](#module_array-tools.without) ⇒ <code>Array</code>
     * [.union(array1, array2, idKey)](#module_array-tools.union) ⇒ <code>Array</code>
     * [.commonSequence(a, b)](#module_array-tools.commonSequence) ⇒ <code>Array</code>
@@ -113,10 +114,10 @@ $ npm install -g array-tools
     * [.spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile) ⇒ <code>Array</code>
     * [.extract(array, query)](#module_array-tools.extract) ⇒ <code>Array</code>
     * [.flatten(array)](#module_array-tools.flatten) ⇒ <code>Array</code>
-    * [.sortBy(arrayOfObjects, columns, customOrder)](#module_array-tools.sortBy) ⇒ <code>Array</code>
+    * [.sortBy(recordset, columns, customOrder)](#module_array-tools.sortBy) ⇒ <code>Array</code>
   * _not chainable_
     * [.exists(array, value)](#module_array-tools.exists) ⇒ <code>boolean</code>
-    * [.findWhere(arrayOfObjects, query)](#module_array-tools.findWhere) ⇒ <code>object</code>
+    * [.findWhere(recordset, query)](#module_array-tools.findWhere) ⇒ <code>object</code>
     * [.last(arr)](#module_array-tools.last) ⇒ <code>\*</code>
     * [.remove(arr, toRemove)](#module_array-tools.remove) ⇒ <code>\*</code>
     * [.contains(arr, value)](#module_array-tools.contains) ⇒
@@ -153,7 +154,7 @@ Takes any input and guarantees an array back.
 [ 1, 2, 3 ]
 ```
 <a name="module_array-tools.where"></a>
-### a.where(arrayOfObjects, query) ⇒ <code>Array</code>
+### a.where(recordset, query) ⇒ <code>Array</code>
 Query a recordset, at any depth..
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -161,7 +162,7 @@ Query a recordset, at any depth..
 
 | Param | Type | Description |
 | --- | --- | --- |
-| arrayOfObjects | <code>Array.&lt;object&gt;</code> | the recordset to query |
+| recordset | <code>Array.&lt;object&gt;</code> | the recordset to query |
 | query | <code>query</code> | the query definition |
 
 **Example**  
@@ -210,7 +211,7 @@ Query a recordset, at any depth..
   { name: 'Zhana', favourite: { colour: [ "white", "red" ] } } ]
 ```
 <a name="module_array-tools.pluck"></a>
-### a.pluck(arrayOfObjects, ...property) ⇒ <code>Array</code>
+### a.pluck(recordset, ...property) ⇒ <code>Array</code>
 Plucks the value of the specified property from each object in the input array
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -218,7 +219,7 @@ Plucks the value of the specified property from each object in the input array
 
 | Param | Type | Description |
 | --- | --- | --- |
-| arrayOfObjects | <code>Array.&lt;object&gt;</code> | The input recordset |
+| recordset | <code>Array.&lt;object&gt;</code> | The input recordset |
 | ...property | <code>string</code> | Up to three property names - the first one found will be returned. |
 
 **Example**  
@@ -236,15 +237,15 @@ Plucks the value of the specified property from each object in the input array
 [ 'Lionel', 'Luis', 'Peter' ]
 ```
 <a name="module_array-tools.pick"></a>
-### a.pick(arrayOfObjects, ...property) ⇒ <code>Array.&lt;object&gt;</code>
-return a copy of the input `arrayOfObjects` containing objects having only the cherry-picked properties
+### a.pick(recordset, ...property) ⇒ <code>Array.&lt;object&gt;</code>
+return a copy of the input `recordset` containing objects having only the cherry-picked properties
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: chainable  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| arrayOfObjects | <code>Array.&lt;object&gt;</code> | the input |
+| recordset | <code>Array.&lt;object&gt;</code> | the input |
 | ...property | <code>string</code> | the properties to include in the result |
 
 **Example**  
@@ -408,7 +409,7 @@ flatten an array of arrays into a single array
 [ 1, 2, 3, 4, 5 ]
 ```
 <a name="module_array-tools.sortBy"></a>
-### a.sortBy(arrayOfObjects, columns, customOrder) ⇒ <code>Array</code>
+### a.sortBy(recordset, columns, customOrder) ⇒ <code>Array</code>
 Sort an array of objects by one or more fields
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -417,7 +418,7 @@ Sort an array of objects by one or more fields
 
 | Param | Type | Description |
 | --- | --- | --- |
-| arrayOfObjects | <code>Array.&lt;object&gt;</code> | input array |
+| recordset | <code>Array.&lt;object&gt;</code> | input array |
 | columns | <code>string</code> &#124; <code>Array.&lt;string&gt;</code> | column name(s) to sort by |
 | customOrder | <code>object</code> | specific sort orders, per columns |
 
@@ -474,8 +475,8 @@ false
 true
 ```
 <a name="module_array-tools.findWhere"></a>
-### a.findWhere(arrayOfObjects, query) ⇒ <code>object</code>
-returns the first item from `arrayOfObjects` where key/value pairs
+### a.findWhere(recordset, query) ⇒ <code>object</code>
+returns the first item from `recordset` where key/value pairs
 from `query` are matched identically
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -483,7 +484,7 @@ from `query` are matched identically
 
 | Param | Type | Description |
 | --- | --- | --- |
-| arrayOfObjects | <code>Array.&lt;object&gt;</code> | the array to search |
+| recordset | <code>Array.&lt;object&gt;</code> | the array to search |
 | query | <code>object</code> | an object containing the key/value pairs you want to match |
 
 **Example**  
