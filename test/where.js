@@ -1,6 +1,10 @@
 var test = require("tape");
 var a = require("../");
 
+var fixture = {
+    arr: [ 1, 2, 3, 4 ]
+};
+
 test("where", function(t){
     var arr = [
         { result: false, number: 1 },
@@ -60,3 +64,29 @@ test(".where deep query", function(t){
     ]);
     t.end();
 });
+
+test(".where(array, primitive)", function(t){
+    t.deepEqual(a.where(fixture.arr, 1 ), [ 1 ]);
+    t.end();
+});
+
+test(".where(array, regex)", function(t){
+    t.deepEqual(a.where(fixture.arr, /2/ ), [ 2 ]);
+    t.end();
+});
+
+test(".where(array, function)", function(t){
+    function over3(val){ return val > 3; }
+    t.deepEqual(a.where(fixture.arr, over3 ), [ 4 ]);
+    t.end();
+});
+
+test(".where(array, array)", function(t){
+    function over1(val){ return val > 1; }
+    function under4(val){ return val < 4; }
+    t.deepEqual(a.where(fixture.arr, [ over1, under4 ] ), [ 2, 3 ]);
+    t.deepEqual(a.where(fixture.arr, [ /2/, /4/ ] ), [ 2, 4 ]);
+    t.deepEqual(a.where(fixture.arr, [ 1, 3 ] ), [ 1, 3 ]);
+    t.end();
+});
+

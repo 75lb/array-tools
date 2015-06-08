@@ -284,7 +284,7 @@ return a copy of the input `recordset` containing objects having only the cherry
 ```
 <a name="module_array-tools.without"></a>
 ### a.without(array, toRemove) ⇒ <code>Array</code>
-Returns the input minus the specified values.
+Returns a new array with the same content as the input minus the specified values.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: chainable  
