@@ -72,6 +72,7 @@ test(".where(array, primitive)", function(t){
 });
 
 test(".where(array, regex)", function(t){
+    t.deepEqual(a.where(fixture.arr, /1/ ), [ 1, 1 ]);
     t.deepEqual(a.where(fixture.arr, /2/ ), [ 2 ]);
     t.end();
 });
