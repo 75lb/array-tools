@@ -2,7 +2,7 @@ var test = require("tape");
 var a = require("../");
 
 var fixture = {
-    arr: [ 1, 2, 3, 4 ]
+    arr: [ 1, 1, 2, 3, 4 ]
 };
 
 test("where", function(t){
@@ -66,7 +66,8 @@ test(".where deep query", function(t){
 });
 
 test(".where(array, primitive)", function(t){
-    t.deepEqual(a.where(fixture.arr, 1 ), [ 1 ]);
+    t.deepEqual(a.where(fixture.arr, 1 ), [ 1, 1 ]);
+    t.deepEqual(a.where(fixture.arr, 2 ), [ 2 ]);
     t.end();
 });
 
@@ -86,7 +87,7 @@ test(".where(array, array)", function(t){
     function under4(val){ return val < 4; }
     t.deepEqual(a.where(fixture.arr, [ over1, under4 ] ), [ 2, 3 ]);
     t.deepEqual(a.where(fixture.arr, [ /2/, /4/ ] ), [ 2, 4 ]);
-    t.deepEqual(a.where(fixture.arr, [ 1, 3 ] ), [ 1, 3 ]);
+    t.deepEqual(a.where(fixture.arr, [ 1, 3 ] ), [ 1, 1, 3 ]);
     t.end();
 });
 
