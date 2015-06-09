@@ -1,6 +1,8 @@
 var test = require("tape");
 var a = require("../");
 
+/* test all chainables/unchainables work as described */
+
 test("chaining: .pluck", function(t){
     var data = [
         {one: 1, two: 2},

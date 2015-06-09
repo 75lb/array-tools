@@ -1,20 +1,16 @@
 var test = require("tape");
 var a = require("../");
 
-test("a.contains(arr, value)", function(t){
-    var fixture = [ 1, 2, 3 ];
-	var result = a.contains(fixture, 1);
-	var wrong = a.contains(fixture, 4);
-    t.strictEqual(result, true);
-    t.strictEqual(wrong, false);
+var fixture = [ 1, 2, 3 ];
+
+test("a.contains(array, value)", function(t){
+    t.strictEqual(a.contains(fixture, 1), true);
+    t.strictEqual(a.contains(fixture, 4), false);
     t.end();
 });
 
-test("a(arr).contains(value)", function(t){
-    var fixture = [ 1, 2, 3 ];
-	var result = a(fixture).contains(1);
-	var wrong = a(fixture).contains(4);
-    t.strictEqual(result, true);
-    t.strictEqual(wrong, false);
+test("a.contains(array, array)", function(t){
+    t.strictEqual(a.contains(fixture, [ 1, 2 ]), true);
+    t.strictEqual(a.contains(fixture, [ 1, 2, 3, 4 ]), false);
     t.end();
 });

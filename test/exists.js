@@ -24,10 +24,3 @@ test(".exists(array, primitive)", function(t){
     t.equal(a.exists(f.arr, "three"), true);
     t.end();
 });
-
-test(".exists(array, primitive[])", function(t){
-    t.equal(a.exists(f.arr, [ 1, 2 ]), true);
-    t.equal(a.exists(f.arr, [ 1, 2, 3 ]), false);
-    t.equal(a.exists(f.arr, [ 1, 2, "three" ]), true);
-    t.end();
-});

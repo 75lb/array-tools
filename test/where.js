@@ -1,50 +1,60 @@
 var test = require("tape");
 var a = require("../");
 
-var fixture = {
-    arr: [ 1, 1, 2, 3, 4 ]
+var f = {
+    arr: [ 1, 1, 2, 3, 4 ],
+    recordset: [
+        { b: false, n: 1 },
+        { b: false, n: 2 }
+    ]
 };
 
-test("where", function(t){
-    var arr = [
-        { result: false, number: 1 },
-        { result: false, number: 2 }
-    ];
-    t.deepEqual(a.where(arr, { result: true }), []);
-    t.deepEqual(a.where(arr, { result: false }), [
-        { result: false, number: 1 },
-        { result: false, number: 2 }
+test(".where(recordset, query)", function(t){
+    t.deepEqual(a.where(f.recordset, { b: true }), []);
+    t.deepEqual(a.where(f.recordset, { b: false }), [
+        { b: false, n: 1 },
+        { b: false, n: 2 }
     ]);
-    t.deepEqual(a.where(arr, { result: false, number: 3 }), []);
-    t.deepEqual(a.where(arr, { result: false, number: 2 }), [
-        { result: false, number: 2 }
+    t.deepEqual(a.where(f.recordset, { b: false, n: 3 }), []);
+    t.deepEqual(a.where(f.recordset, { b: false, n: 2 }), [
+        { b: false, n: 2 }
     ]);
     t.end();
 });
 
-test("where, regex", function(t){
-    var arr = [
-        { flag: false, something: "aa" },
-        { something: "bb" }
-    ];
-    var result = [
-        { something: "bb" }
-    ];
-    t.deepEqual(a.where(arr, { flag: undefined, something: /.+/ }), result);
+test(".where(recordset, regex)", function(t){
+    t.deepEqual(a.where(f.recordset, { n: /1/ }), [ { b: false, n: 1 } ]);
+    t.deepEqual(a.where(f.recordset, { x: undefined, n: /.+/ }), [
+        { b: false, n: 1 },
+        { b: false, n: 2 }
+    ]);
     t.end();
 });
 
-test("where, regex 2", function(t){
-    var arr = [
-        { flag: false },
-        { something: "bb" }
-    ];
-    var result = [
-        { something: "bb" }
-    ];
-    t.deepEqual(a.where(arr, { something: /.+/ }), result);
+test(".where(array, primitive)", function(t){
+    t.deepEqual(a.where(f.arr, 1 ), [ 1, 1 ]);
+    t.deepEqual(a.where(f.arr, 2 ), [ 2 ]);
     t.end();
 });
+
+test(".where(array, regex)", function(t){
+    t.deepEqual(a.where(f.arr, /1/ ), [ 1, 1 ]);
+    t.deepEqual(a.where(f.arr, /2/ ), [ 2 ]);
+    t.end();
+});
+
+test(".where(array, function)", function(t){
+    function over3(val){ return val > 3; }
+    t.deepEqual(a.where(f.arr, over3 ), [ 4 ]);
+    t.end();
+});
+
+test(".where(array, array)", function(t){
+    function over3(val){ return val > 3; }
+    t.deepEqual(a.where(f.arr, [ 1, /2/, over3 ] ), [ 1, 1, 2, 4 ]);
+    t.end();
+});
+
 
 test(".where deep query", function(t){
     var arr = [
@@ -62,33 +72,6 @@ test(".where deep query", function(t){
     t.deepEqual(a.where(arr, { one: { number: 1, letter: "a" } }), [
         { one: { number: 1, letter: "a" } }
     ]);
-    t.end();
-});
-
-test(".where(array, primitive)", function(t){
-    t.deepEqual(a.where(fixture.arr, 1 ), [ 1, 1 ]);
-    t.deepEqual(a.where(fixture.arr, 2 ), [ 2 ]);
-    t.end();
-});
-
-test(".where(array, regex)", function(t){
-    t.deepEqual(a.where(fixture.arr, /1/ ), [ 1, 1 ]);
-    t.deepEqual(a.where(fixture.arr, /2/ ), [ 2 ]);
-    t.end();
-});
-
-test(".where(array, function)", function(t){
-    function over3(val){ return val > 3; }
-    t.deepEqual(a.where(fixture.arr, over3 ), [ 4 ]);
-    t.end();
-});
-
-test(".where(array, array)", function(t){
-    function over1(val){ return val > 1; }
-    function under4(val){ return val < 4; }
-    t.deepEqual(a.where(fixture.arr, [ over1, under4 ] ), [ 2, 3 ]);
-    t.deepEqual(a.where(fixture.arr, [ /2/, /4/ ] ), [ 2, 4 ]);
-    t.deepEqual(a.where(fixture.arr, [ 1, 3 ] ), [ 1, 1, 3 ]);
     t.end();
 });
 
