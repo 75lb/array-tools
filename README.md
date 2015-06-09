@@ -99,15 +99,20 @@ As a command-line tool:
 $ npm install -g array-tools
 ```
 
+Using bower:
+```
+$ bower install array-tools --save
+```
+
 ## API Reference
 
 * [array-tools](#module_array-tools)
   * _chainable_
     * [.arrayify(any)](#module_array-tools.arrayify) ⇒ <code>Array</code>
-    * [.where(recordset, query)](#module_array-tools.where) ⇒ <code>Array</code>
+    * [.where(array, query)](#module_array-tools.where) ⇒ <code>Array</code>
+    * [.without(array, toRemove)](#module_array-tools.without) ⇒ <code>Array</code>
     * [.pluck(recordset, ...property)](#module_array-tools.pluck) ⇒ <code>Array</code>
     * [.pick(recordset, ...property)](#module_array-tools.pick) ⇒ <code>Array.&lt;object&gt;</code>
-    * [.without(array, toRemove)](#module_array-tools.without) ⇒ <code>Array</code>
     * [.union(array1, array2, idKey)](#module_array-tools.union) ⇒ <code>Array</code>
     * [.commonSequence(a, b)](#module_array-tools.commonSequence) ⇒ <code>Array</code>
     * [.unique(array)](#module_array-tools.unique) ⇒ <code>Array</code>
@@ -116,11 +121,11 @@ $ npm install -g array-tools
     * [.flatten(array)](#module_array-tools.flatten) ⇒ <code>Array</code>
     * [.sortBy(recordset, columns, customOrder)](#module_array-tools.sortBy) ⇒ <code>Array</code>
   * _not chainable_
-    * [.exists(array, value)](#module_array-tools.exists) ⇒ <code>boolean</code>
+    * [.exists(array, query)](#module_array-tools.exists) ⇒ <code>boolean</code>
     * [.findWhere(recordset, query)](#module_array-tools.findWhere) ⇒ <code>object</code>
     * [.last(arr)](#module_array-tools.last) ⇒ <code>\*</code>
     * [.remove(arr, toRemove)](#module_array-tools.remove) ⇒ <code>\*</code>
-    * [.contains(arr, value)](#module_array-tools.contains) ⇒
+    * [.contains(array, value)](#module_array-tools.contains) ⇒
 
 <a name="module_array-tools.arrayify"></a>
 ### a.arrayify(any) ⇒ <code>Array</code>
@@ -157,15 +162,15 @@ Takes any input and guarantees an array back.
 [ 1, 2, 3 ]
 ```
 <a name="module_array-tools.where"></a>
-### a.where(recordset, query) ⇒ <code>Array</code>
-Query a recordset, at any depth..
+### a.where(array, query) ⇒ <code>Array</code>
+Query an array, at any depth..
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: chainable  
 
 | Param | Type | Description |
 | --- | --- | --- |
-| recordset | <code>Array.&lt;object&gt;</code> | the recordset to query |
+| array | <code>Array.&lt;object&gt;</code> | the array to query |
 | query | <code>query</code> | the query definition |
 
 **Example**  
@@ -205,7 +210,7 @@ match using a regular expression
   { name: 'Zhana', age: 10 } ]
 ```
 
-You can query to any arbitrary depth. So with deeper data, like: 
+You can query to any arbitrary depth. So with deeper data, like:
 ```js
 > deepData = [
     { name: "Dana", favourite: { colour: "light red" } },
@@ -227,6 +232,26 @@ Prefix the property name with `+` if the value you want to match could be singul
 [ { name: 'Dana', favourite: { colour: 'light red' } },
   { name: 'Yana', favourite: { colour: 'dark red' } },
   { name: 'Zhana', favourite: { colour: [ "white", "red" ] } } ]
+```
+<a name="module_array-tools.without"></a>
+### a.without(array, toRemove) ⇒ <code>Array</code>
+Returns a new array with the same content as the input minus the specified values.
+
+**Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
+**Category**: chainable  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| array | <code>Array</code> | the input array |
+| toRemove | <code>\*</code> | a single, or array of values to omit |
+
+**Example**  
+```js
+> a.without([ 1, 2, 3 ], 2)
+[ 1, 3 ]
+
+> a.without([ 1, 2, 3 ], [ 2, 3 ])
+[ 1 ]
 ```
 <a name="module_array-tools.pluck"></a>
 ### a.pluck(recordset, ...property) ⇒ <code>Array</code>
@@ -281,26 +306,6 @@ return a copy of the input `recordset` containing objects having only the cherry
 [ { name: 'Dana', age: 30 },
   { name: 'Yana', age: 20 },
   { name: 'Zhana', age: 10 } ]
-```
-<a name="module_array-tools.without"></a>
-### a.without(array, toRemove) ⇒ <code>Array</code>
-Returns a new array with the same content as the input minus the specified values.
-
-**Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
-**Category**: chainable  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| array | <code>Array</code> | the input array |
-| toRemove | <code>\*</code> | a single, or array of values to omit |
-
-**Example**  
-```js
-> a.without([ 1, 2, 3 ], 2)
-[ 1, 3 ]
-
-> a.without([ 1, 2, 3 ], [ 2, 3 ])
-[ 1 ]
 ```
 <a name="module_array-tools.union"></a>
 ### a.union(array1, array2, idKey) ⇒ <code>Array</code>
@@ -465,7 +470,7 @@ Sort an array of objects by one or more fields
   { a: 4, b: 3, c: 1 } ]
 ```
 <a name="module_array-tools.exists"></a>
-### a.exists(array, value) ⇒ <code>boolean</code>
+### a.exists(array, query) ⇒ <code>boolean</code>
 returns true if a value, or nested object value exists in an array.. If value is a plain object, it is considered to be a query. If `value` is a plain object and you want to search for it by reference, use `.contains`.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -474,7 +479,7 @@ returns true if a value, or nested object value exists in an array.. If value is
 | Param | Type | Description |
 | --- | --- | --- |
 | array | <code>Array</code> | the array to search |
-| value | <code>\*</code> | the value to search for |
+| query | <code>\*</code> | the value to search for |
 
 **Example**  
 ```js
@@ -539,8 +544,8 @@ Return the last item in an array.
 | toRemove | <code>\*</code> | the item to remove |
 
 <a name="module_array-tools.contains"></a>
-### a.contains(arr, value) ⇒
-Searches the array for the exact value supplied (strict equality). To query for value existance using an expression or function, use [exists](#module_array-tools.exists).
+### a.contains(array, value) ⇒
+Searches the array for the exact value supplied (strict equality). To query for value existance using an expression or function, use [exists](#module_array-tools.exists). If you pass an array of values, contains will return true if they _all_ exist. (note: `exists` returns true if _some_ of them exist).
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Returns**: boolean  
@@ -549,7 +554,7 @@ Searches the array for the exact value supplied (strict equality). To query for 
 
 | Param | Type | Description |
 | --- | --- | --- |
-| arr | <code>Array</code> | the input array |
+| array | <code>Array</code> | the input array |
 | value | <code>\*</code> | the value to look for |
 
 
