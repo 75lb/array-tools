@@ -14,9 +14,10 @@ process.argv.splice(0, 2);
 var method = process.argv.shift();
 var args = process.argv.slice(0);
 
-function processInput(array){
-    args.unshift(array);
-    var result = a[method].apply(null, args);
+function processInput(input){
+    var arr = a(input);
+    var result = arr[method].apply(arr, args);
+    if (result._data) result = result.val();
     return JSON.stringify(result, null, "  ") + "\n";
 }
 
