@@ -5,7 +5,7 @@
 [![Coverage Status](https://coveralls.io/repos/75lb/array-tools/badge.svg?branch=master)](https://coveralls.io/r/75lb/array-tools?branch=master)
 
 # array-tools
-Lightweight, use-anywhere toolkit for working with array data. 1.5k, compressed.
+Lightweight, use-anywhere toolkit for working with array data.
 
 ```js
 > var a = require("array-tools");
