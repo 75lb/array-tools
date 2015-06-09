@@ -30,6 +30,7 @@ test(".pick(recordset, property, property)", function(t){
     t.end();
 });
 
-test(".pick(recordset, property.property)", function(t){
-    
+test.skip(".pick(recordset, property.property)", function(t){
+    //todo
+    t.end();
 });
