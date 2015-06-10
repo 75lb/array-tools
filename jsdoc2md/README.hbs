@@ -48,21 +48,15 @@ cars.findWhere({ owner: "Floyd" });
 // returns { owner: "Floyd", model: "Bugatti Veyron" }
 ```
 
-4) As a command-line tool. 
+4) As a command-line tool. E.g. array-tools downloads last month:
 ```sh
-$ curl -s "https://api.github.com/users/75lb/repos?page=1&per_page=100" | array-tools pick full_name description
-[
-  {
-    "full_name": "75lb/ansi-escape-sequences",
-    "description": "A simple library containing all known terminal ansi escape codes and sequences."
-  },
-  {
-    "full_name": "75lb/baldrick",
-    "description": "Your own private dogsbody. Does the shitty work you can't be arsed to do."
-  },
-  etc,
-  etc
-]
+$ curl -s https://api.npmjs.org/downloads/range/last-month/jsdoc-to-markdown \
+| object-tools get downloads \
+| array-tools pluck downloads \
+| array-tools join "," \
+| sed s/\"//g \
+| spark
+▂▅▃▅▅▁▁▃▄▃▆▂▂▁▁▂▄▃▃▁▁▂█▆▆▄▁▃▅▃
 ```
 
 #### More on chaining
