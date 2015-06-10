@@ -7,28 +7,37 @@
 # array-tools
 Lightweight, use-anywhere toolkit for working with array data.
 
-```js
-> var a = require("array-tools");
-```
-
 There are four ways to use it.
 
-1) As a standard library, passing the input array on each method invocation:
+1) As a command-line tool. E.g. array-tools downloads last month:
+```sh
+$ curl -s https://api.npmjs.org/downloads/range/last-month/jsdoc-to-markdown \
+| object-tools get downloads \
+| array-tools pluck downloads \
+| array-tools join "," \
+| sed s/\"//g \
+| spark
+▂▅▃▅▅▁▁▃▄▃▆▂▂▁▁▂▄▃▃▁▁▂█▆▆▄▁▃▅▃
+```
+
+2) As a standard library, passing the input array on each method invocation:
 
 ```js
+> var a = require("array-tools");
+
 > var remainder = a.without([ 1, 2, 3, 4, 5 ], 1)
 > a.exists(remainder, 1)
 false
 ```
 
-2) As a chainable method, passing the input array once then chaining from there:
+3) As a chainable method, passing the input array once then chaining from there:
 
 ```js
 > a([ 1, 2, 3, 4, 5 ]).without(1).exists(1);
 false
 ```
 
-3) As a base class.
+4) As a base class.
 ```js
 var util = require("util");
 var ArrayTools = require("array-tools");
@@ -46,17 +55,6 @@ var cars = new CarCollection([
 
 cars.findWhere({ owner: "Floyd" });
 // returns { owner: "Floyd", model: "Bugatti Veyron" }
-```
-
-4) As a command-line tool. E.g. array-tools downloads last month:
-```sh
-$ curl -s https://api.npmjs.org/downloads/range/last-month/jsdoc-to-markdown \
-| object-tools get downloads \
-| array-tools pluck downloads \
-| array-tools join "," \
-| sed s/\"//g \
-| spark
-▂▅▃▅▅▁▁▃▄▃▆▂▂▁▁▂▄▃▃▁▁▂█▆▆▄▁▃▅▃
 ```
 
 #### More on chaining
@@ -157,7 +155,7 @@ Takes any input and guarantees an array back.
 ```
 <a name="module_array-tools.where"></a>
 ### a.where(array, query) ⇒ <code>Array</code>
-Query an array, at any depth..
+Deep query an array.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: chainable  
