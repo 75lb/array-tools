@@ -165,7 +165,7 @@ Query an array, at any depth..
 | Param | Type | Description |
 | --- | --- | --- |
 | array | <code>Array.&lt;object&gt;</code> | the array to query |
-| query | <code>query</code> | the query definition |
+| query | <code>any</code> &#124; <code>Array.&lt;any&gt;</code> | one or more queries |
 
 **Example**  
 Say you have a recordset:
@@ -238,7 +238,7 @@ you can combine any of the above by supplying an array of queries. Records will 
 ```
 <a name="module_array-tools.without"></a>
 ### a.without(array, toRemove) ⇒ <code>Array</code>
-Returns a new array with the same content as the input minus the specified values.
+Returns a new array with the same content as the input minus the specified values. It accepts the same query syntax as [where](#module_array-tools.where).
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: chainable  
@@ -246,7 +246,7 @@ Returns a new array with the same content as the input minus the specified value
 | Param | Type | Description |
 | --- | --- | --- |
 | array | <code>Array</code> | the input array |
-| toRemove | <code>\*</code> | a single, or array of values to omit |
+| toRemove | <code>any</code> &#124; <code>Array.&lt;any&gt;</code> | one, or more queries |
 
 **Example**  
 ```js
@@ -255,6 +255,14 @@ Returns a new array with the same content as the input minus the specified value
 
 > a.without([ 1, 2, 3 ], [ 2, 3 ])
 [ 1 ]
+
+> data = [
+    { name: "Dana", age: 30 },
+    { name: "Yana", age: 20 },
+    { name: "Zhana", age: 10 }
+]
+> a.without(data, { name: /ana/ })
+[]
 ```
 <a name="module_array-tools.pluck"></a>
 ### a.pluck(recordset, ...property) ⇒ <code>Array</code>
