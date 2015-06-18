@@ -18,6 +18,8 @@ test("chaining: correct methods return the chainable", function(t){
     t.notOk(a(f.recordset).some(func) instanceof a);
     t.notOk(a(f.recordset).every(func) instanceof a);
     t.notOk(a(f.recordset).join() instanceof a);
+
+    t.ok(a(f.recordset).pluck() instanceof a);
     t.end();
 });
 
@@ -36,7 +38,7 @@ test("chaining: .pluck", function(t){
         [ 2, "two", "zwei" ]
     );
     t.deepEqual(
-        a(data).pluck("one", "two").val(), 
+        a(data).pluck(["one", "two"]).val(), 
         [ 1, "two", "one" ]
     );
     t.end();

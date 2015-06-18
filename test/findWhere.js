@@ -6,9 +6,9 @@ test("findWhere", function(t){
         { result: false, number: 1 },
         { result: false, number: 2 }
     ];
-    t.deepEqual(a.findWhere(arr, { result: true }), null);
+    t.deepEqual(a.findWhere(arr, { result: true }), undefined);
     t.deepEqual(a.findWhere(arr, { result: false }), { result: false, number: 1 });
-    t.deepEqual(a.findWhere(arr, { result: false, number: 3 }), null);
+    t.deepEqual(a.findWhere(arr, { result: false, number: 3 }), undefined);
     t.deepEqual(a.findWhere(arr, { result: false, number: 2 }), { result: false, number: 2 });
     t.end();
 });
@@ -21,7 +21,7 @@ test(".findWhere deep query", function(t){
     t.deepEqual(a.findWhere(arr, { one: { number: 1 } }), { one: { number: 1, letter: "a" } });
     t.deepEqual(a.findWhere(arr, { one: { number: 2 } }), { one: { number: 2, letter: "b" } });
     t.deepEqual(a.findWhere(arr, { one: { letter: "b" } }), { one: { number: 2, letter: "b" } });
-    t.deepEqual(a.findWhere(arr, { one: { number: 3 } }), null);
+    t.deepEqual(a.findWhere(arr, { one: { number: 3 } }), undefined);
     t.end();
 });
 
@@ -54,7 +54,7 @@ test(".findWhere deeper query", function(t){
 	});
 
     query = {  name: "two", data: { two: { three: "four" } } };
-    t.deepEqual(a.findWhere(arr, query), null);
+    t.deepEqual(a.findWhere(arr, query), undefined);
 
     query = {  name: "two", data: { two: { three: "five" } } };
     t.deepEqual(a.findWhere(arr, query), { 
