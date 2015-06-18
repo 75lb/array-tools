@@ -3,6 +3,24 @@ var a = require("../");
 
 /* test all chainables/unchainables work as described */
 
+var f = {
+    recordset: [
+        {one: 1, two: 2},
+        {one: 1, two: 3},
+        {one: 2, two: 5},
+        {two: "two"},
+        {one: "one", two: "zwei"},
+    ]
+};
+
+test("chaining: correct methods return the chainable", function(t){
+    function func(i){return false;}
+    t.notOk(a(f.recordset).some(func) instanceof a);
+    t.notOk(a(f.recordset).every(func) instanceof a);
+    t.notOk(a(f.recordset).join() instanceof a);
+    t.end();
+});
+
 test("chaining: .pluck", function(t){
     var data = [
         {one: 1, two: 2},
@@ -93,3 +111,4 @@ test("chaining: .pluck then .join", function(t){
     t.strictEqual(result, "1,1,2,one");
     t.end();
 });
+
