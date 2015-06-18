@@ -4,6 +4,8 @@
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 [![Coverage Status](https://coveralls.io/repos/75lb/array-tools/badge.svg?branch=master)](https://coveralls.io/r/75lb/array-tools?branch=master)
 
+***this documentation is for the pre-release version***
+
 # array-tools
 Lightweight, use-anywhere toolkit for working with array data.
 
@@ -11,11 +13,10 @@ There are four ways to use it.
 
 1) As a command-line tool. E.g. array-tools downloads last month:
 ```sh
-$ curl -s https://api.npmjs.org/downloads/range/last-month/jsdoc-to-markdown \
+$ curl -s https://api.npmjs.org/downloads/range/last-month/array-tools \
 | object-tools get downloads \
 | array-tools pluck downloads \
 | array-tools join "," \
-| sed s/\"//g \
 | spark
 ▂▅▃▅▅▁▁▃▄▃▆▂▂▁▁▂▄▃▃▁▁▂█▆▆▄▁▃▅▃
 ```

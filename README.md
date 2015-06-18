@@ -4,6 +4,8 @@
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 [![Coverage Status](https://coveralls.io/repos/75lb/array-tools/badge.svg?branch=master)](https://coveralls.io/r/75lb/array-tools?branch=master)
 
+***this documentation is for the pre-release version***
+
 # array-tools
 Lightweight, use-anywhere toolkit for working with array data.
 
@@ -11,11 +13,10 @@ There are four ways to use it.
 
 1) As a command-line tool. E.g. array-tools downloads last month:
 ```sh
-$ curl -s https://api.npmjs.org/downloads/range/last-month/jsdoc-to-markdown \
+$ curl -s https://api.npmjs.org/downloads/range/last-month/array-tools \
 | object-tools get downloads \
 | array-tools pluck downloads \
 | array-tools join "," \
-| sed s/\"//g \
 | spark
 ▂▅▃▅▅▁▁▃▄▃▆▂▂▁▁▂▄▃▃▁▁▂█▆▆▄▁▃▅▃
 ```
@@ -103,7 +104,7 @@ $ bower install array-tools --save
     * [.arrayify(any)](#module_array-tools.arrayify) ⇒ <code>Array</code>
     * [.where(array, query)](#module_array-tools.where) ⇒ <code>Array</code>
     * [.without(array, toRemove)](#module_array-tools.without) ⇒ <code>Array</code>
-    * [.pluck(recordset, ...property)](#module_array-tools.pluck) ⇒ <code>Array</code>
+    * [.pluck(recordset, property)](#module_array-tools.pluck) ⇒ <code>Array</code>
     * [.pick(recordset, ...property)](#module_array-tools.pick) ⇒ <code>Array.&lt;object&gt;</code>
     * [.union(array1, array2, idKey)](#module_array-tools.union) ⇒ <code>Array</code>
     * [.commonSequence(a, b)](#module_array-tools.commonSequence) ⇒ <code>Array</code>
@@ -230,6 +231,7 @@ you can combine any of the above by supplying an array of queries. Records will 
 ```js
 > var nameBeginsWithY = { name: /^Y/ };
 > var faveColourIncludesWhite = { favourite: { "+colour": "white" } };
+
 > a.where(deepData, [ nameBeginsWithY, faveColourIncludesWhite ])
 [ { name: 'Yana', favourite: { colour: 'dark red' } },
   { name: 'Zhana', favourite: { colour: [ "white", "red" ] } } ]
@@ -263,8 +265,8 @@ Returns a new array with the same content as the input minus the specified value
 []
 ```
 <a name="module_array-tools.pluck"></a>
-### a.pluck(recordset, ...property) ⇒ <code>Array</code>
-Plucks the value of the specified property from each object in the input array
+### a.pluck(recordset, property) ⇒ <code>Array</code>
+Returns an array containing the value of each specified property, if it exists.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: chainable  
@@ -272,7 +274,7 @@ Plucks the value of the specified property from each object in the input array
 | Param | Type | Description |
 | --- | --- | --- |
 | recordset | <code>Array.&lt;object&gt;</code> | The input recordset |
-| ...property | <code>string</code> | Up to three property names - the first one found will be returned. |
+| property | <code>string</code> | Property name |
 
 **Example**  
 ```js
