@@ -1,7 +1,7 @@
 {
   "name": "array-tools",
   "author": "Lloyd Brookes <75pound@gmail.com>",
-  "version": "2.0.0-2",
+  "version": "2.0.0-3",
   "description": "Lightweight, use-anywhere toolkit for working with array data. 1.5k, compressed.",
   "repository": "https://github.com/75lb/array-tools.git",
   "main": "./lib/array-tools.js",
