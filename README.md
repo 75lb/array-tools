@@ -266,7 +266,7 @@ Returns a new array with the same content as the input minus the specified value
 ```
 <a name="module_array-tools.pluck"></a>
 ### a.pluck(recordset, property) ⇒ <code>Array</code>
-Returns an array containing the value of each specified property, if it exists.
+Returns an array containing each value plucked from the specified property of each object in the input array.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: chainable  
@@ -274,21 +274,40 @@ Returns an array containing the value of each specified property, if it exists.
 | Param | Type | Description |
 | --- | --- | --- |
 | recordset | <code>Array.&lt;object&gt;</code> | The input recordset |
-| property | <code>string</code> | Property name |
+| property | <code>string</code> &#124; <code>Array.&lt;string&gt;</code> | Property name, or an array of property names. If an array is supplied, the first existing property will be returned. |
 
 **Example**  
+with this data.. 
 ```js
 > var data = [
-    { a: "Lionel", b: "Roger" },
-    { a: "Luis", b: "Craig" },
-    { b: "Peter" },
+    { name: "Pavel", nick: "Pasha" },
+    { name: "Richard", nick: "Dick" },
+    { name: "Trevor" },
 ]
+```
 
-> a.pluck(data, "a")
-[ 'Lionel', 'Luis' ]
+pluck all the nicknames
+```js
+> a.pluck(data, "nick")
+[ 'Pasha', 'Dick' ]
+```
 
-> a.pluck(data, "a", "b")
-[ 'Lionel', 'Luis', 'Peter' ]
+in the case no nickname exists, take the name instead:
+```js
+> a.pluck(data, [ "nick", "name" ])
+[ 'Pasha', 'Dick', 'Trevor' ]
+```
+
+the values being plucked can be at any depth:
+```js
+> var data = [
+    { leeds: { leeds: { leeds: "we" } } },
+    { leeds: { leeds: { leeds: "are" } } },
+    { leeds: { leeds: { leeds: "Leeds" } } }
+];
+
+> a.pluck(data, "leeds.leeds.leeds")
+[ 'we', 'are', 'Leeds' ]
 ```
 <a name="module_array-tools.pick"></a>
 ### a.pick(recordset, ...property) ⇒ <code>Array.&lt;object&gt;</code>
