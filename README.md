@@ -105,7 +105,7 @@ $ bower install array-tools --save
     * [.where(array, query)](#module_array-tools.where) ⇒ <code>Array</code>
     * [.without(array, toRemove)](#module_array-tools.without) ⇒ <code>Array</code>
     * [.pluck(recordset, property)](#module_array-tools.pluck) ⇒ <code>Array</code>
-    * [.pick(recordset, ...property)](#module_array-tools.pick) ⇒ <code>Array.&lt;object&gt;</code>
+    * [.pick(recordset, property)](#module_array-tools.pick) ⇒ <code>Array.&lt;object&gt;</code>
     * [.union(array1, array2, idKey)](#module_array-tools.union) ⇒ <code>Array</code>
     * [.commonSequence(a, b)](#module_array-tools.commonSequence) ⇒ <code>Array</code>
     * [.unique(array)](#module_array-tools.unique) ⇒ <code>Array</code>
@@ -310,7 +310,7 @@ the values being plucked can be at any depth:
 [ 'we', 'are', 'Leeds' ]
 ```
 <a name="module_array-tools.pick"></a>
-### a.pick(recordset, ...property) ⇒ <code>Array.&lt;object&gt;</code>
+### a.pick(recordset, property) ⇒ <code>Array.&lt;object&gt;</code>
 return a copy of the input `recordset` containing objects having only the cherry-picked properties
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -319,23 +319,45 @@ return a copy of the input `recordset` containing objects having only the cherry
 | Param | Type | Description |
 | --- | --- | --- |
 | recordset | <code>Array.&lt;object&gt;</code> | the input |
-| ...property | <code>string</code> | the properties to include in the result |
+| property | <code>string</code> &#124; <code>Array.&lt;string&gt;</code> | the properties to include in the result |
 
 **Example**  
+with this data..
 ```js
 > data = [
     { name: "Dana", age: 30 },
     { name: "Yana", age: 20 },
     { name: "Zhana", age: 10 }
 ]
+```
 
+return only the `"name"` field..
+```js
 > a.pick(data, "name")
 [ { name: 'Dana' }, { name: 'Yana' }, { name: 'Zhana' } ]
+```
 
-> a.pick(data, "name", "age")
+return both the `"name"` and `"age"` fields
+```js
+> a.pick(data, [ "name", "age" ])
 [ { name: 'Dana', age: 30 },
   { name: 'Yana', age: 20 },
   { name: 'Zhana', age: 10 } ]
+```
+
+cherry-picks fields at any depth:
+```js
+> data = [
+    { person: { name: "Dana", age: 30 }},
+    { person: { name: "Yana", age: 20 }},
+    { person: { name: "Zhana", age: 10 }}
+]
+
+> a.pick(data, "person.name")
+[ { name: 'Dana' }, { name: 'Yana' }, { name: 'Zhana' } ]
+
+> a.pick(data, "person.age")
+[ { age: 30 }, { age: 20 }, { age: 10 } ]
 ```
 <a name="module_array-tools.union"></a>
 ### a.union(array1, array2, idKey) ⇒ <code>Array</code>

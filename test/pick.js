@@ -32,9 +32,9 @@ test(".pick(recordset, [ properties ])", function(t){
 });
 
 test(".pick(recordset, property.property)", function(t){
-    t.deepEqual(a.pick(f.deep), "one.two"), [
+    t.deepEqual(a.pick(f.deep, "one.two"), [
         { two: 2 },
         { two: 2 },
-    ];
+    ]);
     t.end();
 });
