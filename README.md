@@ -106,7 +106,6 @@ $ bower install array-tools --save
     * [.without(array, toRemove)](#module_array-tools.without) ⇒ <code>Array</code>
     * [.pluck(recordset, property)](#module_array-tools.pluck) ⇒ <code>Array</code>
     * [.pick(recordset, property)](#module_array-tools.pick) ⇒ <code>Array.&lt;object&gt;</code>
-    * [.union(array1, array2, idKey)](#module_array-tools.union) ⇒ <code>Array</code>
     * [.commonSequence(a, b)](#module_array-tools.commonSequence) ⇒ <code>Array</code>
     * [.unique(array)](#module_array-tools.unique) ⇒ <code>Array</code>
     * [.spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile) ⇒ <code>Array</code>
@@ -358,38 +357,6 @@ cherry-picks fields at any depth:
 
 > a.pick(data, "person.age")
 [ { age: 30 }, { age: 20 }, { age: 10 } ]
-```
-<a name="module_array-tools.union"></a>
-### a.union(array1, array2, idKey) ⇒ <code>Array</code>
-merge two arrays into a single array of unique values
-
-**Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
-**Category**: chainable  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| array1 | <code>Array</code> | First array |
-| array2 | <code>Array</code> | Second array |
-| idKey | <code>string</code> | the unique ID property name |
-
-**Example**  
-```js
-> var array1 = [ 1, 2 ], array2 = [ 2, 3 ];
-> a.union(array1, array2)
-[ 1, 2, 3 ]
-
-> var array1 = [ { id: 1 }, { id: 2 } ], array2 = [ { id: 2 }, { id: 3 } ];
-> a.union(array1, array2)
-[ { id: 1 }, { id: 2 }, { id: 3 } ]
-
-> var array2 = [ { id: 2, blah: true }, { id: 3 } ]
-> a.union(array1, array2)
-[ { id: 1 },
-  { id: 2 },
-  { id: 2, blah: true },
-  { id: 3 } ]
-> a.union(array1, array2, "id")
-[ { id: 1 }, { id: 2 }, { id: 3 } ]
 ```
 <a name="module_array-tools.commonSequence"></a>
 ### a.commonSequence(a, b) ⇒ <code>Array</code>
