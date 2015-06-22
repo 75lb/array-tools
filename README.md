@@ -106,7 +106,6 @@ $ bower install array-tools --save
     * [.without(array, toRemove)](#module_array-tools.without) ⇒ <code>Array</code>
     * [.pluck(recordset, property)](#module_array-tools.pluck) ⇒ <code>Array</code>
     * [.pick(recordset, property)](#module_array-tools.pick) ⇒ <code>Array.&lt;object&gt;</code>
-    * [.commonSequence(a, b)](#module_array-tools.commonSequence) ⇒ <code>Array</code>
     * [.unique(array)](#module_array-tools.unique) ⇒ <code>Array</code>
     * [.spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile) ⇒ <code>Array</code>
     * [.extract(array, query)](#module_array-tools.extract) ⇒ <code>Array</code>
@@ -357,23 +356,6 @@ cherry-picks fields at any depth:
 
 > a.pick(data, "person.age")
 [ { age: 30 }, { age: 20 }, { age: 10 } ]
-```
-<a name="module_array-tools.commonSequence"></a>
-### a.commonSequence(a, b) ⇒ <code>Array</code>
-Returns the initial elements which both input arrays have in common
-
-**Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
-**Category**: chainable  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| a | <code>Array</code> | first array to compare |
-| b | <code>Array</code> | second array to compare |
-
-**Example**  
-```js
-> a.commonSequence([1,2,3], [1,2,4])
-[ 1, 2 ]
 ```
 <a name="module_array-tools.unique"></a>
 ### a.unique(array) ⇒ <code>Array</code>

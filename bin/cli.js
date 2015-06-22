@@ -30,7 +30,17 @@ case "map":
 
 function processInput(input){
     var arr = a(input);
-    var result = arr[method].apply(arr, args);
+    var result;
+    
+    switch (method){
+    /* convert map arg to a function */
+    case "pick":
+        result = arr[method](args);
+        break;
+    default:
+        result = arr[method].apply(arr, args);
+    }
+
     if (result._data) result = result.val();
     
     /* certain methods don't output JSON */
