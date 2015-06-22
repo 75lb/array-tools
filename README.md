@@ -116,7 +116,7 @@ $ bower install array-tools --save
     * [.findWhere(recordset, query)](#module_array-tools.findWhere) ⇒ <code>object</code>
     * [.remove(arr, toRemove)](#module_array-tools.remove) ⇒ <code>\*</code>
     * [.last(arr)](#module_array-tools.last) ⇒ <code>\*</code>
-    * [.contains(array, value)](#module_array-tools.contains) ⇒
+    * [.contains(array, value)](#module_array-tools.contains) ⇒ <code>boolean</code>
 
 <a name="module_array-tools.arrayify"></a>
 ### a.arrayify(any) ⇒ <code>Array</code>
@@ -436,7 +436,7 @@ Removes items from `array` which satisfy the query. Modifies the input array, re
 ```
 <a name="module_array-tools.flatten"></a>
 ### a.flatten(array) ⇒ <code>Array</code>
-flatten an array of arrays into a single array
+flatten an array of arrays into a single array.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: chainable  
@@ -467,28 +467,49 @@ Sort an array of objects by one or more fields
 | customOrder | <code>object</code> | specific sort orders, per columns |
 
 **Example**  
+with this data
 ```js
->  var fixture = [
-    { a: 4, b: 1, c: 1},
-    { a: 4, b: 3, c: 1},
-    { a: 2, b: 2, c: 3},
-    { a: 2, b: 2, c: 2},
-    { a: 1, b: 3, c: 4},
-    { a: 1, b: 1, c: 4},
-    { a: 1, b: 2, c: 4},
-    { a: 3, b: 3, c: 3},
-    { a: 4, b: 3, c: 1}
-];
-> a.sortBy(fixture, ["a", "b", "c"])
-[ { a: 1, b: 1, c: 4 },
-  { a: 1, b: 2, c: 4 },
-  { a: 1, b: 3, c: 4 },
-  { a: 2, b: 2, c: 2 },
-  { a: 2, b: 2, c: 3 },
-  { a: 3, b: 3, c: 3 },
-  { a: 4, b: 1, c: 1 },
-  { a: 4, b: 3, c: 1 },
-  { a: 4, b: 3, c: 1 } ]
+> DJs = [
+    { name: "Trevor", slot: "twilight" },
+    { name: "Chris", slot: "twilight" },
+    { name: "Mike", slot: "afternoon" },
+    { name: "Rodney", slot: "morning" },
+    { name: "Chris", slot: "morning" },
+    { name: "Zane", slot: "evening" }
+]
+```
+
+sort by `slot` using the default sort order
+```js
+> a.sortBy(DJs, "slot")
+[ { name: 'Mike', slot: 'afternoon' },
+  { name: 'Zane', slot: 'evening' },
+  { name: 'Chris', slot: 'morning' },
+  { name: 'Rodney', slot: 'morning' },
+  { name: 'Chris', slot: 'twilight' },
+  { name: 'Trevor', slot: 'twilight' } ]
+```
+
+specify a custom sort order for `slot`
+```js
+> a.sortBy(DJs, "slot", { slot: [ "morning", "afternoon", "evening", "twilight" ]})
+[ { name: 'Rodney', slot: 'morning' },
+  { name: 'Chris', slot: 'morning' },
+  { name: 'Mike', slot: 'afternoon' },
+  { name: 'Zane', slot: 'evening' },
+  { name: 'Trevor', slot: 'twilight' },
+  { name: 'Chris', slot: 'twilight' } ]
+```
+
+sort by `slot` then `name`
+```js
+> a.sortBy(DJs, ["slot", "name"], { slot: [ "morning", "afternoon", "evening", "twilight" ]})
+[ { name: 'Chris', slot: 'morning' },
+  { name: 'Rodney', slot: 'morning' },
+  { name: 'Mike', slot: 'afternoon' },
+  { name: 'Zane', slot: 'evening' },
+  { name: 'Chris', slot: 'twilight' },
+  { name: 'Trevor', slot: 'twilight' } ]
 ```
 <a name="module_array-tools.exists"></a>
 ### a.exists(array, query) ⇒ <code>boolean</code>
@@ -576,11 +597,10 @@ Return the last item in an array.
 | arr | <code>Array</code> | the input array |
 
 <a name="module_array-tools.contains"></a>
-### a.contains(array, value) ⇒
+### a.contains(array, value) ⇒ <code>boolean</code>
 Searches the array for the exact value supplied (strict equality). To query for value existance using an expression or function, use [exists](#module_array-tools.exists). If you pass an array of values, contains will return true if they _all_ exist. (note: `exists` returns true if _some_ of them exist).
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
-**Returns**: boolean  
 **Category**: not chainable  
 **Since**: 1.8.0  
 
