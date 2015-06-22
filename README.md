@@ -4,8 +4,6 @@
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 [![Coverage Status](https://coveralls.io/repos/75lb/array-tools/badge.svg?branch=master)](https://coveralls.io/r/75lb/array-tools?branch=master)
 
-***this documentation is for the pre-release version***
-
 # array-tools
 Lightweight, use-anywhere toolkit for working with array data.
 
@@ -113,7 +111,7 @@ $ bower install array-tools --save
     * [.sortBy(recordset, columns, customOrder)](#module_array-tools.sortBy) ⇒ <code>Array</code>
   * _not chainable_
     * [.exists(array, query)](#module_array-tools.exists) ⇒ <code>boolean</code>
-    * [.findWhere(recordset, query)](#module_array-tools.findWhere) ⇒ <code>object</code>
+    * [.findWhere(recordset, query)](#module_array-tools.findWhere) ⇒ <code>\*</code>
     * [.remove(arr, toRemove)](#module_array-tools.remove) ⇒ <code>\*</code>
     * [.last(arr)](#module_array-tools.last) ⇒ <code>\*</code>
     * [.contains(array, value)](#module_array-tools.contains) ⇒ <code>boolean</code>
@@ -513,7 +511,7 @@ sort by `slot` then `name`
 ```
 <a name="module_array-tools.exists"></a>
 ### a.exists(array, query) ⇒ <code>boolean</code>
-returns true if a value, or nested object value exists in an array.. If value is a plain object, it is considered to be a query. If `value` is a plain object and you want to search for it by reference, use `.contains`.
+Works in exactly the same way as [where](#module_array-tools.where) but returning a boolean indicating whether a matching record exists.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: not chainable  
@@ -525,24 +523,18 @@ returns true if a value, or nested object value exists in an array.. If value is
 
 **Example**  
 ```js
-> a.exists([ 1, 2, 3 ], 2)
-true
+> data = [
+    { name: "Dana", age: 30 },
+    { name: "Yana", age: 20 },
+    { name: "Zhana", age: 10 }
+]
 
-> a.exists([ 1, 2, 3 ], [ 2, 3 ])
-true
-
-> a.exists([ { result: false }, { result: false } ], { result: true })
-false
-
-> a.exists([ { result: true }, { result: false } ], { result: true })
-
-> a.exists([ { n: 1 }, { n: 2 }, { n: 3 } ], [ { n: 1 }, { n: 3 } ])
+> a.exists(data, { age: 10 })
 true
 ```
 <a name="module_array-tools.findWhere"></a>
-### a.findWhere(recordset, query) ⇒ <code>object</code>
-returns the first item from `recordset` where key/value pairs
-from `query` are matched identically
+### a.findWhere(recordset, query) ⇒ <code>\*</code>
+Works in exactly the same way as [where](#module_array-tools.where) but returns only the first item found.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: not chainable  
@@ -550,16 +542,17 @@ from `query` are matched identically
 | Param | Type | Description |
 | --- | --- | --- |
 | recordset | <code>Array.&lt;object&gt;</code> | the array to search |
-| query | <code>object</code> | an object containing the key/value pairs you want to match |
+| query | <code>object</code> | the search query |
 
 **Example**  
 ```js
-> dudes = [{ name: "Jim", age: 8}, { name: "Clive", age: 8}, { name: "Hater", age: 9}]
-[ { name: 'Jim', age: 8 },
-  { name: 'Clive', age: 8 },
-  { name: 'Hater', age: 9 } ]
+> dudes = [ 
+    { name: 'Jim', age: 8 },
+    { name: 'Clive', age: 8 },
+    { name: 'Hater', age: 9 } 
+]
 
-> a.findWhere(dudes, { age: 8})
+> a.findWhere(dudes, { age: 8 })
 { name: 'Jim', age: 8 }
 ```
 <a name="module_array-tools.remove"></a>

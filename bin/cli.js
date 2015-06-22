@@ -6,7 +6,7 @@ var domain = require("domain");
 var ansi = require("ansi-escape-sequences");
 var util = require("util");
 
-if (process.argv.length < 4){
+if (process.argv.length < 3){
     console.error("Usage:");
     console.error("$ cat <json array> | array-tools <method> <args...>");
     process.exit(1);
@@ -33,7 +33,6 @@ function processInput(input){
     var result;
     
     switch (method){
-    /* convert map arg to a function */
     case "pick":
         result = arr[method](args);
         break;
