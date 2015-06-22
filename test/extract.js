@@ -1,5 +1,5 @@
-var test = require("tape"),
-    a = require("../");
+var test = require("tape");
+var a = require("../");
 
 test("extract where test returns true", function(t){
     var arr = [

@@ -114,8 +114,8 @@ $ bower install array-tools --save
   * _not chainable_
     * [.exists(array, query)](#module_array-tools.exists) ⇒ <code>boolean</code>
     * [.findWhere(recordset, query)](#module_array-tools.findWhere) ⇒ <code>object</code>
-    * [.last(arr)](#module_array-tools.last) ⇒ <code>\*</code>
     * [.remove(arr, toRemove)](#module_array-tools.remove) ⇒ <code>\*</code>
+    * [.last(arr)](#module_array-tools.last) ⇒ <code>\*</code>
     * [.contains(array, value)](#module_array-tools.contains) ⇒
 
 <a name="module_array-tools.arrayify"></a>
@@ -398,7 +398,6 @@ Splice items from the input array until the matching test fails. Returns an arra
 [ 12 ]
 
 > countries = [ "Egypt", "Ethiopia", "France", "Argentina" ]
-[ 'Egypt', 'Ethiopia', 'France', 'Argentina' ]
 
 > a.spliceWhile(countries, 0, /^e/i)
 [ 'Egypt', 'Ethiopia' ]
@@ -416,8 +415,25 @@ Removes items from `array` which satisfy the query. Modifies the input array, re
 | Param | Type | Description |
 | --- | --- | --- |
 | array | <code>Array</code> | the input array, modified directly |
-| query | <code>function</code> &#124; <code>object</code> | Per item in the array, if either the function returns truthy or the exists query is satisfied, the item is extracted |
+| query | <code>any</code> | if an item in the input array passes this test it is removed |
 
+**Example**  
+```js
+> DJs = [
+    { name: "Trevor", sacked: true },
+    { name: "Mike", sacked: true },
+    { name: "Chris", sacked: false },
+    { name: "Alan", sacked: false }
+]
+
+> a.extract(DJs, { sacked: true })
+[ { name: 'Trevor', sacked: true },
+  { name: 'Mike', sacked: true } ]
+
+> DJs
+[ { name: 'Chris', sacked: false },
+  { name: 'Alan', sacked: false } ]
+```
 <a name="module_array-tools.flatten"></a>
 ### a.flatten(array) ⇒ <code>Array</code>
 flatten an array of arrays into a single array
@@ -525,6 +541,17 @@ from `query` are matched identically
 > a.findWhere(dudes, { age: 8})
 { name: 'Jim', age: 8 }
 ```
+<a name="module_array-tools.remove"></a>
+### a.remove(arr, toRemove) ⇒ <code>\*</code>
+**Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
+**Category**: not chainable  
+**Since**: 1.8.0  
+
+| Param | Type | Description |
+| --- | --- | --- |
+| arr | <code>Array</code> | the input array |
+| toRemove | <code>\*</code> | the item to remove |
+
 <a name="module_array-tools.last"></a>
 ### a.last(arr) ⇒ <code>\*</code>
 Return the last item in an array.
@@ -536,17 +563,6 @@ Return the last item in an array.
 | Param | Type | Description |
 | --- | --- | --- |
 | arr | <code>Array</code> | the input array |
-
-<a name="module_array-tools.remove"></a>
-### a.remove(arr, toRemove) ⇒ <code>\*</code>
-**Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
-**Category**: not chainable  
-**Since**: 1.8.0  
-
-| Param | Type | Description |
-| --- | --- | --- |
-| arr | <code>Array</code> | the input array |
-| toRemove | <code>\*</code> | the item to remove |
 
 <a name="module_array-tools.contains"></a>
 ### a.contains(array, value) ⇒
