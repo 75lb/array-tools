@@ -543,6 +543,8 @@ from `query` are matched identically
 ```
 <a name="module_array-tools.remove"></a>
 ### a.remove(arr, toRemove) ⇒ <code>\*</code>
+Removes the specified value from the input array.
+
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: not chainable  
 **Since**: 1.8.0  
@@ -552,6 +554,15 @@ from `query` are matched identically
 | arr | <code>Array</code> | the input array |
 | toRemove | <code>\*</code> | the item to remove |
 
+**Example**  
+```js
+> numbers = [ 1, 2, 3 ];
+> a.remove(numbers, 1);
+[ 1 ]
+
+> numbers
+[ 2, 3 ]
+```
 <a name="module_array-tools.last"></a>
 ### a.last(arr) ⇒ <code>\*</code>
 Return the last item in an array.
