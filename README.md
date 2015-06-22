@@ -359,7 +359,7 @@ cherry-picks fields at any depth:
 ```
 <a name="module_array-tools.unique"></a>
 ### a.unique(array) ⇒ <code>Array</code>
-returns an array of unique values
+Returns an array containing the unique values from the input array.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: chainable  
@@ -370,15 +370,12 @@ returns an array of unique values
 
 **Example**  
 ```js
-> n = [1,6,6,7,1]
-[ 1, 6, 6, 7, 1 ]
-
-> a.unique(n)
+> a.unique([ 1, 6, 6, 7, 1])
 [ 1, 6, 7 ]
 ```
 <a name="module_array-tools.spliceWhile"></a>
 ### a.spliceWhile(array, index, test, ...elementN) ⇒ <code>Array</code>
-splice from `index` until `test` fails
+Splice items from the input array until the matching test fails. Returns an array containing the items removed.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
 **Category**: chainable  
@@ -387,19 +384,26 @@ splice from `index` until `test` fails
 | --- | --- | --- |
 | array | <code>Array</code> | the input array |
 | index | <code>number</code> | the position to begin splicing from |
-| test | <code>RegExp</code> | the test to continue splicing while true |
-| ...elementN | <code>\*</code> | the elements to add to the array |
+| test | <code>any</code> | the sequence of items passing this test will be removed |
+| ...elementN | <code>\*</code> | elements to add to the array in place |
 
 **Example**  
 ```js
-> letters = ["a", "a", "b"]
-[ 'a', 'a', 'b' ]
+> function under10(n){ return n < 10; }
+> numbers = [ 1, 2, 4, 6, 12 ]
 
-> a.spliceWhile(letters, 0, /a/, "x")
-[ 'a', 'a' ]
+> a.spliceWhile(numbers, 0, under10)
+[ 1, 2, 4, 6 ]
+> numbers
+[ 12 ]
 
-> letters
-[ 'x', 'b' ]
+> countries = [ "Egypt", "Ethiopia", "France", "Argentina" ]
+[ 'Egypt', 'Ethiopia', 'France', 'Argentina' ]
+
+> a.spliceWhile(countries, 0, /^e/i)
+[ 'Egypt', 'Ethiopia' ]
+> countries
+[ 'France', 'Argentina' ]
 ```
 <a name="module_array-tools.extract"></a>
 ### a.extract(array, query) ⇒ <code>Array</code>
