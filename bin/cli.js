@@ -23,7 +23,7 @@ switch (method){
 /* convert map arg to a function */
 case "map":
     var funcBody = args.shift();
-    var mapFunction = new Function("item", funcBody);
+    var mapFunction = eval(util.format("(function mapFunction(item){%s})", funcBody));
     args.unshift(mapFunction);
     break;
 }

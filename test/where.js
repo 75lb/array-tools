@@ -55,6 +55,14 @@ test(".where(array, array)", function(t){
     t.end();
 });
 
+test(".where(array, object[])", function(t){
+    t.deepEqual(a.where(f.recordset, [ { n: 1 }, { n: 2 }, { n: 3 } ]), [
+        { b: false, n: 1 },
+        { b: false, n: 2 }
+    ]);
+    t.end();
+});
+
 
 test(".where deep query", function(t){
     var arr = [
