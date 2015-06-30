@@ -23,6 +23,28 @@ test("chaining: correct methods return the chainable", function(t){
     t.end();
 });
 
+test("chaining: input array is reset after chain termination", function(t){
+    var chain = a(f.recordset);
+    t.deepEqual(chain.val(), [
+        {one: 1, two: 2},
+        {one: 1, two: 3},
+        {one: 2, two: 5},
+        {two: "two"},
+        {one: "one", two: "zwei"},
+    ]);
+    t.deepEqual(chain.where({ two: "two" }).val(), [
+        {two: "two"}
+    ]);
+    t.deepEqual(chain.val(), [
+        {one: 1, two: 2},
+        {one: 1, two: 3},
+        {one: 2, two: 5},
+        {two: "two"},
+        {one: "one", two: "zwei"},
+    ]);
+    t.end();
+});
+
 test("chaining: .pluck", function(t){
     var data = [
         {one: 1, two: 2},
