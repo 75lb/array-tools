@@ -2,7 +2,7 @@
   "name": "array-tools",
   "author": "Lloyd Brookes <75pound@gmail.com>",
   "version": "2.0.0",
-  "description": "Lightweight, use-anywhere toolkit for working with array data. 1.5k, compressed.",
+  "description": "Lightweight, use-anywhere toolkit for working with array data.",
   "repository": "https://github.com/75lb/array-tools.git",
   "main": "./lib/array-tools.js",
   "bin": "bin/cli.js",
@@ -39,6 +39,7 @@
   },
   "dependencies": {
     "ansi-escape-sequences": "^2.0.0",
+    "array-back": "^1.0.1",
     "object-tools": "^2.0.0-0",
     "transform-tools": "~0.1",
     "typical": "^2.1"
