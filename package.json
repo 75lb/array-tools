@@ -23,7 +23,6 @@
   ],
   "scripts": {
     "test": "tape test/*.js",
-    "lint": "jshint lib/*.js test/*.js; echo",
     "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js  > README.md; echo",
     "cover": "istanbul cover ./node_modules/.bin/tape test/*.js && cat coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf coverage; echo",
     "build-umd": "browserify lib/array-tools.js  --standalone array-tools > dist/array-tools.js",
@@ -40,9 +39,9 @@
   "dependencies": {
     "ansi-escape-sequences": "^2.0.0",
     "array-back": "^1.0.1",
-    "object-tools": "^2.0.0-0",
-    "transform-tools": "~0.1",
-    "typical": "^2.1",
-    "sort-array": "~0.1"
+    "collect-json": "^1.0.0",
+    "object-tools": "^2.0.0",
+    "sort-array": "~0.1",
+    "typical": "^2.1"
   }
 }

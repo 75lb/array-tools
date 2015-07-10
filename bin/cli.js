@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 "use strict";
 var a = require("../");
-var tr = require("transform-tools");
 var domain = require("domain");
 var ansi = require("ansi-escape-sequences");
 var util = require("util");
+var collectJson = require("collect-json");
 
 if (process.argv.length < 3){
     console.error("Usage:");
@@ -57,6 +57,6 @@ d.on("error", function(err){
 });
 d.run(function(){
 process.stdin
-    .pipe(tr.collectJson({ through: processInput }))
+    .pipe(collectJson(processInput))
     .pipe(process.stdout);
 });
