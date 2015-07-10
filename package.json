@@ -43,6 +43,6 @@
     "object-tools": "^2.0.0-0",
     "transform-tools": "~0.1",
     "typical": "^2.1",
-    "sort-array": "^1"
+    "sort-array": "~0.1"
   }
 }
