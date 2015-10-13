@@ -3,6 +3,7 @@
 [![Build Status](https://travis-ci.org/75lb/array-tools.svg?branch=master)](https://travis-ci.org/75lb/array-tools)
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 [![Coverage Status](https://coveralls.io/repos/75lb/array-tools/badge.svg?branch=master)](https://coveralls.io/r/75lb/array-tools?branch=master)
+[![js-standard-style](https://img.shields.io/badge/code%20style-standard-brightgreen.svg)](https://github.com/feross/standard)
 
 # array-tools
 Lightweight, use-anywhere toolkit for working with array data.
@@ -47,9 +48,9 @@ function CarCollection(cars){
 }
 util.inherits(CarCollection, ArrayTools);
 
-var cars = new CarCollection([ 
-  { owner: "Me", model: "Citreon Xsara" }, 
-  { owner: "Floyd", model: "Bugatti Veyron" } 
+var cars = new CarCollection([
+  { owner: "Me", model: "Citreon Xsara" },
+  { owner: "Floyd", model: "Bugatti Veyron" }
 ]);
 
 cars.findWhere({ owner: "Floyd" });
@@ -273,7 +274,7 @@ get records with `favourite.colour` values matching `/red/`
 [ { name: 'Dana', favourite: { colour: 'light red' } },
   { name: 'Yana', favourite: { colour: 'dark red' } } ]
 ```
- 
+
 if the value you're looking for _maybe_ part of an array, prefix the property name with `+`. Now Zhana is included:
 ```js
 > a.where(deepData, { favourite: { "+colour": /red/ } })
@@ -284,8 +285,8 @@ if the value you're looking for _maybe_ part of an array, prefix the property na
 
 you can combine any of the above by supplying an array of queries. Records will be returned if _any_ of the queries match:
 ```js
-> var nameBeginsWithY = { name: /^Y/ };
-> var faveColourIncludesWhite = { favourite: { "+colour": "white" } };
+> var nameBeginsWithY = { name: /^Y/ }
+> var faveColourIncludesWhite = { favourite: { "+colour": "white" } }
 
 > a.where(deepData, [ nameBeginsWithY, faveColourIncludesWhite ])
 [ { name: 'Yana', favourite: { colour: 'dark red' } },
@@ -332,7 +333,7 @@ Returns an array containing each value plucked from the specified property of ea
 | property | <code>string</code> &#124; <code>Array.&lt;string&gt;</code> | Property name, or an array of property names. If an array is supplied, the first existing property will be returned. |
 
 **Example**  
-with this data.. 
+with this data..
 ```js
 > var data = [
     { name: "Pavel", nick: "Pasha" },
@@ -359,7 +360,7 @@ the values being plucked can be at any depth:
     { leeds: { leeds: { leeds: "we" } } },
     { leeds: { leeds: { leeds: "are" } } },
     { leeds: { leeds: { leeds: "Leeds" } } }
-];
+]
 
 > a.pluck(data, "leeds.leeds.leeds")
 [ 'we', 'are', 'Leeds' ]
@@ -546,10 +547,10 @@ Works in exactly the same way as [where](#module_array-tools.where) but returns 
 
 **Example**  
 ```js
-> dudes = [ 
+> dudes = [
     { name: 'Jim', age: 8 },
     { name: 'Clive', age: 8 },
-    { name: 'Hater', age: 9 } 
+    { name: 'Hater', age: 9 }
 ]
 
 > a.findWhere(dudes, { age: 8 })
@@ -570,8 +571,8 @@ Removes the specified value from the input array.
 
 **Example**  
 ```js
-> numbers = [ 1, 2, 3 ];
-> a.remove(numbers, 1);
+> numbers = [ 1, 2, 3 ]
+> a.remove(numbers, 1)
 [ 1 ]
 
 > numbers
@@ -603,6 +604,6 @@ Searches the array for the exact value supplied (strict equality). To query for 
 | value | <code>\*</code> | the value to look for |
 
 
-* * * 
+* * *
 
 &copy; 2015 Lloyd Brookes <75pound@gmail.com>. Documented by [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown).
