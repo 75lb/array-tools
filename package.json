@@ -24,17 +24,12 @@
   "scripts": {
     "test": "tape test/*.js",
     "docs": "jsdoc2md -t jsdoc2md/README.hbs lib/*.js  > README.md; echo",
-    "cover": "istanbul cover ./node_modules/.bin/tape test/*.js && cat coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf coverage; echo",
-    "build-umd": "browserify lib/array-tools.js  --standalone array-tools > dist/array-tools.js",
-    "build-min": "uglifyjs dist/array-tools.js -m -c > dist/array-tools.min.js",
-    "build": "npm run build-umd && npm run build-min; echo"
+    "cover": "istanbul cover ./node_modules/.bin/tape test/*.js && cat coverage/lcov.info | ./node_modules/.bin/coveralls && rm -rf coverage; echo"
   },
   "devDependencies": {
-    "browserify": "^10.2.4",
     "coveralls": "^2.11.2",
     "jsdoc-to-markdown": "^1.0.3",
-    "tape": "^4",
-    "uglifyjs": "^2.4.10"
+    "tape": "^4"
   },
   "dependencies": {
     "ansi-escape-sequences": "^2.0.0",
