@@ -40,7 +40,7 @@
     "ansi-escape-sequences": "^2.0.0",
     "array-back": "^1.0.1",
     "collect-json": "^1.0.0",
-    "object-tools": "^2.0.0",
+    "object-get": "^1.0.0",
     "sort-array": "~0.1",
     "test-value": "^1.0.0",
     "typical": "^2.1"
