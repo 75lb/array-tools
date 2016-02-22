@@ -1,5 +1,5 @@
 [![view on npm](http://img.shields.io/npm/v/array-tools.svg)](https://www.npmjs.org/package/array-tools)
-[![npm module downloads per month](http://img.shields.io/npm/dm/array-tools.svg)](https://www.npmjs.org/package/array-tools)
+[![npm module downloads](http://img.shields.io/npm/dt/array-tools.svg)](https://www.npmjs.org/package/array-tools)
 [![Build Status](https://travis-ci.org/75lb/array-tools.svg?branch=master)](https://travis-ci.org/75lb/array-tools)
 [![Dependency Status](https://david-dm.org/75lb/array-tools.svg)](https://david-dm.org/75lb/array-tools)
 [![Coverage Status](https://coveralls.io/repos/75lb/array-tools/badge.svg?branch=master)](https://coveralls.io/r/75lb/array-tools?branch=master)
@@ -74,11 +74,6 @@ false
 '2-3'
 ```
 
-## Compatibility
-This library is tested in node versions 0.10, 0.11, 0.12, iojs and the following browsers:
-
-[![Sauce Test Status](https://saucelabs.com/browser-matrix/arr-tools.svg)](https://saucelabs.com/u/arr-tools)
-
 ## Install
 As a library:
 
@@ -99,23 +94,23 @@ $ bower install array-tools --save
 ## API Reference
 
 * [array-tools](#module_array-tools)
-  * _chainable_
-    * [.sortBy](#module_array-tools.sortBy) ⇒ <code>Array</code>
-    * [.arrayify(any)](#module_array-tools.arrayify) ⇒ <code>Array</code>
-    * [.where(array, query)](#module_array-tools.where) ⇒ <code>Array</code>
-    * [.without(array, toRemove)](#module_array-tools.without) ⇒ <code>Array</code>
-    * [.pluck(recordset, property)](#module_array-tools.pluck) ⇒ <code>Array</code>
-    * [.pick(recordset, property)](#module_array-tools.pick) ⇒ <code>Array.&lt;object&gt;</code>
-    * [.unique(array)](#module_array-tools.unique) ⇒ <code>Array</code>
-    * [.spliceWhile(array, index, test, ...elementN)](#module_array-tools.spliceWhile) ⇒ <code>Array</code>
-    * [.extract(array, query)](#module_array-tools.extract) ⇒ <code>Array</code>
-    * [.flatten(array)](#module_array-tools.flatten) ⇒ <code>Array</code>
-  * _not chainable_
-    * [.exists(array, query)](#module_array-tools.exists) ⇒ <code>boolean</code>
-    * [.findWhere(recordset, query)](#module_array-tools.findWhere) ⇒ <code>\*</code>
-    * [.remove(arr, toRemove)](#module_array-tools.remove) ⇒ <code>\*</code>
-    * [.last(arr)](#module_array-tools.last) ⇒ <code>\*</code>
-    * [.contains(array, value)](#module_array-tools.contains) ⇒ <code>boolean</code>
+    * _chainable_
+        * [.sortBy](#module_array-tools.sortBy) ⇒ <code>Array</code>
+        * [.arrayify(any)](#module_array-tools.arrayify) ⇒ <code>Array</code>
+        * [.where(array, query)](#module_array-tools.where) ⇒ <code>Array</code>
+        * [.without(array, toRemove)](#module_array-tools.without) ⇒ <code>Array</code>
+        * [.pluck(recordset, property)](#module_array-tools.pluck) ⇒ <code>Array</code>
+        * [.pick(recordset, property)](#module_array-tools.pick) ⇒ <code>Array.&lt;object&gt;</code>
+        * [.unique(array)](#module_array-tools.unique) ⇒ <code>Array</code>
+        * [.spliceWhile(array, index, test, [...elementN])](#module_array-tools.spliceWhile) ⇒ <code>Array</code>
+        * [.extract(array, query)](#module_array-tools.extract) ⇒ <code>Array</code>
+        * [.flatten(array)](#module_array-tools.flatten) ⇒ <code>Array</code>
+    * _not chainable_
+        * [.exists(array, query)](#module_array-tools.exists) ⇒ <code>boolean</code>
+        * [.findWhere(recordset, query)](#module_array-tools.findWhere) ⇒ <code>\*</code>
+        * [.remove(arr, toRemove)](#module_array-tools.remove) ⇒ <code>\*</code>
+        * [.last(arr)](#module_array-tools.last) ⇒ <code>\*</code>
+        * [.contains(array, value)](#module_array-tools.contains) ⇒ <code>boolean</code>
 
 <a name="module_array-tools.sortBy"></a>
 ### a.sortBy ⇒ <code>Array</code>
@@ -432,7 +427,7 @@ Returns an array containing the unique values from the input array.
 [ 1, 6, 7 ]
 ```
 <a name="module_array-tools.spliceWhile"></a>
-### a.spliceWhile(array, index, test, ...elementN) ⇒ <code>Array</code>
+### a.spliceWhile(array, index, test, [...elementN]) ⇒ <code>Array</code>
 Splice items from the input array until the matching test fails. Returns an array containing the items removed.
 
 **Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
@@ -443,7 +438,7 @@ Splice items from the input array until the matching test fails. Returns an arra
 | array | <code>Array</code> | the input array |
 | index | <code>number</code> | the position to begin splicing from |
 | test | <code>any</code> | the sequence of items passing this test will be removed |
-| ...elementN | <code>\*</code> | elements to add to the array in place |
+| [...elementN] | <code>\*</code> | elements to add to the array in place |
 
 **Example**  
 ```js
@@ -606,4 +601,4 @@ Searches the array for the exact value supplied (strict equality). To query for 
 
 * * *
 
-&copy; 2015 Lloyd Brookes <75pound@gmail.com>. Documented by [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown).
+&copy; 2015-16 Lloyd Brookes <75pound@gmail.com>. Documented by [jsdoc-to-markdown](https://github.com/75lb/jsdoc-to-markdown).
