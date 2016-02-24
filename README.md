@@ -95,7 +95,6 @@ $ bower install array-tools --save
 
 * [array-tools](#module_array-tools)
     * _chainable_
-        * [.sortBy](#module_array-tools.sortBy) ⇒ <code>Array</code>
         * [.arrayify(any)](#module_array-tools.arrayify) ⇒ <code>Array</code>
         * [.where(array, query)](#module_array-tools.where) ⇒ <code>Array</code>
         * [.without(array, toRemove)](#module_array-tools.without) ⇒ <code>Array</code>
@@ -105,6 +104,7 @@ $ bower install array-tools --save
         * [.spliceWhile(array, index, test, [...elementN])](#module_array-tools.spliceWhile) ⇒ <code>Array</code>
         * [.extract(array, query)](#module_array-tools.extract) ⇒ <code>Array</code>
         * [.flatten(array)](#module_array-tools.flatten) ⇒ <code>Array</code>
+        * [.sortBy()](#module_array-tools.sortBy) ⇒ <code>Array</code>
     * _not chainable_
         * [.exists(array, query)](#module_array-tools.exists) ⇒ <code>boolean</code>
         * [.findWhere(recordset, query)](#module_array-tools.findWhere) ⇒ <code>\*</code>
@@ -112,65 +112,6 @@ $ bower install array-tools --save
         * [.last(arr)](#module_array-tools.last) ⇒ <code>\*</code>
         * [.contains(array, value)](#module_array-tools.contains) ⇒ <code>boolean</code>
 
-<a name="module_array-tools.sortBy"></a>
-### a.sortBy ⇒ <code>Array</code>
-Sort an array of objects by one or more fields
-
-**Kind**: static property of <code>[array-tools](#module_array-tools)</code>  
-**Category**: chainable  
-**Since**: 1.5.0  
-
-| Type | Description |
-| --- | --- |
-| <code>Array.&lt;object&gt;</code> | input array |
-| <code>string</code> &#124; <code>Array.&lt;string&gt;</code> | column name(s) to sort by |
-| <code>object</code> | specific sort orders, per columns |
-
-**Example**  
-with this data
-```js
-> DJs = [
-    { name: "Trevor", slot: "twilight" },
-    { name: "Chris", slot: "twilight" },
-    { name: "Mike", slot: "afternoon" },
-    { name: "Rodney", slot: "morning" },
-    { name: "Chris", slot: "morning" },
-    { name: "Zane", slot: "evening" }
-]
-```
-
-sort by `slot` using the default sort order
-```js
-> a.sortBy(DJs, "slot")
-[ { name: 'Mike', slot: 'afternoon' },
-  { name: 'Zane', slot: 'evening' },
-  { name: 'Chris', slot: 'morning' },
-  { name: 'Rodney', slot: 'morning' },
-  { name: 'Chris', slot: 'twilight' },
-  { name: 'Trevor', slot: 'twilight' } ]
-```
-
-specify a custom sort order for `slot`
-```js
-> a.sortBy(DJs, "slot", { slot: [ "morning", "afternoon", "evening", "twilight" ]})
-[ { name: 'Rodney', slot: 'morning' },
-  { name: 'Chris', slot: 'morning' },
-  { name: 'Mike', slot: 'afternoon' },
-  { name: 'Zane', slot: 'evening' },
-  { name: 'Trevor', slot: 'twilight' },
-  { name: 'Chris', slot: 'twilight' } ]
-```
-
-sort by `slot` then `name`
-```js
-> a.sortBy(DJs, ["slot", "name"], { slot: [ "morning", "afternoon", "evening", "twilight" ]})
-[ { name: 'Chris', slot: 'morning' },
-  { name: 'Rodney', slot: 'morning' },
-  { name: 'Mike', slot: 'afternoon' },
-  { name: 'Zane', slot: 'evening' },
-  { name: 'Chris', slot: 'twilight' },
-  { name: 'Trevor', slot: 'twilight' } ]
-```
 <a name="module_array-tools.arrayify"></a>
 ### a.arrayify(any) ⇒ <code>Array</code>
 Takes any input and guarantees an array back.
@@ -504,6 +445,65 @@ flatten an array of arrays into a single array.
 > numbers = [ 1, 2, [ 3, 4 ], 5 ]
 > a.flatten(numbers)
 [ 1, 2, 3, 4, 5 ]
+```
+<a name="module_array-tools.sortBy"></a>
+### a.sortBy() ⇒ <code>Array</code>
+Sort an array of objects by one or more fields
+
+**Kind**: static method of <code>[array-tools](#module_array-tools)</code>  
+**Category**: chainable  
+**Since**: 1.5.0  
+
+| Type | Description |
+| --- | --- |
+| <code>Array.&lt;object&gt;</code> | input array |
+| <code>string</code> &#124; <code>Array.&lt;string&gt;</code> | column name(s) to sort by |
+| <code>object</code> | specific sort orders, per columns |
+
+**Example**  
+with this data
+```js
+> DJs = [
+    { name: "Trevor", slot: "twilight" },
+    { name: "Chris", slot: "twilight" },
+    { name: "Mike", slot: "afternoon" },
+    { name: "Rodney", slot: "morning" },
+    { name: "Chris", slot: "morning" },
+    { name: "Zane", slot: "evening" }
+]
+```
+
+sort by `slot` using the default sort order
+```js
+> a.sortBy(DJs, "slot")
+[ { name: 'Mike', slot: 'afternoon' },
+  { name: 'Zane', slot: 'evening' },
+  { name: 'Chris', slot: 'morning' },
+  { name: 'Rodney', slot: 'morning' },
+  { name: 'Chris', slot: 'twilight' },
+  { name: 'Trevor', slot: 'twilight' } ]
+```
+
+specify a custom sort order for `slot`
+```js
+> a.sortBy(DJs, "slot", { slot: [ "morning", "afternoon", "evening", "twilight" ]})
+[ { name: 'Rodney', slot: 'morning' },
+  { name: 'Chris', slot: 'morning' },
+  { name: 'Mike', slot: 'afternoon' },
+  { name: 'Zane', slot: 'evening' },
+  { name: 'Trevor', slot: 'twilight' },
+  { name: 'Chris', slot: 'twilight' } ]
+```
+
+sort by `slot` then `name`
+```js
+> a.sortBy(DJs, ["slot", "name"], { slot: [ "morning", "afternoon", "evening", "twilight" ]})
+[ { name: 'Chris', slot: 'morning' },
+  { name: 'Rodney', slot: 'morning' },
+  { name: 'Mike', slot: 'afternoon' },
+  { name: 'Zane', slot: 'evening' },
+  { name: 'Chris', slot: 'twilight' },
+  { name: 'Trevor', slot: 'twilight' } ]
 ```
 <a name="module_array-tools.exists"></a>
 ### a.exists(array, query) ⇒ <code>boolean</code>
