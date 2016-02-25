@@ -41,3 +41,26 @@ test('extract where query matches', function (t) {
   ])
   t.end()
 })
+
+test('extract where query matches, 1 item in array', function (t) {
+  var arr = [
+    { result: false, number: 1 }
+  ]
+  var result = a.extract(arr, { result: false})
+  t.deepEqual(result, [
+    { result: false, number: 1 }
+  ])
+  t.deepEqual(arr, [])
+  t.end()
+})
+
+test('extract where query matches, 1 item in array', function (t) {
+  var q = [ 1, 2, 3 ]
+  var w = [ 4, 5, 6 ]
+  var arr = [ q, w ]
+
+  var result = a.extract(arr, q)
+  t.deepEqual(result, [ q ])
+  t.deepEqual(arr, [ w ])
+  t.end()
+})

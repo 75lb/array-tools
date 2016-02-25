@@ -37,6 +37,7 @@
     "collect-json": "^1.0.7",
     "filter-where": "^1.0.1",
     "object-get": "^2.0.0",
+    "reduce-extract": "^1.0.0",
     "sort-array": "^1.0.0",
     "test-value": "^1.0.1",
     "unique-reducer": "^1.0.0"
