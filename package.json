@@ -40,6 +40,7 @@
     "reduce-extract": "^1.0.0",
     "reduce-flatten": "^1.0.0",
     "reduce-unique": "^1.0.0",
+    "reduce-without": "^1.0.0",
     "sort-array": "^1.0.0",
     "test-value": "^1.0.1"
   }
